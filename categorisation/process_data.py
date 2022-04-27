@@ -3,6 +3,7 @@ import numpy as np
 import pickle
 from os.path import exists
 import matplotlib.pyplot as plt
+from scipy.cluster.hierarchy import dendrogram
 
 from sklearn.cluster import AgglomerativeClustering
 
@@ -37,18 +38,54 @@ except Exception as e:
     with open("data.pickle", "wb") as outfile:
         pickle.dump(X, outfile)
 
-clustering = AgglomerativeClustering(n_clusters=50) #affinity='cosine', linkage='complete')
+clustering = AgglomerativeClustering(n_clusters=50, compute_distances= True)  # , affinity='cosine', linkage='complete')
 
-clustering_fit_res = clustering.fit_predict(X)
+clustering_fit_res = clustering.fit(X)
+
+print("clustering res", clustering_fit_res.labels_)
 
 clustering_result = dict()
-for i in range(0, len(clustering_fit_res)):
+for i in range(0, len(clustering_fit_res.labels_)):
     clustering_result[i] = []
 
 id = 0
-for label in clustering_fit_res:
+for label in clustering_fit_res.labels_:
     clustering_result[label].append(left_array_unique[id])
     id += 1
 
-for i in np.unique(np.array(clustering_fit_res)):
+for i in np.unique(np.array(clustering_fit_res.labels_)):
     print(clustering_result[i])
+
+
+def plot_dendrogram(model, **kwargs):
+    count = np.zeros(model.children_.shape[0])
+    nsamples = len(model.labels_)
+    for i, merge in enumerate(model.children_):
+        current_count = 0
+        for child_idx in merge:
+            if child_idx < nsamples:
+                current_count += 1
+            else:
+                current_count += count[child_idx - nsamples]
+        count[i] = current_count
+
+    linkage_matrix = np.column_stack(
+        [model.children_, model.distances_, count]
+    ).astype(float)
+
+    dendrogram(linkage_matrix, **kwargs)
+
+plt.figure(figsize=(30, 30), dpi=120)
+plt.title("Hierarchical Clustering Dendrogram")
+plot_dendrogram(clustering_fit_res, truncate_mode="level", p=50)
+plt.xlabel("Number of points in node (or index of point if no parenthesis).")
+plt.show()
+
+# 2d,is-a,field
+# 2d,is-used-in-field,graphics
+# 3d,is-a,field
+# 3d,is-used-in-field,graphics
+
+# 2d
+# (is-a) 0 0 1 0 0 0 0 0 0
+#
