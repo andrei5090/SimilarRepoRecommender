@@ -105,11 +105,12 @@ while i < len(ivl):
 
 plt.figure(figsize=(30, 15), dpi=144)
 plt.title("Hierarchical Clustering Dendrogram")
-plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=4, labels=[str(x)
-                                                                                              for x in
-                                                                                              range(len(clustering_labels))])
+plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=4)
+
 plt.xlabel("Number of points in node (or index of point if no parenthesis).")
 plt.show()
+
+print("labels corresponding with the dendrogram plot: ", labels)
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
