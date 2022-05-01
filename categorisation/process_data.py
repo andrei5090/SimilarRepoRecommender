@@ -54,8 +54,10 @@ for label in clustering_fit_res.labels_:
     clustering_result[label].append(left_array_unique[id])
     id += 1
 
+id = 0
 for i in np.unique(np.array(clustering_fit_res.labels_)):
-    print(clustering_result[i])
+    print(str(id) + " :" + str(clustering_result[i]))
+    id += 1
 
 
 def plot_dendrogram(model, **kwargs):
@@ -91,7 +93,8 @@ clustering_labels = clustering_fit_res.labels_
 # build labels
 while i < len(ivl):
     try:
-        labels.append(str(int(ivl[i])))
+        a = str(int(ivl[i]))
+        labels.append(str(clustering_labels[labId]))
         labId += 1
         i += 1
     except Exception as e:
