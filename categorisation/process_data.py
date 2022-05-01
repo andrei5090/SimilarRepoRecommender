@@ -4,6 +4,7 @@ import pickle
 from os.path import exists
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram
+import re
 
 from sklearn.cluster import AgglomerativeClustering
 
@@ -38,7 +39,7 @@ except Exception as e:
     with open("data.pickle", "wb") as outfile:
         pickle.dump(X, outfile)
 
-clustering = AgglomerativeClustering(n_clusters=50, compute_distances= True)  # , affinity='cosine', linkage='complete')
+clustering = AgglomerativeClustering(n_clusters=50, compute_distances=True)  # , affinity='cosine', linkage='complete')
 
 clustering_fit_res = clustering.fit(X)
 
@@ -60,6 +61,7 @@ for i in np.unique(np.array(clustering_fit_res.labels_)):
 def plot_dendrogram(model, **kwargs):
     count = np.zeros(model.children_.shape[0])
     nsamples = len(model.labels_)
+
     for i, merge in enumerate(model.children_):
         current_count = 0
         for child_idx in merge:
@@ -73,11 +75,39 @@ def plot_dendrogram(model, **kwargs):
         [model.children_, model.distances_, count]
     ).astype(float)
 
-    dendrogram(linkage_matrix, **kwargs)
+    return dendrogram(linkage_matrix, **kwargs)
 
-plt.figure(figsize=(30, 30), dpi=120)
+
+dend = plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=4)
+labels = []
+
+ivl = dend['ivl']
+
+i = 0
+labId = 0
+
+clustering_labels = clustering_fit_res.labels_
+
+# build labels
+while i < len(ivl):
+    try:
+        labels.append(str(int(ivl[i])))
+        labId += 1
+        i += 1
+    except Exception as e:
+        string = ""
+        for j in range(int(re.search(r'\((.*?)\)', ivl[i]).group(1))):
+            if labId < len(clustering_labels):
+                string += str(clustering_labels[labId]) + " "
+            labId += 1
+        labels.append(string)
+        i += 1
+
+plt.figure(figsize=(30, 15), dpi=144)
 plt.title("Hierarchical Clustering Dendrogram")
-plot_dendrogram(clustering_fit_res, truncate_mode="level", p=50)
+plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=4, labels=[str(x)
+                                                                                              for x in
+                                                                                              range(len(clustering_labels))])
 plt.xlabel("Number of points in node (or index of point if no parenthesis).")
 plt.show()
 
