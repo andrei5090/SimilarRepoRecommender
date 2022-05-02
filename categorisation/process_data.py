@@ -4,9 +4,10 @@ import pickle
 from os.path import exists
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram
+from sklearn.decomposition import PCA
 import re
 
-from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import AgglomerativeClustering, KMeans
 
 df = pd.read_csv('data.csv')
 
@@ -80,7 +81,7 @@ def plot_dendrogram(model, **kwargs):
     return dendrogram(linkage_matrix, **kwargs)
 
 
-dend = plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=4)
+dend = plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=6, count_sort = False, get_leaves = True, no_plot=True)
 labels = []
 
 ivl = dend['ivl']
@@ -94,10 +95,11 @@ clustering_labels = clustering_fit_res.labels_
 while i < len(ivl):
     try:
         a = str(int(ivl[i]))
-        labels.append(str(clustering_labels[labId]))
+        labels.append(a)
         labId += 1
         i += 1
     except Exception as e:
+        print("exception", e)
         string = ""
         for j in range(int(re.search(r'\((.*?)\)', ivl[i]).group(1))):
             if labId < len(clustering_labels):
@@ -106,14 +108,82 @@ while i < len(ivl):
         labels.append(string)
         i += 1
 
+# df_clst = pd.DataFrame()
+# df_clst['index']  = range(0, len(clustering_labels))
+# print("leaves ", dend['leaves'])
+# df_clst['label']  = dend['leaves']
+#
+#
+#
+# for i in range(50):
+#    elements = df_clst[df_clst['label']==i+1]['index'].tolist()
+#    size = len(elements)
+#    print('\n Cluster {}: N = {}  {}'.format(i+1, size, elements))
+
 plt.figure(figsize=(30, 15), dpi=144)
 plt.title("Hierarchical Clustering Dendrogram")
-plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=4)
+plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=6, count_sort = False, get_leaves = True)
 
 plt.xlabel("Number of points in node (or index of point if no parenthesis).")
 plt.show()
 
 print("labels corresponding with the dendrogram plot: ", labels)
+
+
+def plot_clusters(n_clusters, data):
+    reduced_data = PCA(n_components=2).fit_transform(data)
+    kmeans = KMeans(init="k-means++", n_clusters=n_clusters, n_init=4)
+
+    # kmeans = SpectralClustering(n_clusters = 50, affinity="precomputed")
+    kmeans.fit(reduced_data)
+
+    # Step size of the mesh. Decrease to increase the quality of the VQ.
+    h = 0.02  # point in the mesh [x_min, x_max]x[y_min, y_max].
+
+    # Plot the decision boundary. For that, we will assign a color to each
+    x_min, x_max = reduced_data[:, 0].min() - 1, reduced_data[:, 0].max() + 1
+    y_min, y_max = reduced_data[:, 1].min() - 1, reduced_data[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+
+    # Obtain labels for each point in mesh. Use last trained model.
+    Z = kmeans.predict(np.c_[xx.ravel(), yy.ravel()])
+
+    # Put the result into a color plot
+    Z = Z.reshape(xx.shape)
+    plt.figure(1)
+    plt.clf()
+    plt.imshow(
+        Z,
+        interpolation="nearest",
+        extent=(xx.min(), xx.max(), yy.min(), yy.max()),
+        cmap=plt.cm.Paired,
+        aspect="auto",
+        origin="lower",
+    )
+
+    plt.plot(reduced_data[:, 0], reduced_data[:, 1], "k.", markersize=2)
+    # Plot the centroids as a white X
+    centroids = kmeans.cluster_centers_
+    plt.scatter(
+        centroids[:, 0],
+        centroids[:, 1],
+        marker="x",
+        s=169,
+        linewidths=3,
+        color="w",
+        zorder=10,
+    )
+    plt.title(
+        "K-means clustering on the digits dataset (PCA-reduced data)\n"
+        "Centroids are marked with white cross"
+    )
+    plt.xlim(x_min, x_max)
+    plt.ylim(y_min, y_max)
+    plt.xticks(())
+    plt.yticks(())
+    plt.show()
+
+plot_clusters(50, X)
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
