@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 from os.path import exists
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram
+from scipy.cluster.hierarchy import dendrogram, cut_tree
 from sklearn.decomposition import PCA
 import re
 
@@ -40,7 +40,12 @@ except Exception as e:
     with open("data.pickle", "wb") as outfile:
         pickle.dump(X, outfile)
 
-clustering = AgglomerativeClustering(n_clusters=50, compute_distances=True)  # , affinity='cosine', linkage='complete')
+# VARIABLES
+NO_CLUSTERS = 50
+DEND_LVL = 10
+
+clustering = AgglomerativeClustering(n_clusters=NO_CLUSTERS,
+                                     compute_distances=True)  # , affinity='cosine', linkage='complete')
 
 clustering_fit_res = clustering.fit(X)
 
@@ -81,7 +86,8 @@ def plot_dendrogram(model, **kwargs):
     return dendrogram(linkage_matrix, **kwargs)
 
 
-dend = plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=6, count_sort = False, get_leaves = True, no_plot=True)
+dend = plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=DEND_LVL, count_sort=False,
+                       get_leaves=True, no_plot=True)
 labels = []
 
 ivl = dend['ivl']
@@ -99,7 +105,7 @@ while i < len(ivl):
         labId += 1
         i += 1
     except Exception as e:
-        print("exception", e)
+        # print("exception", e)
         string = ""
         for j in range(int(re.search(r'\((.*?)\)', ivl[i]).group(1))):
             if labId < len(clustering_labels):
@@ -120,9 +126,10 @@ while i < len(ivl):
 #    size = len(elements)
 #    print('\n Cluster {}: N = {}  {}'.format(i+1, size, elements))
 
-plt.figure(figsize=(30, 15), dpi=144)
+plt.figure(figsize=(120, 15), dpi=72)
 plt.title("Hierarchical Clustering Dendrogram")
-plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=6, count_sort = False, get_leaves = True)
+plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=DEND_LVL, count_sort=False,
+                get_leaves=True, labels=left_array_unique)
 
 plt.xlabel("Number of points in node (or index of point if no parenthesis).")
 plt.show()
@@ -183,7 +190,91 @@ def plot_clusters(n_clusters, data):
     plt.yticks(())
     plt.show()
 
+
 plot_clusters(50, X)
+
+from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
+
+# second version using just scipy
+Z = linkage(X, method='ward')
+label = fcluster(Z, NO_CLUSTERS, criterion='maxclust')
+print("linkage ", Z)
+
+df_clst = pd.DataFrame()
+df_clst['index'] = left_array_unique
+df_clst['label'] = label
+
+plt.figure(figsize=(120, 15), dpi=72)
+plt.title("Hierarchy Dendrogram level " + str(DEND_LVL))
+DEND_LVL = 10
+dend_res = dendrogram(
+    Z,
+    truncate_mode='lastp',  # show only the last p merged clusters
+    p=DEND_LVL,
+    show_leaf_counts=True,  # otherwise numbers in brackets are counts
+    leaf_rotation=90.,
+    leaf_font_size=12.,
+    show_contracted=True,  # to get a distribution impression in truncated branches
+    labels=left_array_unique,
+    distance_sort=True
+)
+
+plt.show()
+
+for i in range(NO_CLUSTERS):
+    elements = df_clst[df_clst['label'] == i + 1]['index'].tolist()
+    size = len(elements)
+    print('\n Cluster {}: N = {}  {}'.format(i + 1, size, elements))
+
+
+print("NO Of Clusters in dendogram ", len(dend_res['leaves']))
+
+N_CLUSTERS_CUT = [10]
+clusters = cut_tree(Z, n_clusters=N_CLUSTERS_CUT)
+print("clusters : cut", clusters)
+# insert column for the case, where every element is its own cluster
+clusters = np.insert(clusters, clusters.shape[1], range(clusters.shape[0]), axis=1)
+# transpose matrix
+clusters = clusters.T
+print(clusters)
+id = 0
+df_final = dict()
+for row in clusters[::-1]:
+    groups = {}
+    for i, g in enumerate(row):
+        if g not in groups:
+            groups[g] = set([])
+        groups[g].add(i)
+    res = []
+    df_final['lvl' + str(id)] = list(groups.values())
+    id += 1
+
+print(df_final)
+
+df_final_res = dict()
+
+for val in df_final.keys():
+    res = []
+    for i in df_final[val]:
+        mat = []
+        for p in i:
+            mat.append(left_array_unique[p])
+        res.append(mat)
+
+    df_final_res[val] = res
+
+cut_id = 0
+with open('cuts.txt', 'w') as f:
+    for i in df_final_res.keys():
+        f.write("Number of clusters at this level " + str(len(df_final_res[i])) + "\n")
+        for j in df_final_res[i]:
+            f.write("SIZE = " + str(len(j)) + "  [")
+            for el in j:
+                f.write(el + ", ")
+            f.write("]")
+            f.write(" \n")
+        f.write("\n")
+        cut_id += 1
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
