@@ -206,7 +206,7 @@ df_clst['label'] = label
 
 plt.figure(figsize=(120, 15), dpi=72)
 plt.title("Hierarchy Dendrogram level " + str(DEND_LVL))
-DEND_LVL = 10
+DEND_LVL = 45
 dend_res = dendrogram(
     Z,
     truncate_mode='lastp',  # show only the last p merged clusters
@@ -229,7 +229,7 @@ for i in range(NO_CLUSTERS):
 
 print("NO Of Clusters in dendogram ", len(dend_res['leaves']))
 
-N_CLUSTERS_CUT = [10]
+N_CLUSTERS_CUT = [DEND_LVL]
 clusters = cut_tree(Z, n_clusters=N_CLUSTERS_CUT)
 print("clusters : cut", clusters)
 # insert column for the case, where every element is its own cluster
