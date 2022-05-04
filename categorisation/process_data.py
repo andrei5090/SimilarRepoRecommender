@@ -196,7 +196,7 @@ plot_clusters(50, X)
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 
 # second version using just scipy
-Z = linkage(X, method='ward')
+Z = linkage(X, method='ward', optimal_ordering=True)
 label = fcluster(Z, NO_CLUSTERS, criterion='maxclust')
 print("linkage ", Z)
 
