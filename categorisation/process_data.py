@@ -350,7 +350,7 @@ with open("mergeInfo.txt", 'w') as f:
                 elif isPartOf(first_clusters[i], second_clusters[j]):
                     # print("Cluster {0} with size {1} was merged in cluster {2} with size {3}".format(first_clusters[i], len(first_clusters[i]), second_clusters[j], len(second_clusters[j])))
                     f.write(
-                        "Cluster (id: {0}) {1} with size {2} was merged in \n Cluster (id :{3}) {4} with size {5}".format(
+                        "Cluster (id: {0}) {1} with size {2} was merged in \nCluster (id :{3}) {4} with size {5}".format(
                             i, first_clusters[i], len(first_clusters[i]), j, second_clusters[j],
                             len(second_clusters[j])))
                     f.write("\n\n")
