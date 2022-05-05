@@ -217,7 +217,7 @@ for lvl in dendogram_lvls:
     DEND_LVL = lvl
 
     currPath = 'cuts_at_level_' + str(lvl)
-    os.mkdir(currPath)
+    os.mkdir('results/' + currPath)
 
     plt.figure(figsize=(120, 15), dpi=72)
     plt.title("Hierarchy Dendrogram level " + str(DEND_LVL))
