@@ -250,7 +250,7 @@ for lvl in dendogram_lvls:
     clusters = cut_tree(Z, n_clusters=N_CLUSTERS_CUT)
     print("clusters : cut", clusters)
     # insert column for the case, where every element is its own cluster
-    #clusters = np.insert(clusters, clusters.shape[1], range(clusters.shape[0]), axis=1)
+    # clusters = np.insert(clusters, clusters.shape[1], range(clusters.shape[0]), axis=1)
     # transpose matrix
     clusters = clusters.T
     print(clusters)
@@ -286,8 +286,12 @@ for lvl in dendogram_lvls:
             f.write("Number of clusters at this level " + str(len(df_final_res[i])) + "\n")
             for j in df_final_res[i]:
                 f.write("SIZE = " + str(len(j)) + "  [")
+                p = 0
                 for el in j:
-                    f.write(el + ", ")
+                    f.write(el)
+                    if p < len(j) - 1:
+                        f.write(", ")
+                    p += 1
                 f.write("]")
                 f.write(" \n")
             f.write("\n")
