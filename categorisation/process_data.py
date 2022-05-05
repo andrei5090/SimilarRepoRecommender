@@ -210,17 +210,22 @@ dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 5
 # create result folder
 import os
 
-os.mkdir('results')
-os.path.join('results')
+WRITE = False
+res_dict = dict()
+
+if WRITE:
+    os.mkdir('results')
+    os.path.join('results')
 
 for lvl in dendogram_lvls:
     DEND_LVL = lvl
 
-    currPath = 'cuts_at_level_' + str(lvl)
-    os.mkdir('results/' + currPath)
-
-    plt.figure(figsize=(120, 15), dpi=72)
-    plt.title("Hierarchy Dendrogram level " + str(DEND_LVL))
+    currPath = ''
+    if WRITE:
+        currPath = 'cuts_at_level_' + str(lvl)
+        os.mkdir('results/' + currPath)
+        plt.figure(figsize=(120, 15), dpi=72)
+        plt.title("Hierarchy Dendrogram level " + str(DEND_LVL))
 
     dend_res = dendrogram(
         Z,
@@ -231,13 +236,15 @@ for lvl in dendogram_lvls:
         leaf_font_size=12.,
         show_contracted=True,  # to get a distribution impression in truncated branches
         labels=left_array_unique,
-        distance_sort=True
+        distance_sort=True,
+        no_plot=not WRITE
     )
-    plt.savefig('results/' + currPath + '/cuts_at_level_' + str(lvl) + '_dendrogram.png')
-    plt.figure().clear()
-    plt.close()
-    plt.cla()
-    plt.clf()
+    if WRITE:
+        plt.savefig('results/' + currPath + '/cuts_at_level_' + str(lvl) + '_dendrogram.png')
+        plt.figure().clear()
+        plt.close()
+        plt.cla()
+        plt.clf()
 
     for i in range(NO_CLUSTERS):
         elements = df_clst[df_clst['label'] == i + 1]['index'].tolist()
@@ -280,22 +287,27 @@ for lvl in dendogram_lvls:
 
         df_final_res[val] = res
 
+    resDict[DEND_LVL] = df_final_res
+
     cut_id = 0
-    with open('results/' + currPath + "/clusters.txt", 'w') as f:
-        for i in df_final_res.keys():
-            f.write("Number of clusters at this level " + str(len(df_final_res[i])) + "\n")
-            for j in df_final_res[i]:
-                f.write("SIZE = " + str(len(j)) + "  [")
-                p = 0
-                for el in j:
-                    f.write(el)
-                    if p < len(j) - 1:
-                        f.write(", ")
-                    p += 1
-                f.write("]")
-                f.write(" \n")
-            f.write("\n")
-            cut_id += 1
+    if WRITE:
+        with open('results/' + currPath + "/clusters.txt", 'w') as f:
+            for i in df_final_res.keys():
+                f.write("Number of clusters at this level " + str(len(df_final_res[i])) + "\n")
+                for j in df_final_res[i]:
+                    f.write("SIZE = " + str(len(j)) + "  [")
+                    p = 0
+                    for el in j:
+                        f.write(el)
+                        if p < len(j) - 1:
+                            f.write(", ")
+                        p += 1
+                    f.write("]")
+                    f.write(" \n")
+                f.write("\n")
+                cut_id += 1
+
+print(res_dict)
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
