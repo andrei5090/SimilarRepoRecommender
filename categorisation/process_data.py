@@ -322,13 +322,19 @@ def isEqual(a, b):
     return len(b) == lenght
 
 
-def isPartOf(a, b):
+def isPartOf(a, b, merged_into):
+    curr_len = len(merged_into)
     if len(a) == 0 or len(b) == 0:
         return False
 
     for i in a:
         if i in b:
-            return True
+            merged_into.add(i)
+
+    if curr_len < len(merged_into):
+        return True
+    else:
+        return False
 
 
 # display the merge
@@ -336,6 +342,7 @@ print("\n\n\n")
 
 with open("mergeInfo.txt", 'w') as f:
     for lvl in range(len(dendogram_lvls) - 1):
+        merged_into = set()
         first_clusters = res_dict[dendogram_lvls[lvl]]['lvl' + str(dendogram_lvls[lvl])]
         second_clusters = res_dict[dendogram_lvls[lvl + 1]]['lvl' + str(dendogram_lvls[lvl + 1])]
         # print("LVL {0} MERGED IN {1}".format(str(dendogram_lvls[lvl]), str(dendogram_lvls[lvl + 1])))
@@ -344,15 +351,17 @@ with open("mergeInfo.txt", 'w') as f:
         f.write("\n")
         for i in range(0, len(first_clusters)):
             for j in range(0, len(second_clusters)):
+                merged_init_size = len(merged_into)
                 if isEqual(first_clusters[i], second_clusters[j]):
                     # print("equal {} \n {}".format(first_clusters[i], second_clusters[j]))
                     continue
-                elif isPartOf(first_clusters[i], second_clusters[j]):
+                elif isPartOf(first_clusters[i], second_clusters[j], merged_into):
                     # print("Cluster {0} with size {1} was merged in cluster {2} with size {3}".format(first_clusters[i], len(first_clusters[i]), second_clusters[j], len(second_clusters[j])))
-                    f.write(
-                        "Cluster (id: {0}) {1} with size {2} was merged in \nCluster (id :{3}) {4} with size {5}".format(
-                            i, first_clusters[i], len(first_clusters[i]), j, second_clusters[j],
-                            len(second_clusters[j])))
+                    if merged_init_size < len(merged_into):
+                        f.write(
+                            "Cluster (id: {0}) {1} with size {2} was merged in \nCluster (id :{3}) {4} with size {5}".format(
+                                i, first_clusters[i], len(first_clusters[i]), j, second_clusters[j],
+                                len(second_clusters[j])))
                     f.write("\n\n")
         f.write("\n \n \n")
 
