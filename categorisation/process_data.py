@@ -287,7 +287,7 @@ for lvl in dendogram_lvls:
 
         df_final_res[val] = res
 
-    resDict[DEND_LVL] = df_final_res
+    res_dict[DEND_LVL] = df_final_res
 
     cut_id = 0
     if WRITE:
