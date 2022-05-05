@@ -270,7 +270,7 @@ for lvl in dendogram_lvls:
                 groups[g] = set([])
             groups[g].add(i)
         res = []
-        df_final['lvl' + str(id)] = list(groups.values())
+        df_final['lvl' + str(DEND_LVL)] = list(groups.values())
         id += 1
 
     print(df_final)
@@ -307,7 +307,22 @@ for lvl in dendogram_lvls:
                 f.write("\n")
                 cut_id += 1
 
-print(res_dict)
+print("DICT OUTPUT: ", res_dict)
+print("DICT KEYS: ", res_dict.keys())
+print("DICT VAL 3 ", res_dict[3])
+print("DICT VAL 3 VALUES ", res_dict[3]['lvl3'])
+
+
+#check if two clusters are equal
+def isEqual(a, b):
+    lenght = 0
+    for i in a:
+        if i in b:
+            lenght += 1
+    return len(b) == lenght
+
+
+for lvl in range(0, len(dendogram_lvls) - 1):
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
