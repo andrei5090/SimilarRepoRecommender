@@ -204,77 +204,94 @@ df_clst = pd.DataFrame()
 df_clst['index'] = left_array_unique
 df_clst['label'] = label
 
-plt.figure(figsize=(120, 15), dpi=72)
-plt.title("Hierarchy Dendrogram level " + str(DEND_LVL))
-DEND_LVL = 45
-dend_res = dendrogram(
-    Z,
-    truncate_mode='lastp',  # show only the last p merged clusters
-    p=DEND_LVL,
-    show_leaf_counts=True,  # otherwise numbers in brackets are counts
-    leaf_rotation=90.,
-    leaf_font_size=12.,
-    show_contracted=True,  # to get a distribution impression in truncated branches
-    labels=left_array_unique,
-    distance_sort=True
-)
+dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
+                  5, 4, 3, 2, 1]
 
-plt.show()
+# create result folder
+import os
 
-for i in range(NO_CLUSTERS):
-    elements = df_clst[df_clst['label'] == i + 1]['index'].tolist()
-    size = len(elements)
-    print('\n Cluster {}: N = {}  {}'.format(i + 1, size, elements))
+os.mkdir('results')
+os.path.join('results')
 
+for lvl in dendogram_lvls:
+    DEND_LVL = lvl
 
-print("NO Of Clusters in dendogram ", len(dend_res['leaves']))
+    currPath = 'cuts_at_level_' + str(lvl)
+    os.mkdir(currPath)
 
-N_CLUSTERS_CUT = [DEND_LVL]
-clusters = cut_tree(Z, n_clusters=N_CLUSTERS_CUT)
-print("clusters : cut", clusters)
-# insert column for the case, where every element is its own cluster
-clusters = np.insert(clusters, clusters.shape[1], range(clusters.shape[0]), axis=1)
-# transpose matrix
-clusters = clusters.T
-print(clusters)
-id = 0
-df_final = dict()
-for row in clusters[::-1]:
-    groups = {}
-    for i, g in enumerate(row):
-        if g not in groups:
-            groups[g] = set([])
-        groups[g].add(i)
-    res = []
-    df_final['lvl' + str(id)] = list(groups.values())
-    id += 1
+    plt.figure(figsize=(120, 15), dpi=72)
+    plt.title("Hierarchy Dendrogram level " + str(DEND_LVL))
 
-print(df_final)
+    dend_res = dendrogram(
+        Z,
+        truncate_mode='lastp',  # show only the last p merged clusters
+        p=DEND_LVL,
+        show_leaf_counts=True,  # otherwise numbers in brackets are counts
+        leaf_rotation=90.,
+        leaf_font_size=12.,
+        show_contracted=True,  # to get a distribution impression in truncated branches
+        labels=left_array_unique,
+        distance_sort=True
+    )
+    plt.savefig('results/' + currPath + '/cuts_at_level_' + str(lvl) + '_dendrogram.png')
+    plt.figure().clear()
+    plt.close()
+    plt.cla()
+    plt.clf()
 
-df_final_res = dict()
+    for i in range(NO_CLUSTERS):
+        elements = df_clst[df_clst['label'] == i + 1]['index'].tolist()
+        size = len(elements)
+        print('\n Cluster {}: N = {}  {}'.format(i + 1, size, elements))
 
-for val in df_final.keys():
-    res = []
-    for i in df_final[val]:
-        mat = []
-        for p in i:
-            mat.append(left_array_unique[p])
-        res.append(mat)
+    print("NO Of Clusters in dendogram ", len(dend_res['leaves']))
 
-    df_final_res[val] = res
+    N_CLUSTERS_CUT = [DEND_LVL]
+    clusters = cut_tree(Z, n_clusters=N_CLUSTERS_CUT)
+    print("clusters : cut", clusters)
+    # insert column for the case, where every element is its own cluster
+    #clusters = np.insert(clusters, clusters.shape[1], range(clusters.shape[0]), axis=1)
+    # transpose matrix
+    clusters = clusters.T
+    print(clusters)
+    id = 0
+    df_final = dict()
+    for row in clusters[::-1]:
+        groups = {}
+        for i, g in enumerate(row):
+            if g not in groups:
+                groups[g] = set([])
+            groups[g].add(i)
+        res = []
+        df_final['lvl' + str(id)] = list(groups.values())
+        id += 1
 
-cut_id = 0
-with open('cuts.txt', 'w') as f:
-    for i in df_final_res.keys():
-        f.write("Number of clusters at this level " + str(len(df_final_res[i])) + "\n")
-        for j in df_final_res[i]:
-            f.write("SIZE = " + str(len(j)) + "  [")
-            for el in j:
-                f.write(el + ", ")
-            f.write("]")
-            f.write(" \n")
-        f.write("\n")
-        cut_id += 1
+    print(df_final)
+
+    df_final_res = dict()
+
+    for val in df_final.keys():
+        res = []
+        for i in df_final[val]:
+            mat = []
+            for p in i:
+                mat.append(left_array_unique[p])
+            res.append(mat)
+
+        df_final_res[val] = res
+
+    cut_id = 0
+    with open('results/' + currPath + "/clusters.txt", 'w') as f:
+        for i in df_final_res.keys():
+            f.write("Number of clusters at this level " + str(len(df_final_res[i])) + "\n")
+            for j in df_final_res[i]:
+                f.write("SIZE = " + str(len(j)) + "  [")
+                for el in j:
+                    f.write(el + ", ")
+                f.write("]")
+                f.write(" \n")
+            f.write("\n")
+            cut_id += 1
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
