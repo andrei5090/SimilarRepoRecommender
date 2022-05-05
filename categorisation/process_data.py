@@ -313,7 +313,7 @@ print("DICT VAL 3 ", res_dict[3])
 print("DICT VAL 3 VALUES ", res_dict[3]['lvl3'])
 
 
-#check if two clusters are equal
+# check if two clusters are equal
 def isEqual(a, b):
     lenght = 0
     for i in a:
@@ -321,8 +321,35 @@ def isEqual(a, b):
             lenght += 1
     return len(b) == lenght
 
+def isPartOf(a, b):
+    if len(a) == 0 or len(b) == 0:
+        return False
 
-for lvl in range(0, len(dendogram_lvls) - 1):
+    if a[0] in b:
+        return True
+
+
+# display the merge
+print("\n\n\n")
+
+with open("mergeInfo.txt", 'w') as f:
+    for lvl in range(len(dendogram_lvls) - 1):
+        first_clusters = res_dict[dendogram_lvls[lvl]]['lvl' + str(dendogram_lvls[lvl])]
+        second_clusters = res_dict[dendogram_lvls[lvl + 1]]['lvl' + str(dendogram_lvls[lvl + 1])]
+        #print("LVL {0} MERGED IN {1}".format(str(dendogram_lvls[lvl]), str(dendogram_lvls[lvl + 1])))
+        f.write("\n \n \n")
+        f.write("LVL {0} MERGED IN {1}".format(str(dendogram_lvls[lvl]), str(dendogram_lvls[lvl + 1])))
+        f.write("\n")
+        for i in range(0, len(first_clusters)):
+            for j in range(0, len(second_clusters)):
+                if isEqual(first_clusters[i], second_clusters[j]):
+                    #print("equal {} \n {}".format(first_clusters[i], second_clusters[j]))
+                    continue
+                elif isPartOf(first_clusters[i], second_clusters[j]):
+                    #print("Cluster {0} with size {1} was merged in cluster {2} with size {3}".format(first_clusters[i], len(first_clusters[i]), second_clusters[j], len(second_clusters[j])))
+                    f.write("Cluster {0} with size {1} was merged in cluster {2} with size {3}".format(first_clusters[i], len(first_clusters[i]), second_clusters[j], len(second_clusters[j])))
+                    f.write("\n")
+        f.write("\n \n \n")
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
