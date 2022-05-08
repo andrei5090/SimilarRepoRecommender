@@ -255,12 +255,12 @@ for lvl in dendogram_lvls:
 
     N_CLUSTERS_CUT = [DEND_LVL]
     clusters = cut_tree(Z, n_clusters=N_CLUSTERS_CUT)
-    print("clusters : cut", clusters)
+    # print("clusters : cut", clusters)
     # insert column for the case, where every element is its own cluster
     # clusters = np.insert(clusters, clusters.shape[1], range(clusters.shape[0]), axis=1)
     # transpose matrix
     clusters = clusters.T
-    print(clusters)
+    # print(clusters)
     id = 0
     df_final = dict()
     for row in clusters[::-1]:
@@ -307,10 +307,11 @@ for lvl in dendogram_lvls:
                 f.write("\n")
                 cut_id += 1
 
-print("DICT OUTPUT: ", res_dict)
-print("DICT KEYS: ", res_dict.keys())
-print("DICT VAL 3 ", res_dict[3])
-print("DICT VAL 3 VALUES ", res_dict[3]['lvl3'])
+
+# print("DICT OUTPUT: ", res_dict)
+# print("DICT KEYS: ", res_dict.keys())
+# print("DICT VAL 3 ", res_dict[3])
+# print("DICT VAL 3 VALUES ", res_dict[3]['lvl3'])
 
 
 # check if two clusters are equal
@@ -340,6 +341,13 @@ def isPartOf(a, b, merged_into):
 # display the merge
 print("\n\n\n")
 
+
+def getId(el):
+    return np.where(left_array_unique == el)[0][0]
+
+
+tree = dict()
+
 with open("mergeInfo.txt", 'w') as f:
     for lvl in range(len(dendogram_lvls) - 1):
         merged_into = set()
@@ -349,6 +357,7 @@ with open("mergeInfo.txt", 'w') as f:
         f.write("\n \n \n")
         f.write("LVL {0} MERGED IN {1}".format(str(dendogram_lvls[lvl]), str(dendogram_lvls[lvl + 1])))
         f.write("\n")
+
         for i in range(0, len(first_clusters)):
             for j in range(0, len(second_clusters)):
                 merged_init_size = len(merged_into)
@@ -364,6 +373,85 @@ with open("mergeInfo.txt", 'w') as f:
                                 len(second_clusters[j])))
                     f.write("\n\n")
         f.write("\n \n \n")
+
+
+class Cluster:
+    def __init__(self, name):
+        self.name = name
+        self.children = []
+        self.content = []
+
+    def __hash__(self):
+        return self.name
+
+    def __str__(self):
+        return "\n NAME: {0} \n" \
+               "CHILDREN (SIZE = {1}) = {2} \n" \
+               "CONTENT (SIZE = {3}) = {4} \n".format(self.name, len(self.children), self.children, len(self.content),
+                                                      self.content)
+
+    def __repr__(self):
+        return self.__str__()
+
+    @staticmethod
+    def getFatherId(el, cluster):
+        id = 0
+        for i in cluster:
+            if el in i:
+                return id
+            id += 1
+        return -1
+
+    @staticmethod
+    def getName(lvl, id):
+        return "lvl " + str(dendogram_lvls[lvl]) + "  " + str(id)
+
+    def containsTag(self, tag):
+        for i in self.content:
+            for j in i:
+                if tag in j:
+                    return True
+
+        return False
+
+    def isParent(self, subCluster):
+        if subCluster[0] in self.content:
+            return True
+        return False
+
+
+root = Cluster("root")
+
+lvl = len(dendogram_lvls) - 1
+big_clusters = res_dict[dendogram_lvls[lvl]]['lvl' + str(dendogram_lvls[lvl])]
+root.content = big_clusters[0]
+
+print(len(root.content))
+
+
+def buildTree(root: Cluster, lvl):
+    if lvl < 1:
+        return
+
+    small_clusters = res_dict[dendogram_lvls[lvl - 1]]['lvl' + str(dendogram_lvls[lvl - 1])]
+
+    id = 0
+    for i in small_clusters:
+        currCluster = Cluster(Cluster.getName(lvl, id))
+        currCluster.content = i
+
+        if root.isParent(i):
+            root.children.append(currCluster)
+
+    for ch in root.children:
+        buildTree(ch, lvl - 1)
+
+
+buildTree(root, lvl)
+
+print(root)
+
+import json
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
