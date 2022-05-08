@@ -413,8 +413,8 @@ class Cluster:
         return -1
 
     @staticmethod
-    def getName(lvl, id):
-        return "lvl " + str(dendogram_lvls[lvl]) + "  " + str(id)
+    def getName(lvl, id, length):
+        return "lvl " + str(dendogram_lvls[lvl]) + "  " + str(id) + " size: " + str(length)
 
     def containsTag(self, tag):
         for i in self.content:
@@ -449,6 +449,7 @@ def buildTree(root: Cluster, lvl):
     for i in small_clusters:
         currCluster = Cluster(Cluster.getName(lvl, id))
         currCluster.content = i
+        currCluster.value = Cluster.getName(lvl, id, len(i))
 
         if root.isParent(i):
             root.children.append(currCluster)
