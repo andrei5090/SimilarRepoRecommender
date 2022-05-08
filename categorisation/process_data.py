@@ -447,7 +447,7 @@ def buildTree(root: Cluster, lvl):
 
     id = 0
     for i in small_clusters:
-        currCluster = Cluster(Cluster.getName(lvl, id))
+        currCluster = Cluster(Cluster.getName(lvl, id, len(i)))
         currCluster.content = i
         currCluster.value = Cluster.getName(lvl, id, len(i))
 

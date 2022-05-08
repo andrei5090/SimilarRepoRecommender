@@ -2,16 +2,16 @@
   "value": "root",
   "children": [
     {
-      "value": "lvl 1  0",
+      "value": "lvl 1  0 size: 439",
       "children": [
         {
-          "value": "lvl 2  0",
+          "value": "lvl 2  0 size: 385",
           "children": [
             {
-              "value": "lvl 3  0",
+              "value": "lvl 3  0 size: 340",
               "children": [
                 {
-                  "value": "lvl 4  0",
+                  "value": "lvl 4  0 size: 336",
                   "children": [],
                   "content": [
                     "2d",
@@ -353,7 +353,7 @@
                   ]
                 },
                 {
-                  "value": "lvl 4  0",
+                  "value": "lvl 4  0 size: 4",
                   "children": [],
                   "content": [
                     "gamemaker",
@@ -707,10 +707,10 @@
               ]
             },
             {
-              "value": "lvl 3  0",
+              "value": "lvl 3  0 size: 45",
               "children": [
                 {
-                  "value": "lvl 4  0",
+                  "value": "lvl 4  0 size: 45",
                   "children": [],
                   "content": [
                     "actions",
@@ -1199,13 +1199,13 @@
           ]
         },
         {
-          "value": "lvl 2  0",
+          "value": "lvl 2  0 size: 54",
           "children": [
             {
-              "value": "lvl 3  0",
+              "value": "lvl 3  0 size: 54",
               "children": [
                 {
-                  "value": "lvl 4  0",
+                  "value": "lvl 4  0 size: 54",
                   "children": [],
                   "content": [
                     "elixir",
@@ -1824,16 +1824,16 @@
       ]
     },
     {
-      "value": "lvl 1  0",
+      "value": "lvl 1  0 size: 86",
       "children": [
         {
-          "value": "lvl 2  0",
+          "value": "lvl 2  0 size: 86",
           "children": [
             {
-              "value": "lvl 3  0",
+              "value": "lvl 3  0 size: 86",
               "children": [
                 {
-                  "value": "lvl 4  0",
+                  "value": "lvl 4  0 size: 86",
                   "children": [],
                   "content": [
                     "wpf",
