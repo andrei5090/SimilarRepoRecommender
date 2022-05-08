@@ -29,12 +29,13 @@
 </template>
 
 <script>
+
+import data from '@/data/clusters.json'
 export default {
   name: 'Hierarchy',
   data() {
     return {
-      sampleData: {
-      },
+      sampleData: data,
       treeConfig: {nodeWidth: 120, nodeHeight: 80, levelHeight: 200}
     }
   }
