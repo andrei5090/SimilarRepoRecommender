@@ -378,13 +378,13 @@ import json
 
 
 class Cluster:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, value):
+        self.value = value
         self.children = []
         self.content = []
 
     def __hash__(self):
-        return self.name
+        return self.value
 
     class ComplexEncoder(json.JSONEncoder):
         def default(self, obj):
@@ -440,7 +440,7 @@ print(len(root.content))
 
 
 def buildTree(root: Cluster, lvl):
-    if lvl < 1:
+    if lvl < 20:
         return
 
     small_clusters = res_dict[dendogram_lvls[lvl - 1]]['lvl' + str(dendogram_lvls[lvl - 1])]
