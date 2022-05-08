@@ -3,6 +3,8 @@
     <v-navigation-drawer
         v-model="drawer"
         :mini-variant.sync="mini"
+        app
+
     >
 
       <v-list dense>

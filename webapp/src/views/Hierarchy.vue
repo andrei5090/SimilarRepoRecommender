@@ -1,11 +1,12 @@
 <template>
   <div class="">
-    <v-row justify="space-around" align-content="center">
+    <v-row justify="center" align-content="center">
       <v-col cols="12" align-self="center">
         <v-card shaped class="ma-10" elevation="10" min-height="1200px">
           <v-card-title>Hierarchy</v-card-title>
-          <v-card-actions>
-            <v-btn rounded icon="mdi-plus" @click="$refs.tree.zoomIn()"> Plus</v-btn>
+          <v-card-actions class="justify-center">
+            <v-btn rounded icon @click="$refs.tree.zoomOut()"> <v-icon>mdi-magnify-minus</v-icon></v-btn>
+            <v-btn rounded icon @click="$refs.tree.zoomIn()"><v-icon>mdi-magnify-plus</v-icon></v-btn>
           </v-card-actions>
           <v-card-text style="min-height: inherit">
             <vue-tree
@@ -18,7 +19,7 @@
               <template v-slot:node="{ node, collapsed }">
         <span
             class="tree-node"
-            :style="{ border: collapsed ? '2px solid grey' : '' }"
+            :style="{ border: collapsed ? '5px solid grey' : '' }"
         >{{ node.value }}
 
         </span>
@@ -40,7 +41,7 @@ export default {
   data() {
     return {
       sampleData: data,
-      treeConfig: {nodeWidth: 120, nodeHeight: 80, levelHeight: 200}
+      treeConfig: {nodeWidth: 45, nodeHeight: 45, levelHeight: 50}
     }
   }
 }
