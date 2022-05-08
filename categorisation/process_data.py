@@ -375,6 +375,7 @@ with open("mergeInfo.txt", 'w') as f:
         f.write("\n \n \n")
 
 
+import json
 class Cluster:
     def __init__(self, name):
         self.name = name
@@ -385,10 +386,15 @@ class Cluster:
         return self.name
 
     def __str__(self):
-        return "\n NAME: {0} \n" \
-               "CHILDREN (SIZE = {1}) = {2} \n" \
-               "CONTENT (SIZE = {3}) = {4} \n".format(self.name, len(self.children), self.children, len(self.content),
-                                                      self.content)
+        # return "\n NAME: {0} \n" \
+        #        "CHILDREN (SIZE = {1}) = {2} \n" \
+        #        "CONTENT (SIZE = {3}) = {4} \n".format(self.name, len(self.children), self.children, len(self.content),
+        #                                               self.content)
+        dict = {"children": self.children,
+                "content": self.content}
+
+        return json.dumps(dict)
+
 
     def __repr__(self):
         return self.__str__()
@@ -450,8 +456,20 @@ def buildTree(root: Cluster, lvl):
 buildTree(root, lvl)
 
 print(root)
+with open("clusters.json", 'w') as f:
+    f.write(root)
+    f.close()
 
-import json
+
+#make json file
+
+
+
+
+
+
+
+
 
 # 2d,is-a,field
 # 2d,is-used-in-field,graphics
