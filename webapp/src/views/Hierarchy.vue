@@ -4,12 +4,16 @@
       <v-col cols="12" align-self="center">
         <v-card shaped class="ma-10" elevation="10" min-height="1200px">
           <v-card-title>Hierarchy</v-card-title>
+          <v-card-actions>
+            <v-btn rounded icon="mdi-plus" @click="$refs.tree.zoomIn()"> Plus</v-btn>
+          </v-card-actions>
           <v-card-text style="min-height: inherit">
             <vue-tree
                 class="tree"
                 :dataset="sampleData"
                 :config="treeConfig"
                 :collapse-enabled="true"
+                ref="tree"
             >
               <template v-slot:node="{ node, collapsed }">
         <span

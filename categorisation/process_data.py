@@ -204,8 +204,10 @@ df_clst = pd.DataFrame()
 df_clst['index'] = left_array_unique
 df_clst['label'] = label
 
-dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
-                  5, 4, 3, 2, 1]
+# dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
+#                   5, 4, 3, 2, 1]
+
+dendogram_lvls = [50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
 
 # create result folder
 import os
@@ -440,7 +442,7 @@ print(len(root.content))
 
 
 def buildTree(root: Cluster, lvl):
-    if lvl < 20:
+    if lvl < 1:
         return
 
     small_clusters = res_dict[dendogram_lvls[lvl - 1]]['lvl' + str(dendogram_lvls[lvl - 1])]
