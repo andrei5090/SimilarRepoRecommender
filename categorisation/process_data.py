@@ -204,10 +204,10 @@ df_clst = pd.DataFrame()
 df_clst['index'] = left_array_unique
 df_clst['label'] = label
 
-# dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
-#                   5, 4, 3, 2, 1]
+dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
+                  5, 4, 3, 2, 1]
 
-dendogram_lvls = [50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
+#dendogram_lvls = [50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
 
 # create result folder
 import os
@@ -415,8 +415,11 @@ class Cluster:
         return -1
 
     @staticmethod
-    def getName(lvl, id, length):
-        return "lvl " + str(dendogram_lvls[lvl]) + "  " + str(id) + " size: " + str(length)
+    def getName(lvl, id, length, content):
+        # return "lvl " + str(dendogram_lvls[lvl]) + "  " + str(id) + " size: " + str(length)
+        return {"id": "lvl " + str(dendogram_lvls[lvl]),
+                "size": str(length),
+                "content": content}
 
     def containsTag(self, tag):
         for i in self.content:
@@ -433,10 +436,11 @@ class Cluster:
 
 
 root = Cluster("root")
-
 lvl = len(dendogram_lvls) - 1
 big_clusters = res_dict[dendogram_lvls[lvl]]['lvl' + str(dendogram_lvls[lvl])]
 root.content = big_clusters[0]
+
+root.value = Cluster.getName(0, 0, len(big_clusters), big_clusters[0])
 
 print(len(root.content))
 
@@ -449,9 +453,9 @@ def buildTree(root: Cluster, lvl):
 
     id = 0
     for i in small_clusters:
-        currCluster = Cluster(Cluster.getName(lvl, id, len(i)))
+        currCluster = Cluster(Cluster.getName(lvl, id, len(i), i))
         currCluster.content = i
-        currCluster.value = Cluster.getName(lvl, id, len(i))
+        currCluster.value = Cluster.getName(lvl, id, len(i), i)
 
         if root.isParent(i):
             root.children.append(currCluster)
@@ -462,7 +466,7 @@ def buildTree(root: Cluster, lvl):
 
 buildTree(root, lvl)
 
-with open("clusters.json", 'w') as f:
+with open("clusters_big.json", 'w') as f:
     f.write(root.__str__())
     f.close()
 

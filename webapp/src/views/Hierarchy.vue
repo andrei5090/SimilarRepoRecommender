@@ -26,13 +26,25 @@
                 >
                   <template v-slot:node="{ node, collapsed }" @click="collapsed = true" v-show="collapsed">
                     <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
-                            elevation="15" hover v-if="!collapsed" @click="collapsed = true" :color="colours[node.value.substr(0, 5)]">
-                      <v-card-title class="justify-center">{{ node.value }}</v-card-title>
+                            elevation="15" hover v-if="!collapsed" @click="displayContentList.push(node.value.content)"
+                            :color="colours[node.value.id]">
+                      <v-card-title class="justify-center">{{ node.value.id }}</v-card-title>
                     </v-card>
                   </template>
                 </vue-tree>
               </v-col>
             </v-row>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-btn color="red lighten-2" @click="displayContentList = []">RESET</v-btn>
+          </v-card-actions>
+          <v-card-text class="pt-5">
+            <v-card class="mt-5" elevation="10" v-for="(cluster,index) in displayContentList" :key="index">
+              <v-card-text>
+                <v-chip class="ma-1" v-for="(el, index) in cluster" :key="index"> {{ filterElement(el) }}</v-chip>
+              </v-card-text>
+            </v-card>
           </v-card-text>
         </v-card>
       </v-col>
@@ -50,7 +62,8 @@ export default {
     return {
       sampleData: data,
       treeConfig: {nodeWidth: 95, nodeHeight: 50, levelHeight: 150},
-      colours: this.getColourPalette()
+      colours: this.getColourPalette(),
+      displayContentList: []
     }
   },
   methods: {
@@ -62,10 +75,19 @@ export default {
 
       dict['root'] = this.getRandomColor()
 
-      for (let i = 0; i < 50; i++)
+      for (let i = 0; i < 501; i++)
         dict['lvl ' + i] = this.getRandomColor()
 
       return dict
+    },
+    getContent(content) {
+      return content
+    },
+    filterElement(el) {
+      delete el['_key']
+      let val = ""
+      Object.values(el).forEach(el => val += el)
+      return val
     }
   }
 }
