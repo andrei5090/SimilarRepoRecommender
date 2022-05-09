@@ -2,30 +2,33 @@
   <div class="">
     <v-row justify="center" align-content="center">
       <v-col cols="12" align-self="center">
-        <v-card shaped class="ma-10" elevation="10" min-height="1200px">
+        <v-card shaped class="ma-10" elevation="10">
           <v-card-title>Hierarchy</v-card-title>
           <v-card-actions class="justify-center">
-            <v-btn rounded icon @click="$refs.tree.zoomOut()"> <v-icon>mdi-magnify-minus</v-icon></v-btn>
-            <v-btn rounded icon @click="$refs.tree.zoomIn()"><v-icon>mdi-magnify-plus</v-icon></v-btn>
+            <v-btn rounded icon @click="$refs.tree.zoomOut()">
+              <v-icon>mdi-magnify-minus</v-icon>
+            </v-btn>
+            <v-btn rounded icon @click="$refs.tree.zoomIn()">
+              <v-icon>mdi-magnify-plus</v-icon>
+            </v-btn>
           </v-card-actions>
-          <v-card-text style="min-height: inherit">
-            <vue-tree
-                class="tree"
-                :dataset="sampleData"
-                :config="treeConfig"
-                :collapse-enabled="true"
-                ref="tree"
-            >
-              <template v-slot:node="{ node, collapsed }">
-        <span
-            class="tree-node"
-            :style="{ border: collapsed ? '5px solid grey' : '' }"
-        >{{ node.value }}
-
-        </span>
-              </template>
-
-            </vue-tree>
+          <v-card-text class="justify-center text-center">
+            <v-row justify="center">
+              <vue-tree
+                  class="tree justify-center"
+                  :dataset="sampleData"
+                  :config="treeConfig"
+                  ref="tree"
+                  :collapse-enabled="true"
+              >
+                <template v-slot:node="{ node, collapsed }" @click="collapsed = false">
+                  <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
+                          elevation="15" hover v-if="!collapsed" @click="collapsed = true">
+                    <v-card-title class="justify-center">{{ node.value }}</v-card-title>
+                  </v-card>
+                </template>
+              </vue-tree>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-col>
@@ -36,12 +39,13 @@
 <script>
 
 import data from '@/data/clusters.json'
+
 export default {
   name: 'Hierarchy',
   data() {
     return {
       sampleData: data,
-      treeConfig: {nodeWidth: 45, nodeHeight: 45, levelHeight: 50}
+      treeConfig: {nodeWidth: 95, nodeHeight: 50, levelHeight: 150}
     }
   }
 }
@@ -49,7 +53,14 @@ export default {
 
 <style scoped lang="sass">
 .tree
-  min-height: inherit
+  width: 1700px
+  height: 750px
+  justify-items: center
+
+.container
+  display: flex
+  flex-direction: column
+  align-items: center
 
 .tree-node
   display: inline-block
