@@ -28,7 +28,7 @@
                     <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
                             elevation="15" hover  @click="displayContentList.push(node.value.content)"
                             :color="colours[node.value.id]">
-                      <v-card-title class="justify-center">{{ node.value.id }}</v-card-title>
+                      <v-card-title class="justify-center">{{ node.value.id }} {{collapsed}}</v-card-title>
                     </v-card>
                   </template>
                 </vue-tree>
@@ -41,11 +41,7 @@
           </v-card-actions>
 
           <v-card-text class="pt-5">
-            <v-card class="mt-5" elevation="10" v-for="(cluster,index) in displayContentList" :key="index">
-              <v-card-text>
-                <v-chip class="ma-1" v-for="(el, index) in cluster" :key="index"> {{ filterElement(el) }}</v-chip>
-              </v-card-text>
-            </v-card>
+            <ClusterRepresentation :clusters="displayContentList"></ClusterRepresentation>
           </v-card-text>
         </v-card>
       </v-col>
@@ -56,9 +52,11 @@
 <script>
 
 import data from '@/data/clusters.json'
+import ClusterRepresentation from "../components/ClusterRepresentation";
 
 export default {
   name: 'Hierarchy',
+  components: {ClusterRepresentation},
   data() {
     return {
       sampleData: data,
@@ -83,12 +81,6 @@ export default {
     },
     getContent(content) {
       return content
-    },
-    filterElement(el) {
-      delete el['_key']
-      let val = ""
-      Object.values(el).forEach(el => val += el)
-      return val
     }
   }
 }
