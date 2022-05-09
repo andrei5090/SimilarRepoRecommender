@@ -24,9 +24,9 @@
                     ref="tree"
                     :collapse-enabled="true"
                 >
-                  <template v-slot:node="{ node, collapsed }" @click="collapsed = true" v-show="collapsed">
+                  <template v-slot:node="{ node, collapsed }">
                     <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
-                            elevation="15" hover v-if="!collapsed" @click="displayContentList.push(node.value.content)"
+                            elevation="15" hover  @click="displayContentList.push(node.value.content)"
                             :color="colours[node.value.id]">
                       <v-card-title class="justify-center">{{ node.value.id }}</v-card-title>
                     </v-card>
@@ -39,6 +39,7 @@
           <v-card-actions>
             <v-btn color="red lighten-2" @click="displayContentList = []">RESET</v-btn>
           </v-card-actions>
+
           <v-card-text class="pt-5">
             <v-card class="mt-5" elevation="10" v-for="(cluster,index) in displayContentList" :key="index">
               <v-card-text>
