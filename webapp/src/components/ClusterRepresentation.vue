@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <v-card class="mt-5" elevation="10" v-for="(cluster,index) in clusters" :key="index">
+    <v-card :class="padding ? 'mt-5' : ''" elevation="10" v-for="(cluster,index) in clusters" :key="index">
       <v-card-text>
         <v-chip class="ma-1" v-for="(el, index) in cluster" :key="index"> {{ filterElement(el) }}</v-chip>
       </v-card-text>
@@ -16,7 +16,11 @@ export default {
   props: {
     clusters: {
       type: Array,
-      required: Boolean
+      required: true
+    },
+    padding: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
