@@ -86,7 +86,7 @@
               </v-col>
 
               <v-col cols="3" class="text-center">
-                <v-btn class="text-center" color="red lighten-2">SAVE</v-btn>
+                <v-btn class="text-center" color="red lighten-2" @click="saveLabels">GET LABELS</v-btn>
               </v-col>
             </v-row>
 
@@ -150,6 +150,21 @@ export default {
       this.hoverData.arr.push(content.content)
       this.hoverData.id = content.uniqueId
     },
+    saveLabels() {
+      this.downloadBlob(JSON.stringify(this.getLabels),"labels.json", "JSON")
+    },
+    downloadBlob(content, filename, contentType) {
+      // Create a blob
+      var blob = new Blob([content], {type: contentType});
+      var url = URL.createObjectURL(blob);
+
+      // Create a link to download it
+      var pom = document.createElement('a');
+      pom.href = url;
+      pom.setAttribute('download', filename);
+      pom.click();
+    },
+
     ...mapActions(['storeCluster', 'storeLabels'])
   },
   computed: {
