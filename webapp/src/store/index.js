@@ -9,12 +9,12 @@ export default new Vuex.Store({
     },
     mutations: {
         addClusters(state, data) {
-            state.clusters = data.data
+            state.clusters = data
         }
     },
     actions: {
-        storeCluster(store, data) {
-            store.commit('addClusters', {"data": data})
+        storeCluster({commit}, data) {
+            commit('addClusters', data)
         }
     },
     getters: {

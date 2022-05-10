@@ -44,8 +44,16 @@
             </v-row>
           </v-card-text>
 
-          <v-card-actions>
-            <v-btn color="red lighten-2" @click="displayContentList = []">RESET</v-btn>
+          <v-card-actions class="pt-5">
+            <v-row justify="center" align-content="center">
+
+              <v-col cols="3" class="text-center">
+                <v-btn class="text-center" color="red lighten-2" @click="displayContentList = []">RESET</v-btn>
+              </v-col>
+
+              <v-col cols="3" class="text-center"><v-btn class="text-center" color="red lighten-2">SAVE</v-btn></v-col>
+            </v-row>
+
           </v-card-actions>
 
           <v-card-text class="pt-5">
@@ -66,14 +74,14 @@
 import data from '@/data/clusters.json'
 import ClusterEditor from "../components/ClusterEditor";
 import ClusterRepresentation from "../components/ClusterRepresentation";
-//import mapActions from "vuex/dist/vuex.mjs";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'Hierarchy',
   components: {ClusterRepresentation, ClusterEditor},
   data() {
     return {
-      sampleData: data,
+      sampleData: null,
       treeConfig: {nodeWidth: 95, nodeHeight: 50, levelHeight: 150},
       colours: this.getColourPalette(),
       displayContentList: [],
@@ -100,10 +108,14 @@ export default {
       this.hoverData = []
       this.hoverData.push(content)
     },
-    //...mapActions(['storeCluster'])
+    ...mapActions(['storeCluster'])
+  },
+  computed: {
+    ...mapGetters(['getCluster'])
   },
   created() {
-    //this.storeCluster(data)
+    this.storeCluster(data)
+    this.sampleData = this.getCluster
   }
 }
 </script>
