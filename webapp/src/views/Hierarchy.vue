@@ -34,7 +34,7 @@
           </v-row>
 
 
-          <v-card-actions class="justify-center">
+          <v-card-actions class="justify-center" v-if="getCluster">
             <v-btn rounded icon @click="$refs.tree.zoomOut()">
               <v-icon>mdi-magnify-minus</v-icon>
             </v-btn>
@@ -57,12 +57,14 @@
                   <template v-slot:node="{ node, collapsed }">
 
 
-                    <div @click="showDialog(node.value.content)">
+                    <div @click="showDialog(node.value)">
                       <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
                               elevation="15" hover @click="displayContentList.push(node.value.content)"
                               :color="colours[node.value.id]">
                         <v-card-title class="justify-center">
-                          {{ getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId] : node.value.uniqueId }}
+                          {{
+                            getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId] : node.value.uniqueId : node.value.uniqueId
+                          }}
                           {{ collapsed }}
                         </v-card-title>
                       </v-card>
@@ -76,7 +78,7 @@
             </v-row>
           </v-card-text>
 
-          <v-card-actions class="pt-5">
+          <v-card-actions class="pt-5" v-if="getCluster">
             <v-row justify="center" align-content="center">
 
               <v-col cols="3" class="text-center">
@@ -98,7 +100,7 @@
     </v-row>
 
     <v-dialog v-model="isHover">
-      <ClusterEditor :clusters="hoverData"></ClusterEditor>
+      <ClusterEditor :clusters="hoverData.arr" :id="hoverData.id"></ClusterEditor>
     </v-dialog>
   </div>
 </template>
@@ -121,7 +123,10 @@ export default {
       treeConfig: {nodeWidth: 95, nodeHeight: 50, levelHeight: 150},
       colours: this.getColourPalette(),
       displayContentList: [],
-      hoverData: [],
+      hoverData: {
+        arr: [],
+        id: null
+      },
       isHover: false
     }
   },
@@ -141,8 +146,9 @@ export default {
     },
     showDialog(content) {
       this.isHover = true
-      this.hoverData = []
-      this.hoverData.push(content)
+      this.hoverData.arr = []
+      this.hoverData.arr.push(content.content)
+      this.hoverData.id = content.uniqueId
     },
     ...mapActions(['storeCluster', 'storeLabels'])
   },

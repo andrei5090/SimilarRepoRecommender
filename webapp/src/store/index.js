@@ -14,6 +14,9 @@ export default new Vuex.Store({
         },
         addLabels(state, data) {
             state.labels = data
+        },
+        addLabel(state,data){
+            state.labels[data.id] = data.label
         }
     },
     actions: {
@@ -22,6 +25,9 @@ export default new Vuex.Store({
         },
         storeLabels({commit}, data) {
             commit('addLabels', data)
+        },
+        modifyLabel({commit}, data){
+            commit.addLabel(data)
         }
     },
     getters: {

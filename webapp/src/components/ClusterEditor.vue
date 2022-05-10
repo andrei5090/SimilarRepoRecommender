@@ -5,7 +5,7 @@
       <v-card-text>
         <v-row justify="center">
           <v-col cols="5">
-            <v-text-field v-model="clusterName"/>
+            <v-text-field v-model="getLabels[id]"/>
           </v-col>
         </v-row>
       </v-card-text>
@@ -28,6 +28,7 @@
 
 
 import ClusterRepresentation from "./ClusterRepresentation";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'ClusterEditor',
@@ -40,6 +41,10 @@ export default {
     padding: {
       type: Boolean,
       default: false
+    },
+    id: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -54,6 +59,9 @@ export default {
       Object.values(el).forEach(el => val += el)
       return val
     }
+  },
+  computed: {
+    ...mapGetters(['getLabels'])
   }
 }
 </script>
