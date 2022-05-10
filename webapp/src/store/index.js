@@ -5,21 +5,31 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        clusters: null
+        clusters: null,
+        labels: null
     },
     mutations: {
         addClusters(state, data) {
             state.clusters = data
+        },
+        addLabels(state, data) {
+            state.labels = data
         }
     },
     actions: {
         storeCluster({commit}, data) {
             commit('addClusters', data)
+        },
+        storeLabels({commit}, data) {
+            commit('addLabels', data)
         }
     },
     getters: {
         getCluster(state) {
             return state.clusters
+        },
+        getLabels(state) {
+            return state.labels
         }
     },
     modules: {}

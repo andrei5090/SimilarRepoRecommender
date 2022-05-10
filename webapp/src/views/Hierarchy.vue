@@ -5,6 +5,33 @@
         <v-card shaped class="ma-10" elevation="10">
           <v-card-title>Hierarchy</v-card-title>
 
+          <!--   File Selector     -->
+          <v-row justify="space-around" class="ma-5">
+            <v-col cols="6">
+              <v-card elevation="10" shaped>
+                <v-row justify="center">
+                  <v-col cols="5">
+                    <v-file-input
+                        v-model="tree"
+                        label="Input tree"
+                        truncate-length="5"
+                    ></v-file-input>
+                  </v-col>
+
+
+                  <v-col cols="5">
+                    <v-file-input
+                        v-model="labels"
+                        label="Input labels"
+                        truncate-length="5"
+                    ></v-file-input>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+
+
           <v-card-actions class="justify-center">
             <v-btn rounded icon @click="$refs.tree.zoomOut()">
               <v-icon>mdi-magnify-minus</v-icon>
@@ -17,12 +44,12 @@
           <v-card-text class="justify-center text-center">
             <v-row justify="center">
               <v-col cols="12">
-                <vue-tree
-                    class="tree justify-center"
-                    :dataset="sampleData"
-                    :config="treeConfig"
-                    ref="tree"
-                    :collapse-enabled="true"
+                <vue-tree v-if="getCluster"
+                          class="tree justify-center"
+                          :dataset="sampleData"
+                          :config="treeConfig"
+                          ref="tree"
+                          :collapse-enabled="true"
                 >
 
                   <template v-slot:node="{ node, collapsed }">
@@ -32,7 +59,10 @@
                       <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
                               elevation="15" hover @click="displayContentList.push(node.value.content)"
                               :color="colours[node.value.id]">
-                        <v-card-title class="justify-center">{{ node.value.uniqueId }} {{ collapsed }}</v-card-title>
+                        <v-card-title class="justify-center">
+                          {{ getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId] : node.value.uniqueId }}
+                          {{ collapsed }}
+                        </v-card-title>
                       </v-card>
 
                     </div>
@@ -51,7 +81,9 @@
                 <v-btn class="text-center" color="red lighten-2" @click="displayContentList = []">RESET</v-btn>
               </v-col>
 
-              <v-col cols="3" class="text-center"><v-btn class="text-center" color="red lighten-2">SAVE</v-btn></v-col>
+              <v-col cols="3" class="text-center">
+                <v-btn class="text-center" color="red lighten-2">SAVE</v-btn>
+              </v-col>
             </v-row>
 
           </v-card-actions>
@@ -71,7 +103,7 @@
 
 <script>
 
-import data from '@/data/clusters.json'
+//import data from '@/data/clusters.json'
 import ClusterEditor from "../components/ClusterEditor";
 import ClusterRepresentation from "../components/ClusterRepresentation";
 import {mapActions, mapGetters} from "vuex";
@@ -81,6 +113,8 @@ export default {
   components: {ClusterRepresentation, ClusterEditor},
   data() {
     return {
+      tree: null,
+      labels: null,
       sampleData: null,
       treeConfig: {nodeWidth: 95, nodeHeight: 50, levelHeight: 150},
       colours: this.getColourPalette(),
@@ -108,14 +142,35 @@ export default {
       this.hoverData = []
       this.hoverData.push(content)
     },
-    ...mapActions(['storeCluster'])
+    ...mapActions(['storeCluster', 'storeLabels'])
   },
   computed: {
-    ...mapGetters(['getCluster'])
+    ...mapGetters(['getCluster', 'getLabels'])
   },
   created() {
-    this.storeCluster(data)
-    this.sampleData = this.getCluster
+    // this.storeCluster(data)
+    // this.sampleData = this.getCluster
+  },
+  watch: {
+    tree(newValue) {
+      var reader = new FileReader();
+      reader.readAsText(newValue);
+
+      reader.onload = () => {
+        this.storeCluster(JSON.parse(reader.result))
+        this.sampleData = this.getCluster
+      }
+    },
+    labels(newValue) {
+      var reader = new FileReader();
+      reader.readAsText(newValue);
+
+      reader.onload = () => {
+        this.storeLabels(JSON.parse(reader.result))
+        this.sampleData = this.getCluster
+      }
+
+    }
   }
 }
 </script>
