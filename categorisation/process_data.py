@@ -204,11 +204,9 @@ df_clst = pd.DataFrame()
 df_clst['index'] = left_array_unique
 df_clst['label'] = label
 
-dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
-                  5, 4, 3, 2, 1]
-
-#dendogram_lvls = [50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
-
+# dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
+#                   5, 4, 3, 2, 1]
+dendogram_lvls = [60, 50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
 # create result folder
 import os
 
@@ -415,11 +413,12 @@ class Cluster:
         return -1
 
     @staticmethod
-    def getName(lvl, id, length, content):
+    def getEncoding(lvl, id, length, content):
         # return "lvl " + str(dendogram_lvls[lvl]) + "  " + str(id) + " size: " + str(length)
         return {"id": "lvl " + str(dendogram_lvls[lvl]),
                 "size": str(length),
-                "content": content}
+                "content": content,
+                "uniqueId": id}
 
     def containsTag(self, tag):
         for i in self.content:
@@ -440,22 +439,31 @@ lvl = len(dendogram_lvls) - 1
 big_clusters = res_dict[dendogram_lvls[lvl]]['lvl' + str(dendogram_lvls[lvl])]
 root.content = big_clusters[0]
 
-root.value = Cluster.getName(0, 0, len(big_clusters), big_clusters[0])
+root.value = Cluster.getEncoding(0, 0, len(big_clusters), big_clusters[0])
 
 print(len(root.content))
 
+id = 0
+
+ids = set()
+
 
 def buildTree(root: Cluster, lvl):
+    global id, ids
     if lvl < 1:
         return
 
     small_clusters = res_dict[dendogram_lvls[lvl - 1]]['lvl' + str(dendogram_lvls[lvl - 1])]
 
-    id = 0
+    while id in ids:
+        id += 1
+
+    ids.add(id)
+
     for i in small_clusters:
-        currCluster = Cluster(Cluster.getName(lvl, id, len(i), i))
+        currCluster = Cluster(Cluster.getEncoding(lvl, id, len(i), i))
         currCluster.content = i
-        currCluster.value = Cluster.getName(lvl, id, len(i), i)
+        currCluster.value = Cluster.getEncoding(lvl, id, len(i), i)
 
         if root.isParent(i):
             root.children.append(currCluster)
@@ -466,7 +474,7 @@ def buildTree(root: Cluster, lvl):
 
 buildTree(root, lvl)
 
-with open("clusters_big.json", 'w') as f:
+with open("clusters.json", 'w') as f:
     f.write(root.__str__())
     f.close()
 

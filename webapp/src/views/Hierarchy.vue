@@ -56,7 +56,7 @@
     </v-row>
 
     <v-dialog v-model="isHover">
-      <ClusterRepresentation :clusters="hoverData"></ClusterRepresentation>
+      <ClusterEditor :clusters="hoverData"></ClusterEditor>
     </v-dialog>
   </div>
 </template>
@@ -64,11 +64,13 @@
 <script>
 
 import data from '@/data/clusters.json'
+import ClusterEditor from "../components/ClusterEditor";
 import ClusterRepresentation from "../components/ClusterRepresentation";
+//import mapActions from "vuex/dist/vuex.mjs";
 
 export default {
   name: 'Hierarchy',
-  components: {ClusterRepresentation},
+  components: {ClusterRepresentation, ClusterEditor},
   data() {
     return {
       sampleData: data,
@@ -97,7 +99,11 @@ export default {
       this.isHover = true
       this.hoverData = []
       this.hoverData.push(content)
-    }
+    },
+    //...mapActions(['storeCluster'])
+  },
+  created() {
+    //this.storeCluster(data)
   }
 }
 </script>

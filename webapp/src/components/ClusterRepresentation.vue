@@ -2,7 +2,7 @@
   <div class="">
     <v-card :class="padding ? 'mt-5' : ''" elevation="10" v-for="(cluster,index) in clusters" :key="index">
       <v-card-text>
-        <v-chip class="ma-1" v-for="(el, index) in cluster" :key="index"> {{ filterElement(el) }}</v-chip>
+        <v-chip class="ma-1" color="deep-purple lighten-4" v-for="(el, index) in cluster" :key="index"> {{ filterElement(el) }}</v-chip>
       </v-card-text>
     </v-card>
   </div>
