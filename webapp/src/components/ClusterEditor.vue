@@ -10,12 +10,12 @@
         </v-row>
       </v-card-text>
 
-      <v-card-actions>
-        <v-btn rounded left size color="indigo lighten-3">
-          <v-icon small>mdi-arrow-down-circle</v-icon>
-          Save
-        </v-btn>
-      </v-card-actions>
+<!--      <v-card-actions>-->
+<!--        <v-btn rounded left size color="indigo lighten-3">-->
+<!--          <v-icon small>mdi-arrow-down-circle</v-icon>-->
+<!--          Save-->
+<!--        </v-btn>-->
+<!--      </v-card-actions>-->
 
       <v-card-text class="mt-3">
         <ClusterRepresentation :clusters="clusters" :padding="padding"/>

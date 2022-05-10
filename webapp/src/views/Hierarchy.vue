@@ -15,6 +15,7 @@
                         v-model="tree"
                         label="Input tree"
                         truncate-length="5"
+                        prepend-icon="mdi-graph"
                     ></v-file-input>
                   </v-col>
 
@@ -24,6 +25,7 @@
                         v-model="labels"
                         label="Input labels"
                         truncate-length="5"
+                        prepend-icon="mdi-label"
                     ></v-file-input>
                   </v-col>
                 </v-row>
