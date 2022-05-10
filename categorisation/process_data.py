@@ -443,27 +443,29 @@ root.value = Cluster.getEncoding(0, 0, len(big_clusters), big_clusters[0])
 
 print(len(root.content))
 
-id = 0
+currId = 1
 
 ids = set()
 
 
 def buildTree(root: Cluster, lvl):
-    global id, ids
+    global currId
+    global ids
+
     if lvl < 1:
         return
 
     small_clusters = res_dict[dendogram_lvls[lvl - 1]]['lvl' + str(dendogram_lvls[lvl - 1])]
 
-    while id in ids:
-        id += 1
-
-    ids.add(id)
-
     for i in small_clusters:
-        currCluster = Cluster(Cluster.getEncoding(lvl, id, len(i), i))
+        while currId in ids:
+            currId += 1
+
+        ids.add(currId)
+
+        currCluster = Cluster(Cluster.getEncoding(lvl, currId, len(i), i))
         currCluster.content = i
-        currCluster.value = Cluster.getEncoding(lvl, id, len(i), i)
+        currCluster.value = Cluster.getEncoding(lvl, currId, len(i), i)
 
         if root.isParent(i):
             root.children.append(currCluster)

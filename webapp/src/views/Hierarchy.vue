@@ -32,7 +32,7 @@
                       <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
                               elevation="15" hover @click="displayContentList.push(node.value.content)"
                               :color="colours[node.value.id]">
-                        <v-card-title class="justify-center">{{ node.value.id }} {{ collapsed }}</v-card-title>
+                        <v-card-title class="justify-center">{{ node.value.uniqueId }} {{ collapsed }}</v-card-title>
                       </v-card>
 
                     </div>
