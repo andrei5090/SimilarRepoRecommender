@@ -40,6 +40,7 @@ except Exception as e:
     with open("data.pickle", "wb") as outfile:
         pickle.dump(X, outfile)
 
+
 # VARIABLES
 NO_CLUSTERS = 50
 DEND_LVL = 10
