@@ -40,6 +40,20 @@ except Exception as e:
     with open("data.pickle", "wb") as outfile:
         pickle.dump(X, outfile)
 
+import json
+
+json_file = json.load(open("json_simatrix.json"))
+
+del json_file['headers']
+
+X = []
+
+
+for val in json_file:
+    X.append(json_file[val])
+
+
+
 # VARIABLES
 NO_CLUSTERS = 50
 DEND_LVL = 10
