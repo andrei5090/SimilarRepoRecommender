@@ -12,37 +12,39 @@ from sklearn.cluster import AgglomerativeClustering, KMeans
 df = pd.read_csv('data.csv')
 
 print(df)
-left_array_unique = df['lhs'].drop_duplicates().to_numpy()
-right_array_unique = df['rhs'].drop_duplicates().to_numpy()
-relationship_array_unique = df['relationship'].drop_duplicates().to_numpy()
-print(df['lhs'].drop_duplicates().to_numpy())
-
-# approach => construct a matrix where each row represents the vector representation of fields
-X = None
-
-try:
-    with open("data.pickle", "rb") as infile:
-        X = pickle.load(infile)
-except Exception as e:
-    print("serialized data cannot be loaded, create new representations")
-    matrix = []
-    for lhs in left_array_unique:
-        matrix.append([])
-        curr_idx = len(matrix) - 1
-        for relationship in relationship_array_unique:
-            matrix[curr_idx].append([0 for x in range(len(right_array_unique))])
-            for data in df[(df.lhs == lhs) & (df.relationship == relationship)]['rhs'].to_numpy():
-                matrix[curr_idx][np.where(relationship_array_unique == relationship)[0][0]][
-                    np.where(right_array_unique == data)[0][0]] = 1
-    data_set = np.array(matrix)
-    nsamples, nx, ny = data_set.shape
-    X = data_set.reshape((nsamples, nx * ny))
-    with open("data.pickle", "wb") as outfile:
-        pickle.dump(X, outfile)
+# left_array_unique = df['lhs'].drop_duplicates().to_numpy()
+# right_array_unique = df['rhs'].drop_duplicates().to_numpy()
+# relationship_array_unique = df['relationship'].drop_duplicates().to_numpy()
+# print(df['lhs'].drop_duplicates().to_numpy())
+#
+# # approach => construct a matrix where each row represents the vector representation of fields
+# X = None
+#
+# try:
+#     with open("data.pickle", "rb") as infile:
+#         X = pickle.load(infile)
+# except Exception as e:
+#     print("serialized data cannot be loaded, create new representations")
+#     matrix = []
+#     for lhs in left_array_unique:
+#         matrix.append([])
+#         curr_idx = len(matrix) - 1
+#         for relationship in relationship_array_unique:
+#             matrix[curr_idx].append([0 for x in range(len(right_array_unique))])
+#             for data in df[(df.lhs == lhs) & (df.relationship == relationship)]['rhs'].to_numpy():
+#                 matrix[curr_idx][np.where(relationship_array_unique == relationship)[0][0]][
+#                     np.where(right_array_unique == data)[0][0]] = 1
+#     data_set = np.array(matrix)
+#     nsamples, nx, ny = data_set.shape
+#     X = data_set.reshape((nsamples, nx * ny))
+#     with open("data.pickle", "wb") as outfile:
+#         pickle.dump(X, outfile)
 
 import json
 
 json_file = json.load(open("json_simatrix.json"))
+
+headers = json_file['headers']
 
 del json_file['headers']
 
@@ -69,9 +71,10 @@ clustering_result = dict()
 for i in range(0, len(clustering_fit_res.labels_)):
     clustering_result[i] = []
 
+left_array_unique = [x for x in json_file]
 id = 0
 for label in clustering_fit_res.labels_:
-    clustering_result[label].append(left_array_unique[id])
+    clustering_result[label].append(left_array_unique)
     id += 1
 
 id = 0
@@ -143,7 +146,7 @@ while i < len(ivl):
 plt.figure(figsize=(120, 15), dpi=72)
 plt.title("Hierarchical Clustering Dendrogram")
 plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=DEND_LVL, count_sort=False,
-                get_leaves=True, labels=left_array_unique)
+                get_leaves=True, labels=[x for x in json_file])
 
 plt.xlabel("Number of points in node (or index of point if no parenthesis).")
 plt.show()
@@ -205,7 +208,7 @@ def plot_clusters(n_clusters, data):
     plt.show()
 
 
-plot_clusters(50, X)
+#plot_clusters(50, X)
 
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 
@@ -215,12 +218,15 @@ label = fcluster(Z, NO_CLUSTERS, criterion='maxclust')
 print("linkage ", Z)
 
 df_clst = pd.DataFrame()
-df_clst['index'] = left_array_unique
-df_clst['label'] = label
+df_clst['index'] = [x for x in json_file]
+df_clst['label'] = [x for x in json_file]
 
 # dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
 #                   5, 4, 3, 2, 1]
-dendogram_lvls = [60, 50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
+
+dendogram_lvls = [200, 180, 160, 140, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
+                  5, 4, 3, 2, 1]
+#dendogram_lvls = [60, 50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
 # create result folder
 import os
 
@@ -249,7 +255,7 @@ for lvl in dendogram_lvls:
         leaf_rotation=90.,
         leaf_font_size=12.,
         show_contracted=True,  # to get a distribution impression in truncated branches
-        labels=left_array_unique,
+        labels=[x for x in json_file],
         distance_sort=True,
         no_plot=not WRITE
     )
@@ -493,6 +499,20 @@ buildTree(root, lvl)
 with open("clusters.json", 'w') as f:
     f.write(root.__str__())
     f.close()
+
+def checkIn(root, he):
+    if len(root.children) == 0:
+        return
+
+    for cont in root.content:
+        if cont not in he:
+            print("NOT THERE " + str(cont))
+            return
+
+    for ch in root.children:
+        checkIn(ch, he)
+
+checkIn(root, headers)
 
 # make json file
 
