@@ -1,29 +1,29 @@
 <template>
   <div class="">
     <v-card>
-    <v-card-title>
-      Cluster {{id}}
-    </v-card-title>
+      <v-card-title>
+        Cluster {{ id }}
+      </v-card-title>
       <v-card-text>
         <v-row justify="center">
           <v-col cols="5">
-            <v-text-field v-model="getLabels[id]" label="Label" prepend-icon="mdi-label"/>
+            <v-text-field v-model="getLabels[id].label" label="Label" prepend-icon="mdi-label"/>
           </v-col>
         </v-row>
 
         <v-row justify="center">
           <v-col cols="5">
-            <v-text-field v-model="getLabels[id]" label="Weight" prepend-icon="mdi-numeric"/>
+            <v-text-field v-model="getLabels[id].weight" label="Weight" prepend-icon="mdi-numeric"/>
           </v-col>
         </v-row>
       </v-card-text>
 
-<!--      <v-card-actions>-->
-<!--        <v-btn rounded left size color="indigo lighten-3">-->
-<!--          <v-icon small>mdi-arrow-down-circle</v-icon>-->
-<!--          Save-->
-<!--        </v-btn>-->
-<!--      </v-card-actions>-->
+      <!--      <v-card-actions>-->
+      <!--        <v-btn rounded left size color="indigo lighten-3">-->
+      <!--          <v-icon small>mdi-arrow-down-circle</v-icon>-->
+      <!--          Save-->
+      <!--        </v-btn>-->
+      <!--      </v-card-actions>-->
 
       <v-card-text class="mt-3">
         <ClusterRepresentation :clusters="clusters" :padding="padding"/>
@@ -70,6 +70,30 @@ export default {
   },
   computed: {
     ...mapGetters(['getLabels'])
+  },
+  created() {
+    if (!this.getLabels[this.id])
+      this.getLabels[this.id] = {}
+
+    if (!this.getLabels[this.id]['label'])
+      this.getLabels[this.id]['label'] = ''
+
+    if (!this.getLabels[this.id]['weight'])
+      this.getLabels[this.id]['weight'] = ""
+  },
+  watch: {
+    id(newValue) {
+      if (!this.getLabels[newValue])
+        this.getLabels[newValue] = {}
+
+      if (!this.getLabels[newValue]['label'])
+        this.getLabels[newValue]['label'] = ""
+
+      if (!this.getLabels[newValue]['weight'])
+        this.getLabels[newValue]['weight'] = 0
+
+
+    }
   }
 }
 </script>

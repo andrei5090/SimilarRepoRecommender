@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         clusters: null,
-        labels: null
+        labels: {}
     },
     mutations: {
         addClusters(state, data) {
@@ -16,7 +16,10 @@ export default new Vuex.Store({
             state.labels = data
         },
         addLabel(state,data){
-            state.labels[data.id] = data.label
+            state.labels[data.id]['label'] = data.label
+        },
+        addWeight(state, data){
+            state.labels[data.id]['weight'] = data.weight
         }
     },
     actions: {
