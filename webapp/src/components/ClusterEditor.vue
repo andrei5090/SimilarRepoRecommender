@@ -1,11 +1,19 @@
 <template>
   <div class="">
     <v-card>
-
+    <v-card-title>
+      Cluster {{id}}
+    </v-card-title>
       <v-card-text>
         <v-row justify="center">
           <v-col cols="5">
             <v-text-field v-model="getLabels[id]" label="Label" prepend-icon="mdi-label"/>
+          </v-col>
+        </v-row>
+
+        <v-row justify="center">
+          <v-col cols="5">
+            <v-text-field v-model="getLabels[id]" label="Weight" prepend-icon="mdi-numeric"/>
           </v-col>
         </v-row>
       </v-card-text>

@@ -96,7 +96,7 @@
           </v-card-actions>
 
           <v-card-text class="pt-5">
-            <ClusterRepresentation :padding="true" :clusters="displayContentList"></ClusterRepresentation>
+            <ClusterRepresentation :padding="true" :clusters="displayContentList" :id="hoverData.id"></ClusterRepresentation>
           </v-card-text>
         </v-card>
       </v-col>
