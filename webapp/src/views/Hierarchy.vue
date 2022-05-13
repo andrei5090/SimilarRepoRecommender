@@ -55,10 +55,8 @@
                 >
 
                   <template v-slot:node="{ node, collapsed }">
-
-
                     <div @click="showDialog(node.value)">
-                      <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
+                      <v-card min-width="150px" max-width="250px" min-height="100px" max-height="250px" shaped
                               elevation="15" hover @click="displayContentList.push(node.value.content)"
                               :color="colours[node.value.id]">
                         <v-card-title class="justify-center">
@@ -67,6 +65,11 @@
                           }}
                           {{ collapsed }}
                         </v-card-title>
+                        <v-chip color="green lighten-4">
+                          {{
+                            getLabels ? getLabels[node.value.weight] ? getLabels[node.value.weight] : "N/A" : "N/A"
+                          }}
+                        </v-chip>
                       </v-card>
 
                     </div>
@@ -120,7 +123,7 @@ export default {
       tree: null,
       labels: null,
       sampleData: null,
-      treeConfig: {nodeWidth: 95, nodeHeight: 50, levelHeight: 150},
+      treeConfig: {nodeWidth: 125, nodeHeight: 50, levelHeight: 150},
       colours: this.getColourPalette(),
       displayContentList: [],
       hoverData: {
