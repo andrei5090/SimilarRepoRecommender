@@ -55,18 +55,22 @@
                 >
 
                   <template v-slot:node="{ node, collapsed }">
-
-
                     <div @click="showDialog(node.value)">
-                      <v-card min-width="100px" max-width="250px" min-height="100px" max-height="250px" shaped
+                      <v-card min-width="150px" max-width="250px" min-height="100px" max-height="250px" shaped
                               elevation="15" hover @click="displayContentList.push(node.value.content)"
                               :color="colours[node.value.id]">
-                        <v-card-title class="justify-center">
+                        <v-card-title class="justify-center" :key="isHover">
                           {{
-                            getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId] : node.value.uniqueId : node.value.uniqueId
+                            getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId].label  : node.value.uniqueId : node.value.uniqueId
                           }}
                           {{ collapsed }}
                         </v-card-title>
+                        <v-chip color="green lighten-4" :key="isHover">
+                          {{
+                            getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId].weight : "N/A" : "N/A"
+
+                          }}
+                        </v-chip>
                       </v-card>
 
                     </div>
@@ -78,7 +82,7 @@
             </v-row>
           </v-card-text>
 
-          <v-card-actions class="pt-5" v-if="getCluster">
+          <v-card-actions class="pt-5 justify-center" v-if="getCluster">
             <v-row justify="center" align-content="center">
 
               <v-col cols="3" class="text-center">
@@ -93,14 +97,14 @@
           </v-card-actions>
 
           <v-card-text class="pt-5">
-            <ClusterRepresentation :padding="true" :clusters="displayContentList"></ClusterRepresentation>
+            <ClusterRepresentation :padding="true" :clusters="displayContentList" :id="hoverData.id"></ClusterRepresentation>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
 
     <v-dialog v-model="isHover">
-      <ClusterEditor :clusters="hoverData.arr" :id="hoverData.id"></ClusterEditor>
+      <ClusterEditor :clusters="hoverData.arr" :id="hoverData.id" :key="hoverData.id"></ClusterEditor>
     </v-dialog>
   </div>
 </template>
@@ -120,7 +124,7 @@ export default {
       tree: null,
       labels: null,
       sampleData: null,
-      treeConfig: {nodeWidth: 95, nodeHeight: 50, levelHeight: 150},
+      treeConfig: {nodeWidth: 125, nodeHeight: 50, levelHeight: 150},
       colours: this.getColourPalette(),
       displayContentList: [],
       hoverData: {

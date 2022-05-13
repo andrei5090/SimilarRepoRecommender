@@ -1,0 +1,10 @@
+{
+  "name": "Hierarchy Visualiser",
+  "version": "1.0.0",
+  "description": "Hierarchy Visualiser RP",
+  "author": "Andrei Ionescu",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express"
+  }
+}
