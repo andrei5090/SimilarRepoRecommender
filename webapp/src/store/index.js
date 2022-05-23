@@ -30,7 +30,7 @@ export default new Vuex.Store({
             commit('addLabels', data)
         },
         modifyLabel({commit}, data){
-            commit.addLabel(data)
+            commit('addLabel', data)
         }
     },
     getters: {

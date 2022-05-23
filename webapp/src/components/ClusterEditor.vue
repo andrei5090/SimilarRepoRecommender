@@ -36,7 +36,7 @@
 
 
 import ClusterRepresentation from "./ClusterRepresentation";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'ClusterEditor',
@@ -57,10 +57,11 @@ export default {
   },
   data() {
     return {
-      clusterName: ''
+      clusterName: '',
     }
   },
   methods: {
+    ...mapActions(['modifyLabel']),
     filterElement(el) {
       delete el['_key']
       let val = ""
@@ -76,10 +77,10 @@ export default {
       this.getLabels[this.id] = {}
 
     if (!this.getLabels[this.id]['label'])
-      this.getLabels[this.id]['label'] = ''
+      this.getLabels[this.id]['label'] = null
 
     if (!this.getLabels[this.id]['weight'])
-      this.getLabels[this.id]['weight'] = ""
+      this.getLabels[this.id]['weight'] = null
   },
   watch: {
     id(newValue) {
@@ -87,10 +88,10 @@ export default {
         this.getLabels[newValue] = {}
 
       if (!this.getLabels[newValue]['label'])
-        this.getLabels[newValue]['label'] = ""
+        this.getLabels[newValue]['label'] = null
 
       if (!this.getLabels[newValue]['weight'])
-        this.getLabels[newValue]['weight'] = 0
+        this.getLabels[newValue]['weight'] = null
 
 
     }

@@ -59,19 +59,19 @@
                       <v-card min-width="150px" max-width="250px" min-height="100px" max-height="250px" shaped
                               elevation="15" hover @click="displayContentList.push(node.value.content)"
                               :color="colours[node.value.id]">
-                        <v-card-title class="justify-center" :key="isHover">
-                          {{
-                            getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId].label  : node.value.uniqueId : node.value.uniqueId
-                          }}
-                          {{ collapsed }}
-                        </v-card-title>
-                        <v-chip color="green lighten-4" :key="isHover">
-                          {{
-                            getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId].weight : "N/A" : "N/A"
-
-                          }}
-                        </v-chip>
+                        <div :key="isHover">
+                          <v-card-title class="justify-center"
+                                        v-text="getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId].label != null ? getLabels[node.value.uniqueId].label : node.value.uniqueId : node.value.uniqueId : node.value.uniqueId">
+                            {{ collapsed }}
+                          </v-card-title>
+                          <v-chip color="green lighten-4">
+                            {{
+                              getLabels ? getLabels[node.value.uniqueId] ? getLabels[node.value.uniqueId].weight != null ? getLabels[node.value.uniqueId].weight : 'N/A' : 'N/A' : 'N/A'
+                            }}
+                          </v-chip>
+                        </div>
                       </v-card>
+
 
                     </div>
 
@@ -97,7 +97,8 @@
           </v-card-actions>
 
           <v-card-text class="pt-5">
-            <ClusterRepresentation :padding="true" :clusters="displayContentList" :id="hoverData.id"></ClusterRepresentation>
+            <ClusterRepresentation :padding="true" :clusters="displayContentList"
+                                   :id="hoverData.id"></ClusterRepresentation>
           </v-card-text>
         </v-card>
       </v-col>
@@ -124,7 +125,7 @@ export default {
       tree: null,
       labels: null,
       sampleData: null,
-      treeConfig: {nodeWidth: 125, nodeHeight: 50, levelHeight: 150},
+      treeConfig: {nodeWidth: 200, nodeHeight: 50, levelHeight: 150},
       colours: this.getColourPalette(),
       displayContentList: [],
       hoverData: {
@@ -155,7 +156,7 @@ export default {
       this.hoverData.id = content.uniqueId
     },
     saveLabels() {
-      this.downloadBlob(JSON.stringify(this.getLabels),"labels.json", "JSON")
+      this.downloadBlob(JSON.stringify(this.getLabels), "labels.json", "JSON")
     },
     downloadBlob(content, filename, contentType) {
       // Create a blob
