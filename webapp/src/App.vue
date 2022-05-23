@@ -54,6 +54,12 @@ export default {
           icon: 'mdi-graph',
           text: 'Hierarchy',
           route: '/hierarchy',
+        },
+        {
+          id: 'SEARCH',
+          icon: 'mdi-magnify',
+          text: 'Search',
+          route: '/search',
         }
       ],
     }
