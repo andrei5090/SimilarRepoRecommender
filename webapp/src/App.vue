@@ -11,7 +11,7 @@
       </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" expand-on-hover mini-variant
-                         class="indigo lighten-1">
+                         color="primary">
       <!--    Left Routes   -->
       <v-list class="pt-15">
         <template v-for="link in links">

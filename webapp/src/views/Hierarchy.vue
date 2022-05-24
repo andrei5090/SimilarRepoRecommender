@@ -6,32 +6,79 @@
           <v-card-title>Hierarchy</v-card-title>
 
           <!--   File Selector     -->
-          <v-row justify="space-around" class="ma-5">
-            <v-col cols="6">
-              <v-card elevation="10" shaped>
-                <v-row justify="center">
-                  <v-col cols="5">
-                    <v-file-input
-                        v-model="tree"
-                        label="Input tree"
-                        truncate-length="5"
-                        prepend-icon="mdi-graph"
-                    ></v-file-input>
-                  </v-col>
+          <v-menu-transition>
+            <div v-if="choice === 0">
+              <v-row align="center" justify="center">
+                <!--                Import From Computer button    -->
+                <v-col cols="5" class="text-center">
+                  <v-btn x-large color="secondary lighten-2" class="text--white" width="25vw" height="25vh" rounded
+                         elevation="10"
+                         @click="choice = 1">
+                    <div>
+                      <v-row>
+                        <v-col cols="12">
+                          <span>Import Hierarchy From Your Computer </span>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col cols="12">
+                          <v-icon size="70">mdi-graph</v-icon>
+                        </v-col>
+                      </v-row>
+                    </div>
+                  </v-btn>
+                </v-col>
+
+                <!--   Get From Backend -->
+                <v-col cols="5" class="text-center">
+                  <v-btn x-large color="secondary lighten-2" class="text--white" width="25vw" height="25vh" rounded
+                         elevation="10"
+                         @click="choice = 1">
+                    <div>
+                      <v-row>
+                        <v-col cols="12">
+                          <span>Generate Hierarchy</span>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col cols="12">
+                          <v-icon size="70">mdi-server</v-icon>
+                        </v-col>
+                      </v-row>
+                    </div>
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </div>
+            <div v-else-if="choice === 1">
+              <v-row justify="space-around" class="ma-5">
+                <v-col cols="6">
+                  <v-card elevation="10" shaped>
+                    <v-row justify="center">
+                      <v-col cols="5">
+                        <v-file-input
+                            v-model="tree"
+                            label="Input tree"
+                            truncate-length="5"
+                            prepend-icon="mdi-graph"
+                        ></v-file-input>
+                      </v-col>
 
 
-                  <v-col cols="5">
-                    <v-file-input
-                        v-model="labels"
-                        label="Input labels"
-                        truncate-length="5"
-                        prepend-icon="mdi-label"
-                    ></v-file-input>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-col>
-          </v-row>
+                      <v-col cols="5">
+                        <v-file-input
+                            v-model="labels"
+                            label="Input labels"
+                            truncate-length="5"
+                            prepend-icon="mdi-label"
+                        ></v-file-input>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </div>
+          </v-menu-transition>
 
 
           <v-card-actions class="justify-center" v-if="getCluster">
@@ -82,15 +129,21 @@
             </v-row>
           </v-card-text>
 
-          <v-card-actions class="pt-5 justify-center" v-if="getCluster">
+          <v-card-actions class="pt-10 justify-center" v-if="getCluster">
             <v-row justify="center" align-content="center">
 
               <v-col cols="3" class="text-center">
-                <v-btn class="text-center" color="red lighten-2" @click="displayContentList = []">RESET</v-btn>
+                <v-btn class="text-center" color="secondary" @click="displayContentList = []" rounded x-large>
+                  <v-icon left> mdi-reload</v-icon>
+                  Reset
+                </v-btn>
               </v-col>
 
               <v-col cols="3" class="text-center">
-                <v-btn class="text-center" color="red lighten-2" @click="saveLabels">GET LABELS</v-btn>
+                <v-btn class="text-center" color="secondary" @click="saveLabels" rounded x-large>
+                  <v-icon left> mdi-download</v-icon>
+                  Get Labels
+                </v-btn>
               </v-col>
             </v-row>
 
@@ -132,7 +185,8 @@ export default {
         arr: [],
         id: null
       },
-      isHover: false
+      isHover: false,
+      choice: 0
     }
   },
   methods: {
