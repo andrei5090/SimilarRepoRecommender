@@ -1,64 +1,84 @@
 <template>
+
   <v-container>
-    <v-card rounded elevation="10">
-      <v-card-text>
+    <v-form v-model="valid">
 
-        <v-row justify="space-around" align="center">
-          <v-col cols="8" class="text-center">
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-            <v-text-field label="Search" prepend-icon="mdi-magnify" outlined v-bind="attrs"
-                          v-on="on"></v-text-field>
-              </template>
-              Your Search Query
-            </v-tooltip>
-          </v-col>
-          <v-col cols="4" class="text-center">
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-            <v-autocomplete
-                auto-select-first
-                clearable
-                deletable-chips
-                multiple
-                v-model="chosenTags"
-                :items="items"
-                outlined
-                label="Input Tags"
-                v-bind="attrs"
-                v-on="on"
-            >
+      <v-card elevation="5" class="search-bar">
+        <v-card-title>
 
-              <template v-slot:selection="data">
-                <v-chip color="tag" close
-                        @click:close="remove(data)">
-                  {{ data.item }}
-                </v-chip>
-              </template>
+          <v-row justify="space-between" align="center">
 
-
-
-              <template v-slot:item="data">
-                <template v-if="typeof data.item !== 'object'">
-                  <v-chip color="tag">
-                    {{ data.item }}
-                  </v-chip>
+            <v-col cols="7" class="text-center" align="center">
+              <v-tooltip top class="ma-0 pa-0 align-center justify-center">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field v-model="queryText" label="Search" prepend-inner-icon="mdi-magnify" outlined
+                                v-bind="attrs"
+                                v-on="on" class="align-center" single-line rounded clearable
+                                :rules="queryRules" counter></v-text-field>
                 </template>
-              </template>
-            </v-autocomplete>
+                Your Search Query
+              </v-tooltip>
+            </v-col>
+            <v-col cols="3" class="ma-0 pa-0">
+              <v-tooltip top>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-autocomplete
+                      auto-select-first
+                      clearable
+                      deletable-chips
+                      multiple
+                      v-model="chosenTags"
+                      :items="items"
+                      outlined
+                      label="Input Tags"
+                      v-bind="attrs"
+                      v-on="on"
+                      single-line
+                      rounded
+                      prepend-inner-icon="mdi-label"
+                      class="justify-center align-center text-center"
+                      :rules="tagsRules"
+                  >
 
-              </template>
-              The tags/topics you are interested with
-            </v-tooltip>
+                    <template v-slot:selection="data">
+                      <v-chip color="tag" close
+                              @click:close="remove(data)">
+                        {{ data.item }}
+                      </v-chip>
+                    </template>
 
-          </v-col>
 
+                    <template v-slot:item="data">
+                      <template v-if="typeof data.item !== 'object'">
+                        <v-chip color="tag">
+                          {{ data.item }}
+                        </v-chip>
+                      </template>
+                    </template>
+                  </v-autocomplete>
 
-          <v-col cols="4"></v-col>
-        </v-row>
-      </v-card-text>
+                </template>
+                The tags/topics you are interested with
+              </v-tooltip>
 
-    </v-card>
+            </v-col>
+
+            <!--          Search Button    -->
+            <v-col cols="1" align="right">
+              <v-btn color="primary" x-large elevation="8" fab
+                     @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid">
+                <v-icon>
+                  mdi-magnify
+                </v-icon>
+              </v-btn>
+            </v-col>
+
+          </v-row>
+
+        </v-card-title>
+
+      </v-card>
+    </v-form>
 
   </v-container>
 </template>
@@ -69,16 +89,22 @@ export default {
   props: {
     items: {
       default: null,
-      required: true
+      required: true,
     }
   },
   data() {
     return {
-      chosenTags: null
+      chosenTags: [],
+      queryText: '',
+      valid: false,
+      queryRules: [(text) => !!text.length < 100 || 'The maximum textual search should have at most 100 characters',
+                   (text) => text.length > 5 || 'The minimum textual information should have at least 5 characters'],
+      tagsRules: null
+
     }
   },
   methods: {
-    remove (item) {
+    remove(item) {
       const index = this.chosenTags.indexOf(item.item)
       if (index >= 0) this.chosenTags.splice(index, 1)
     }
@@ -88,6 +114,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.card
-  cursor: crosshair
+::v-deep .search-bar
+  border-radius: 15px 50px 50px 15px !important
+
 </style>

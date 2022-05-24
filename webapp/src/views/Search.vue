@@ -2,7 +2,7 @@
   <v-container>
 
     <v-row>
-      <SearchBar :items="getAvailableTags"></SearchBar>
+      <SearchBar :items="getAvailableTags" @search="search"></SearchBar>
     </v-row>
 
 <!--    <v-row class="ma-5" justify="center" v-if="getAvailableTags">-->
@@ -55,7 +55,10 @@ export default {
   name: 'Search',
   components: {SearchBar},
   methods: {
-    ...mapActions(['testOctokit', 'retrieveAvailableTags'])
+    ...mapActions(['testOctokit', 'retrieveAvailableTags']),
+    search(searchQuery){
+      console.log(searchQuery)
+    }
   },
   computed: {
     ...mapGetters(['getSearchData', 'getAvailableTags']),
