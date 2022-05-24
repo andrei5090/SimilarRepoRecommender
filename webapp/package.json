@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ssthouse/vue-tree-chart": "^0.6.5",
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "express": "^4.18.1",
     "octokit": "^1.7.1",

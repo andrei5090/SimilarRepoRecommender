@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {Octokit} from "octokit";
+import axios from "axios";
 
+axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 
 
 Vue.use(Vuex)
@@ -10,7 +12,8 @@ export default new Vuex.Store({
     state: {
         clusters: null,
         labels: {},
-        searchData: null
+        searchData: null,
+        availableTags: null
     },
     mutations: {
         addClusters(state, data) {
@@ -27,6 +30,10 @@ export default new Vuex.Store({
         },
         storeSearchData(state, data) {
             state.searchData = data
+        },
+        storeAvailableTopics(state, data) {
+            state.availableTags = data
+
         }
     },
     actions: {
@@ -45,11 +52,15 @@ export default new Vuex.Store({
                 auth: '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'
             })
 
-            const res = await octokit.request('GET /search/topics', {q : 'ruby+is:featured'})
+            const res = await octokit.request('GET /search/topics', {q: 'ruby+is:featured'})
 
             commit('storeSearchData', res)
-
-
+        },
+        // eslint-disable-next-line no-unused-vars
+        async retrieveAvailableTags({commit}) {
+            // eslint-disable-next-line no-unused-vars
+            const response = await axios.get('/tags')
+            commit('storeAvailableTopics', response.data)
 
         }
 
@@ -58,13 +69,17 @@ export default new Vuex.Store({
     getters: {
         getCluster(state) {
             return state.clusters
-        }
-        ,
+        },
         getLabels(state) {
             return state.labels
         },
         getSearchData(state) {
             return state.searchData
+        },
+        getAvailableTags(state) {
+            if(state.availableTags && state.availableTags.payload)
+                return state.availableTags.payload
+            return null
         }
     }
     ,

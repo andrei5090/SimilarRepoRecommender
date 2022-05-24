@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-row justify="center" class="pt-15">
-      <v-col cols="6">
+      <v-col cols="6" class="text-center">
     <h1>WELCOME TO HIERARCHY VISUALISATION</h1>
       </v-col>
     </v-row>
