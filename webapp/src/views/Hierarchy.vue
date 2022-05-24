@@ -33,7 +33,7 @@
                 <v-col cols="5" class="text-center">
                   <v-btn x-large color="secondary lighten-2" class="text--white" width="25vw" height="25vh" rounded
                          elevation="10"
-                         @click="choice = 1">
+                         @click="choice = 2">
                     <div>
                       <v-row>
                         <v-col cols="12">

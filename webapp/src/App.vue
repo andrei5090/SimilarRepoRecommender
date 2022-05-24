@@ -60,6 +60,12 @@ export default {
           icon: 'mdi-magnify',
           text: 'Search',
           route: '/search',
+        },
+        {
+          id: 'EVALUATION',
+          icon: 'mdi-magnify-scan',
+          text: 'Evaluation',
+          route: '/evaluation',
         }
       ],
     }
