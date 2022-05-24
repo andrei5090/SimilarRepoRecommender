@@ -97,9 +97,10 @@ export default {
       chosenTags: [],
       queryText: '',
       valid: false,
-      queryRules: [(text) => !!text.length < 100 || 'The maximum textual search should have at most 100 characters',
+      queryRules: [(text) => text.length < 100 || 'The maximum textual search should have at most 100 characters',
                    (text) => text.length > 5 || 'The minimum textual information should have at least 5 characters'],
-      tagsRules: null
+      tagsRules: [(tags) => tags.length < 5 || 'The maximum query can have up to 5 tags',
+                  (tags) => tags.length > -1 || 'The minimum query can have at least 1 tag']
 
     }
   },
