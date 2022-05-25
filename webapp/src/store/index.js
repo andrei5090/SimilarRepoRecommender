@@ -5,6 +5,10 @@ import axios from "axios";
 
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 
+const octokit = new Octokit({
+    auth: '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'
+})
+
 
 Vue.use(Vuex)
 
@@ -34,7 +38,7 @@ export default new Vuex.Store({
         storeAvailableTopics(state, data) {
             state.availableTags = data
 
-        }
+        },
     },
     actions: {
         storeCluster({commit}, data) {
@@ -48,19 +52,36 @@ export default new Vuex.Store({
         },
         async testOctokit({commit}) {
 
-            const octokit = new Octokit({
-                auth: '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'
-            })
 
             const res = await octokit.request('GET /search/topics', {q: 'ruby+is:featured'})
 
             commit('storeSearchData', res)
         },
-        // eslint-disable-next-line no-unused-vars
         async retrieveAvailableTags({commit}) {
             // eslint-disable-next-line no-unused-vars
             const response = await axios.get('/tags')
             commit('storeAvailableTopics', response.data)
+
+
+        },
+        async searchTextAndTags({commit}, data) {
+            const method = 'is:featured'
+            let query = ''
+
+            if (data.text && data.text.length > 5)
+                query += data.text
+
+            if (data.tags && data.tags.length > 0)
+                data.tags.forEach((tag) => query += ' ' + method + ' ' + tag)
+
+
+            const res = await octokit.request('GET /search/repositories', {q: query})
+
+            console.log("res", res)
+
+
+            commit('storeSearchData', res)
+
 
         }
 
@@ -77,7 +98,7 @@ export default new Vuex.Store({
             return state.searchData
         },
         getAvailableTags(state) {
-            if(state.availableTags && state.availableTags.payload)
+            if (state.availableTags && state.availableTags.payload)
                 return state.availableTags.payload
             return null
         }

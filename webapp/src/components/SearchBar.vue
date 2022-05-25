@@ -9,17 +9,21 @@
           <v-row justify="space-between" align="center">
 
             <v-col cols="7" class="text-center" align="center">
-              <v-tooltip top class="ma-0 pa-0 align-center justify-center">
+              <div class="pt-7"></div>
+              <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-text-field v-model="queryText" label="Search" prepend-inner-icon="mdi-magnify" outlined
+                  <v-text-field v-model="queryText" label="Search" prepend-icon="mdi-magnify" outlined
                                 v-bind="attrs"
-                                v-on="on" class="align-center" single-line rounded clearable
-                                :rules="queryRules" counter></v-text-field>
+                                v-on="on" class="justify-center" single-line rounded clearable
+                                :rules="queryRules" counter>
+                  </v-text-field>
                 </template>
                 Your Search Query
               </v-tooltip>
             </v-col>
-            <v-col cols="3" class="ma-0 pa-0">
+
+            <v-col cols="4" class="ma-0 pa-0">
+              <div class="pt-7"></div>
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                   <v-autocomplete
@@ -36,8 +40,8 @@
                       single-line
                       rounded
                       prepend-inner-icon="mdi-label"
-                      class="justify-center align-center text-center"
                       :rules="tagsRules"
+                      no-data-text="The available tags could not be loaded from the server."
                   >
 
                     <template v-slot:selection="data">
@@ -54,6 +58,34 @@
                           {{ data.item }}
                         </v-chip>
                       </template>
+                    </template>
+
+
+                    <!--  Suggest Button -->
+                    <template v-slot:append-outer>
+
+                      <v-tooltip top>
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-slide-x-reverse-transition
+                              mode="out-in"
+                          >
+
+                            <div v-bind="attrs"
+                                 v-on="on"
+                                 :key="`icon-${isSuggesting}`">
+                              <v-icon
+
+                                  :color="isSuggesting ? 'success' : 'error'"
+                                  @click="isSuggesting = !isSuggesting"
+                                  v-text="'mdi-graph'"
+                              ></v-icon>
+                            </div>
+                          </v-slide-x-reverse-transition>
+                        </template>
+                        {{
+                          isSuggesting ? 'Do not suggest Tags based on the Hierarchy' : 'Suggest tags based on the Hierarchy'
+                        }}
+                      </v-tooltip>
                     </template>
                   </v-autocomplete>
 
@@ -97,10 +129,11 @@ export default {
       chosenTags: [],
       queryText: '',
       valid: false,
+      isSuggesting: true,
       queryRules: [(text) => text.length < 100 || 'The maximum textual search should have at most 100 characters',
-                   (text) => text.length > 5 || 'The minimum textual information should have at least 5 characters'],
+        (text) => text.length > 5 || 'The minimum textual information should have at least 5 characters'],
       tagsRules: [(tags) => tags.length < 5 || 'The maximum query can have up to 5 tags',
-                  (tags) => tags.length > -1 || 'The minimum query can have at least 1 tag']
+        (tags) => tags.length > -1 || 'The minimum query can have at least 1 tag']
 
     }
   },
@@ -116,6 +149,6 @@ export default {
 
 <style lang="sass" scoped>
 ::v-deep .search-bar
-  border-radius: 15px 50px 50px 15px !important
+  border-radius: 20px 70px 70px 70px !important
 
 </style>
