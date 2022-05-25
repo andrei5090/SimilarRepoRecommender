@@ -15,7 +15,7 @@
                   <v-text-field v-model="queryText" label="Search" prepend-icon="mdi-magnify" outlined
                                 v-bind="attrs"
                                 v-on="on" class="justify-center" single-line rounded clearable
-                                :rules="queryRules" counter>
+                                :rules="queryText.length === 0 ? [() => true] : queryRules" counter>
                   </v-text-field>
                 </template>
                 Your Search Query
@@ -40,7 +40,7 @@
                       single-line
                       rounded
                       prepend-inner-icon="mdi-label"
-                      :rules="tagsRules"
+                      :rules="chosenTags.length === 0 && queryText.length === 0 ? [() => false] : tagsRules"
                       no-data-text="The available tags could not be loaded from the server."
                   >
 
