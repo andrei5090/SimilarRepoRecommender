@@ -23,7 +23,7 @@
     <!--      </v-col>-->
     <!--    </v-row>-->
 
-    <v-card shaped class="mt-5">
+    <v-card shaped class="mt-5" elevation="5" v-if="getSearchData">
       <v-card-title>Test Result</v-card-title>
       <v-card-text>
         <v-list rounded>
