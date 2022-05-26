@@ -25,6 +25,14 @@
 
     <v-card shaped class="mt-5" elevation="5" v-if="getSearchData">
       <v-card-title>Search Results</v-card-title>
+      <v-card-text v-if="searchData.length === 0">
+
+        <v-row align="center" justify="center">
+          <v-col cols="4" class="justify-center text-center">
+            <span class="subtitle-1">No items found based on your search.</span>
+          </v-col>
+        </v-row>
+      </v-card-text>
       <v-card-text>
         <v-list rounded>
           <v-list-item-group>
