@@ -51,7 +51,8 @@
 
       <v-col cols="1" align="right">
         <div class="mt-4"/>
-        <v-btn color="primary" x-large elevation="8" fab :loading="loading">
+        <v-btn color="primary" x-large elevation="8" fab :loading="loading"
+               @click="$emit('compute-hierarchy',{cuts: cuts, method:methodSelection, metric:metricsSelection}); loading = true">
           <v-icon>
             mdi-graph
           </v-icon>
@@ -65,13 +66,15 @@
 <script>
 
 
+import {mapGetters} from "vuex";
+
 export default {
   name: 'HierarchyChooser',
   props: {},
   data() {
     return {
       cuts: 0,
-      minCuts: 0,
+      minCuts: 1,
       maxCuts: 250,
       step: 1,
       methods: ['ward', 'single', 'complete', 'average', 'weighted', 'centroid', 'median'],
@@ -95,14 +98,20 @@ export default {
         p = 2
       let color = colors[p]
       return color
-    }
+    },
+    ...mapGetters(['getComputedHierarchy'])
   },
-  methods: {
-    click(item) {
-      console.log(item)
+  methods: {},
+  watch: {
+    getComputedHierarchy(newValue) {
+
+      if (newValue && newValue.error != null)
+        this.$toast.error(newValue.error, 'Hierarchy Generation Error', {position: "topCenter"});
+
+      this.loading = false
+
     }
-  },
-  watch: {}
+  }
 }
 </script>
 

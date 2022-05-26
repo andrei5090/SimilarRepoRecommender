@@ -79,12 +79,12 @@
               </v-row>
             </div>
             <div v-else-if="choice === 2">
-              <HierarchyChooser/>
+              <HierarchyChooser @compute-hierarchy="retrieveHierarchy"/>
             </div>
           </v-menu-transition>
 
 
-          <v-card-actions class="justify-center" v-if="getCluster">
+          <v-card-actions class="justify-center" v-if="getCluster || getComputedHierarchy">
             <v-btn rounded icon @click="$refs.tree.zoomOut()">
               <v-icon>mdi-magnify-minus</v-icon>
             </v-btn>
@@ -96,7 +96,7 @@
           <v-card-text class="justify-center text-center">
             <v-row justify="center">
               <v-col cols="12">
-                <vue-tree v-if="getCluster"
+                <vue-tree v-if="getCluster || getComputedHierarchy"
                           class="tree justify-center"
                           :dataset="sampleData"
                           :config="treeConfig"
@@ -132,7 +132,7 @@
             </v-row>
           </v-card-text>
 
-          <v-card-actions class="pt-10 justify-center" v-if="getCluster">
+          <v-card-actions class="pt-10 justify-center" v-if="getCluster || getComputedHierarchy">
             <v-row justify="center" align-content="center">
 
               <v-col cols="3" class="text-center">
@@ -227,11 +227,10 @@ export default {
       pom.setAttribute('download', filename);
       pom.click();
     },
-
-    ...mapActions(['storeCluster', 'storeLabels'])
+    ...mapActions(['storeCluster', 'storeLabels', 'retrieveHierarchy'])
   },
   computed: {
-    ...mapGetters(['getCluster', 'getLabels'])
+    ...mapGetters(['getCluster', 'getLabels', 'getComputedHierarchy'])
   },
   created() {
     // this.storeCluster(data)
@@ -256,7 +255,13 @@ export default {
         this.sampleData = this.getCluster
       }
 
+    },
+    getComputedHierarchy(newValue) {
+      if (newValue && newValue.error)
+        return
+      this.sampleData = newValue.payload
     }
+
   }
 }
 </script>

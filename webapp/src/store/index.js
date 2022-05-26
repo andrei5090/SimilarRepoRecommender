@@ -17,7 +17,8 @@ export default new Vuex.Store({
         clusters: null,
         labels: {},
         searchData: null,
-        availableTags: null
+        availableTags: null,
+        computedHierarchy: null
     },
     mutations: {
         addClusters(state, data) {
@@ -37,8 +38,10 @@ export default new Vuex.Store({
         },
         storeAvailableTopics(state, data) {
             state.availableTags = data
-
         },
+        storeComputedHierarchy(state, data) {
+            state.computedHierarchy = data
+        }
     },
     actions: {
         storeCluster({commit}, data) {
@@ -58,11 +61,8 @@ export default new Vuex.Store({
             commit('storeSearchData', res)
         },
         async retrieveAvailableTags({commit}) {
-            // eslint-disable-next-line no-unused-vars
             const response = await axios.get('/tags')
             commit('storeAvailableTopics', response.data)
-
-
         },
         async searchTextAndTags({commit}, data) {
             const method = 'is:featured'
@@ -75,14 +75,19 @@ export default new Vuex.Store({
                 data.tags.forEach((tag) => query += ' ' + method + ' ' + tag)
 
             try {
-            const res = await octokit.request('GET /search/repositories', {q: query})
+                const res = await octokit.request('GET /search/repositories', {q: query})
                 commit('storeSearchData', res)
-            }catch (e) {
-                commit('storeSearchData', {items:[], status: 422})
-
+            } catch (e) {
+                commit('storeSearchData', {items: [], status: 422})
             }
-
-
+        },
+        async retrieveHierarchy({commit}, data) {
+            try {
+                const response = await axios.get('/hierarchy?method=' + data.method + '&metric=' + data.metric + '&cuts=' + data.cuts)
+                commit('storeComputedHierarchy', {error: null, payload: response.data.payload})
+            } catch (e) {
+                commit('storeComputedHierarchy', {error: e.response.data.detail, payload: null})
+            }
         }
 
 
@@ -101,6 +106,9 @@ export default new Vuex.Store({
             if (state.availableTags && state.availableTags.payload)
                 return state.availableTags.payload
             return null
+        },
+        getComputedHierarchy(state) {
+            return state.computedHierarchy
         }
     }
     ,
