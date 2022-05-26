@@ -227,7 +227,7 @@ export default {
       pom.setAttribute('download', filename);
       pom.click();
     },
-    ...mapActions(['storeCluster', 'storeLabels', 'retrieveHierarchy'])
+    ...mapActions(['storeCluster', 'storeLabels', 'retrieveHierarchy', 'resetHierarchy'])
   },
   computed: {
     ...mapGetters(['getCluster', 'getLabels', 'getComputedHierarchy'])
@@ -262,6 +262,9 @@ export default {
       this.sampleData = newValue.payload
     }
 
+  },
+  mounted() {
+    this.resetHierarchy()
   }
 }
 </script>

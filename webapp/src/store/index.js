@@ -41,6 +41,10 @@ export default new Vuex.Store({
         },
         storeComputedHierarchy(state, data) {
             state.computedHierarchy = data
+        },
+        resetHierarchyMutation(state) {
+            state.computedHierarchy = null
+            state.clusters = null
         }
     },
     actions: {
@@ -88,6 +92,9 @@ export default new Vuex.Store({
             } catch (e) {
                 commit('storeComputedHierarchy', {error: e.response.data.detail, payload: null})
             }
+        },
+        resetHierarchy({commit}) {
+            commit('resetHierarchyMutation')
         }
 
 
