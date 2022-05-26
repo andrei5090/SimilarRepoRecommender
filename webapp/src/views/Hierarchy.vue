@@ -78,6 +78,9 @@
                 </v-col>
               </v-row>
             </div>
+            <div v-else-if="choice === 2">
+              <HierarchyChooser/>
+            </div>
           </v-menu-transition>
 
 
@@ -169,10 +172,11 @@
 import ClusterEditor from "../components/ClusterEditor";
 import ClusterRepresentation from "../components/ClusterRepresentation";
 import {mapActions, mapGetters} from "vuex";
+import HierarchyChooser from "../components/HierarchyChooser";
 
 export default {
   name: 'Hierarchy',
-  components: {ClusterRepresentation, ClusterEditor},
+  components: {HierarchyChooser, ClusterRepresentation, ClusterEditor},
   data() {
     return {
       tree: null,

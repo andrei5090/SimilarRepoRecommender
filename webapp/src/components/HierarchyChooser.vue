@@ -1,10 +1,64 @@
 <template>
-  <div class="">
-    <v-card :class="padding ? 'mt-5' : ''" elevation="10" v-for="(cluster,index) in clusters" :key="index">
-      <v-card-text>
-        <v-chip class="ma-1" color="tag" v-for="(el, index) in cluster" :key="index"> {{ filterElement(el) }}</v-chip>
-      </v-card-text>
-    </v-card>
+  <div>
+    <v-row justify="space-around">
+      <v-col cols="3">
+        <v-row>
+          <v-subheader>
+            The minimum number of clusters in the Hierarchy
+          </v-subheader>
+        </v-row>
+        <v-row class="mt-8">
+          <v-slider
+              thumb-label="always"
+              v-model="cuts"
+              :step="step"
+              :min="minCuts"
+              :max="maxCuts"
+              :color="getProgressColor"
+          >
+            <template #prepend>
+              <v-icon :color="getProgressColor">mdi-chart-timeline-variant-shimmer</v-icon>
+            </template>
+          </v-slider>
+        </v-row>
+      </v-col>
+
+      <v-col cols="3">
+        <div class="mt-8"/>
+        <v-select
+            class="text-capitalize"
+            v-model="methodSelection"
+            :items="methods"
+            label="Methods"
+            dense
+            outlined
+        >
+        </v-select>
+      </v-col>
+
+
+      <v-col cols="3">
+        <div class="mt-8"/>
+        <v-select
+            class="text-capitalize"
+            v-model="metricsSelection"
+            :items="metrics"
+            label="Metrics"
+            dense
+            outlined
+        ></v-select>
+      </v-col>
+
+      <v-col cols="1" align="right">
+        <div class="mt-4"/>
+        <v-btn color="primary" x-large elevation="8" fab :loading="loading">
+          <v-icon>
+            mdi-graph
+          </v-icon>
+        </v-btn>
+      </v-col>
+
+    </v-row>
   </div>
 </template>
 
@@ -13,13 +67,42 @@
 
 export default {
   name: 'HierarchyChooser',
-  props: {
-  },
+  props: {},
   data() {
-    return {}
+    return {
+      cuts: 0,
+      minCuts: 0,
+      maxCuts: 250,
+      step: 1,
+      methods: ['ward', 'single', 'complete', 'average', 'weighted', 'centroid', 'median'],
+      metrics: ['euclidean', 'minkowski', 'cityblock', 'seuclidean', 'sqeuclidean',
+        'cosine', 'correlation', 'hamming',
+        'jaccard', 'jensenshannon', 'chebyshev', 'canberra',
+        'braycurtis', 'mahalanobis', 'yule', 'dice', 'kulsinski', 'rogerstanimoto',
+        'russellrao', 'sokalmichener', 'sokalsneath', 'kulczynski1'],
+      methodSelection: 'ward',
+      metricsSelection: 'euclidean',
+      loading: false
+    }
+  },
+  computed: {
+    getProgressColor() {
+      let colors = ['blue', 'yellow darken-2', 'red']
+      let p = 0
+      if (this.cuts > 85)
+        p = 1
+      if (this.cuts > 170)
+        p = 2
+      let color = colors[p]
+      return color
+    }
   },
   methods: {
-  }
+    click(item) {
+      console.log(item)
+    }
+  },
+  watch: {}
 }
 </script>
 
