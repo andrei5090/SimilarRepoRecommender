@@ -98,7 +98,7 @@
             <!--          Search Button    -->
             <v-col cols="1" align="right">
               <v-btn color="primary" x-large elevation="8" fab
-                     @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid">
+                     @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid" :loading="loading">
                 <v-icon>
                   mdi-magnify
                 </v-icon>
@@ -122,6 +122,10 @@ export default {
     items: {
       default: null,
       required: true,
+    },
+    loading: {
+      default: false,
+      required: true
     }
   },
   data() {

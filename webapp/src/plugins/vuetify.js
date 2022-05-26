@@ -9,7 +9,7 @@ export default new Vuetify({
             light: {
                 tag: "#81b4d2",
                 primary: "#6a7fdb",
-                secondary: "#13293d"
+                secondary: "#26547c"
             }
         }
     }

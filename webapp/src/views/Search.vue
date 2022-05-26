@@ -2,7 +2,7 @@
   <v-container>
 
     <v-row>
-      <SearchBar :items="getAvailableTags" @search="search"></SearchBar>
+      <SearchBar :items="getAvailableTags" @search="search" :loading="loading"></SearchBar>
     </v-row>
 
     <!--    <v-row class="ma-5" justify="center" v-if="getAvailableTags">-->
@@ -24,15 +24,18 @@
     <!--    </v-row>-->
 
     <v-card shaped class="mt-5" elevation="5" v-if="getSearchData">
-      <v-card-title>Test Result</v-card-title>
+      <v-card-title>Search Results</v-card-title>
       <v-card-text>
         <v-list rounded>
           <v-list-item-group>
-            <v-list-item v-for="(res,index) in searchData" :key="index" :href="res.html_url" target="_blank">
+            <v-list-item v-for="(res,index) in searchData" :key="index" :href="res.html_url" target="_blank" dense>
               <v-list-item-content>
                 <v-list-item-title>
-                  {{ res.name }}
+                  {{ res.full_name }}
                 </v-list-item-title>
+                <v-list-item-subtitle>
+                  <span class="subtitle-2">{{ res.description }}</span>
+                </v-list-item-subtitle>
                 <v-list-item-subtitle>
                   <v-chip v-for="(tag,index) in res.topics" small color="tag" :key="index" class="ma-1">
                     {{ tag }}
@@ -56,20 +59,42 @@ import SearchBar from "../components/SearchBar";
 export default {
   name: 'Search',
   components: {SearchBar},
+  data() {
+    return {
+      loading: false
+    }
+  },
   methods: {
     ...mapActions(['testOctokit', 'retrieveAvailableTags', 'searchTextAndTags']),
     search(searchQuery) {
+      this.loading = true
       this.searchTextAndTags(searchQuery)
     }
   },
   computed: {
-    ...mapGetters(['getSearchData', 'getAvailableTags']),
+    ...mapGetters(['getSearchData', 'getAvailableTags', 'getSearchData']),
     searchData() {
-      return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items : [] : []
+      try {
+        return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items : [] : []
+      } catch (e) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.loading = false
+        return []
+
+      }
     }
   },
   mounted() {
     this.retrieveAvailableTags()
+  },
+  watch: {
+    getSearchData(newValue) {
+      if (newValue && newValue.status >= 400)
+        this.$toast.error('Your search query is not valid', 'Search Error', {position: "topCenter"});
+
+      this.loading = false
+    }
+
   }
 }
 </script>

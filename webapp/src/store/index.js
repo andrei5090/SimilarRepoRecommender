@@ -74,13 +74,13 @@ export default new Vuex.Store({
             if (data.tags && data.tags.length > 0)
                 data.tags.forEach((tag) => query += ' ' + method + ' ' + tag)
 
-
+            try {
             const res = await octokit.request('GET /search/repositories', {q: query})
+                commit('storeSearchData', res)
+            }catch (e) {
+                commit('storeSearchData', {items:[], status: 422})
 
-            console.log("res", res)
-
-
-            commit('storeSearchData', res)
+            }
 
 
         }
