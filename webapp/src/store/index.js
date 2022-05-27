@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {Octokit} from "octokit";
 import axios from "axios";
+import {getRecommendation} from "../hierarchy/hierarchy";
 
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 
@@ -18,7 +19,8 @@ export default new Vuex.Store({
         labels: {},
         searchData: null,
         availableTags: null,
-        computedHierarchy: null
+        computedHierarchy: null,
+        hierarchyLevels: null
     },
     mutations: {
         addClusters(state, data) {
@@ -95,6 +97,11 @@ export default new Vuex.Store({
         },
         resetHierarchy({commit}) {
             commit('resetHierarchyMutation')
+        },
+        // eslint-disable-next-line no-unused-vars
+        computeHierarchyLevels({commit, state}){
+            console.log(getRecommendation(state.computedHierarchy, []))
+
         }
 
 

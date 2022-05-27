@@ -33,8 +33,8 @@
     <!--                                                                       @click="testOctokit"> TEST </span></v-btn>-->
     <!--      </v-col>-->
     <!--    </v-row>-->
-
-    <v-card shaped class="mt-5" elevation="5" v-if="getSearchData">
+<v-btn @click="computeHierarchyLevels">click</v-btn>
+    <v-card shaped class="search-card mt-7" elevation="5" v-if="getSearchData">
       <v-card-title>Search Results</v-card-title>
       <v-card-text v-if="searchData.length === 0">
 
@@ -86,7 +86,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['testOctokit', 'retrieveAvailableTags', 'searchTextAndTags', 'retrieveHierarchy']),
+    ...mapActions(['testOctokit', 'retrieveAvailableTags', 'searchTextAndTags', 'retrieveHierarchy', 'computeHierarchyLevels']),
     search(searchQuery) {
       this.loading = true
       this.searchTextAndTags(searchQuery)
@@ -123,4 +123,7 @@ export default {
 <style scoped lang="sass">
 ::v-deep .hierarchy-chooser
   border-radius: 30px 70px 70px 30px !important
+
+::v-deep .search-card
+  border-radius: 30px 30px 30px 30px !important
 </style>
