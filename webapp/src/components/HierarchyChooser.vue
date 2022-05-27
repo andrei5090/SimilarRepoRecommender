@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row justify="space-around">
-      <v-col cols="3">
+      <v-col cols="4">
         <v-row>
           <v-subheader>
             The minimum number of clusters in the Hierarchy
@@ -29,7 +29,7 @@
             class="text-capitalize"
             v-model="methodSelection"
             :items="methods"
-            label="Methods"
+            label="Method"
             dense
             outlined
         >
@@ -43,7 +43,7 @@
             class="text-capitalize"
             v-model="metricsSelection"
             :items="metrics"
-            label="Metrics"
+            label="Metric"
             dense
             outlined
         ></v-select>
@@ -51,12 +51,27 @@
 
       <v-col cols="1" align="right">
         <div class="mt-4"/>
-        <v-btn color="primary" x-large elevation="8" fab :loading="loading"
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+        <v-btn :color="getComputedHierarchy && !newData ? 'success' : 'primary'" x-large elevation="8" fab
+               :loading="loading"
+               align="right"
+               v-on="on"
+               v-bind="attrs"
                @click="$emit('compute-hierarchy',{cuts: cuts, method:methodSelection, metric:metricsSelection}); loading = true">
-          <v-icon>
-            mdi-graph
-          </v-icon>
+
+          <v-fade-transition>
+            <v-icon v-if="!getComputedHierarchy || newData">
+              mdi-graph
+            </v-icon>
+            <v-icon v-else>
+              mdi-check-outline
+            </v-icon>
+          </v-fade-transition>
         </v-btn>
+          </template>
+          Generate Hierarchy
+        </v-tooltip>
       </v-col>
 
     </v-row>
@@ -85,7 +100,8 @@ export default {
         'russellrao', 'sokalmichener', 'sokalsneath', 'kulczynski1'],
       methodSelection: 'ward',
       metricsSelection: 'euclidean',
-      loading: false
+      loading: false,
+      newData: false
     }
   },
   computed: {
@@ -107,9 +123,21 @@ export default {
 
       if (newValue && newValue.error != null)
         this.$toast.error(newValue.error, 'Hierarchy Generation Error', {position: "topCenter"});
+      else
+        this.$toast.success('The hierarchy was successfully generated!', 'Hierarchy Info', {position: "topCenter"});
 
+      this.newData = false
       this.loading = false
 
+    },
+    cuts() {
+      this.newData = true
+    },
+    methodSelection() {
+      this.newData = true
+    },
+    metricsSelection() {
+      this.newData = true
     }
   }
 }

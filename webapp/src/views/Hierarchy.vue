@@ -264,6 +264,10 @@ export default {
 
   },
   mounted() {
+    this.displayContentList = []
+    this.tree = null
+    this.labels = null
+    this.sampleData = null
     this.resetHierarchy()
   }
 }

@@ -2,8 +2,19 @@
   <v-container>
 
     <v-row>
-      <SearchBar :items="getAvailableTags" @search="search" :loading="loading"></SearchBar>
+      <SearchBar :items="getAvailableTags" @search="search" :loading="loading"
+                 @toggle-hierarchy-chooser="showHierarchyChooser = !showHierarchyChooser"></SearchBar>
     </v-row>
+
+    <v-fade-transition>
+      <v-row class="mt-5" v-if="showHierarchyChooser">
+        <v-col cols="12">
+          <v-card elevation="5" class="hierarchy-chooser">
+            <HierarchyChooser @compute-hierarchy="retrieveHierarchy"></HierarchyChooser>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-fade-transition>
 
     <!--    <v-row class="ma-5" justify="center" v-if="getAvailableTags">-->
     <!--      <v-col cols="10">-->
@@ -63,17 +74,19 @@
 
 import {mapActions, mapGetters} from "vuex";
 import SearchBar from "../components/SearchBar";
+import HierarchyChooser from "../components/HierarchyChooser";
 
 export default {
   name: 'Search',
-  components: {SearchBar},
+  components: {HierarchyChooser, SearchBar},
   data() {
     return {
-      loading: false
+      loading: false,
+      showHierarchyChooser: false
     }
   },
   methods: {
-    ...mapActions(['testOctokit', 'retrieveAvailableTags', 'searchTextAndTags']),
+    ...mapActions(['testOctokit', 'retrieveAvailableTags', 'searchTextAndTags', 'retrieveHierarchy']),
     search(searchQuery) {
       this.loading = true
       this.searchTextAndTags(searchQuery)
@@ -106,3 +119,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+::v-deep .hierarchy-chooser
+  border-radius: 30px 70px 70px 30px !important
+</style>

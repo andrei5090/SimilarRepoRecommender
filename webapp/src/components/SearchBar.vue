@@ -63,18 +63,15 @@
 
                     <!--  Suggest Button -->
                     <template v-slot:append-outer>
-
                       <v-tooltip top>
                         <template v-slot:activator="{ on, attrs }">
                           <v-slide-x-reverse-transition
                               mode="out-in"
                           >
-
                             <div v-bind="attrs"
                                  v-on="on"
-                                 :key="`icon-${isSuggesting}`">
+                                 :key="`icon-${isSuggesting}`" @click="toggleHierarchy">
                               <v-icon
-
                                   :color="isSuggesting ? 'success' : 'error'"
                                   @click="isSuggesting = !isSuggesting"
                                   v-text="'mdi-graph'"
@@ -98,7 +95,8 @@
             <!--          Search Button    -->
             <v-col cols="1" align="right">
               <v-btn color="primary" x-large elevation="8" fab
-                     @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid" :loading="loading">
+                     @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid"
+                     :loading="loading">
                 <v-icon>
                   mdi-magnify
                 </v-icon>
@@ -133,7 +131,7 @@ export default {
       chosenTags: [],
       queryText: '',
       valid: false,
-      isSuggesting: true,
+      isSuggesting: false,
       queryRules: [(text) => text.length < 100 || 'The maximum textual search should have at most 100 characters',
         (text) => text.length > 0 || 'The minimum textual information should have at least 1 characters'],
       tagsRules: [(tags) => tags.length < 5 || 'The maximum query can have up to 5 tags',
@@ -145,6 +143,11 @@ export default {
     remove(item) {
       const index = this.chosenTags.indexOf(item.item)
       if (index >= 0) this.chosenTags.splice(index, 1)
+    },
+    toggleHierarchy() {
+      this.$emit('toggle-hierarchy-chooser')
+      if (this.isSuggesting)
+        this.$toast.warning('Before getting suggestions, you have to generate a hierarchy based on the selectors below.', 'Search Info', {position: "topCenter"});
     }
   }
 
