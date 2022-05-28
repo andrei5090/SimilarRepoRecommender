@@ -33,7 +33,6 @@
     <!--                                                                       @click="testOctokit"> TEST </span></v-btn>-->
     <!--      </v-col>-->
     <!--    </v-row>-->
-<v-btn @click="computeHierarchyLevels">click</v-btn>
     <v-card shaped class="search-card mt-7" elevation="5" v-if="getSearchData">
       <v-card-title>Search Results</v-card-title>
       <v-card-text v-if="searchData.length === 0">

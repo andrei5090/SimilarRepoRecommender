@@ -20,7 +20,8 @@ export default new Vuex.Store({
         searchData: null,
         availableTags: null,
         computedHierarchy: null,
-        hierarchyLevels: null
+        hierarchyLevels: null,
+        recommendedTags: null
     },
     mutations: {
         addClusters(state, data) {
@@ -47,6 +48,9 @@ export default new Vuex.Store({
         resetHierarchyMutation(state) {
             state.computedHierarchy = null
             state.clusters = null
+        },
+        storeRecommendedTags(state, data) {
+            state.recommendedTags = data
         }
     },
     actions: {
@@ -99,8 +103,8 @@ export default new Vuex.Store({
             commit('resetHierarchyMutation')
         },
         // eslint-disable-next-line no-unused-vars
-        computeHierarchyLevels({commit, state}, data){
-            console.log(getRecommendation(state.computedHierarchy, ['python','vue']))
+        computeRecommendation ({commit, state}, data) {
+            commit('storeRecommendedTags', getRecommendation(state.computedHierarchy, data))
 
         }
 
@@ -123,6 +127,9 @@ export default new Vuex.Store({
         },
         getComputedHierarchy(state) {
             return state.computedHierarchy
+        },
+        getRecommendedTags(state) {
+            return state.recommendedTags
         }
     }
     ,

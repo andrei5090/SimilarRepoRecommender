@@ -31,7 +31,7 @@ function getRecommendation(hierarchy, alreadyPresent) {
 
         result[el] = [...set]
     })
-    
+
     const finalSet = new Set()
 
     for (let i = 0; i < result[alreadyPresent[0]].length; i++) {

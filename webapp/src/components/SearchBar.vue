@@ -32,7 +32,7 @@
                       deletable-chips
                       multiple
                       v-model="chosenTags"
-                      :items="items"
+                      :items="getItems"
                       outlined
                       label="Input Tags"
                       v-bind="attrs"
@@ -114,6 +114,8 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: 'SearchBar',
   props: {
@@ -148,6 +150,18 @@ export default {
       this.$emit('toggle-hierarchy-chooser')
       if (this.isSuggesting)
         this.$toast.warning('Before getting suggestions, you have to generate a hierarchy based on the selectors below.', 'Search Info', {position: "topCenter"});
+    },
+    ...mapActions(['computeRecommendation'])
+  },
+  computed: {
+    ...mapGetters(['getRecommendedTags', 'getComputedHierarchy']),
+    getItems() {
+      if (!this.isSuggesting)
+        return this.items
+      else if (this.getComputedHierarchy) {
+        this.computeRecommendation(this.chosenTags)
+        return this.getRecommendedTags
+      } else return this.items
     }
   }
 
