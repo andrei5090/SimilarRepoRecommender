@@ -99,8 +99,8 @@ export default new Vuex.Store({
             commit('resetHierarchyMutation')
         },
         // eslint-disable-next-line no-unused-vars
-        computeHierarchyLevels({commit, state}){
-            console.log(getRecommendation(state.computedHierarchy, []))
+        computeHierarchyLevels({commit, state}, data){
+            console.log(getRecommendation(state.computedHierarchy, ['python','vue']))
 
         }
 

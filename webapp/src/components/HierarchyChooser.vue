@@ -9,6 +9,7 @@
         </v-row>
         <v-row class="mt-8">
           <v-slider
+              class="ml-5"
               thumb-label="always"
               v-model="cuts"
               :step="step"
@@ -53,22 +54,22 @@
         <div class="mt-4"/>
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
-        <v-btn :color="getComputedHierarchy && !newData ? 'success' : 'primary'" x-large elevation="8" fab
-               :loading="loading"
-               align="right"
-               v-on="on"
-               v-bind="attrs"
-               @click="$emit('compute-hierarchy',{cuts: cuts, method:methodSelection, metric:metricsSelection}); loading = true">
+            <v-btn :color="getComputedHierarchy && !newData ? 'success' : 'primary'" x-large elevation="8" fab
+                   :loading="loading"
+                   align="right"
+                   v-on="on"
+                   v-bind="attrs"
+                   @click="$emit('compute-hierarchy',{cuts: cuts, method:methodSelection, metric:metricsSelection}); loading = true">
 
-          <v-fade-transition>
-            <v-icon v-if="!getComputedHierarchy || newData">
-              mdi-graph
-            </v-icon>
-            <v-icon v-else>
-              mdi-check-outline
-            </v-icon>
-          </v-fade-transition>
-        </v-btn>
+              <v-fade-transition>
+                <v-icon v-if="!getComputedHierarchy || newData">
+                  mdi-graph
+                </v-icon>
+                <v-icon v-else>
+                  mdi-check-outline
+                </v-icon>
+              </v-fade-transition>
+            </v-btn>
           </template>
           Generate Hierarchy
         </v-tooltip>
@@ -90,7 +91,7 @@ export default {
     return {
       cuts: 0,
       minCuts: 1,
-      maxCuts: 250,
+      maxCuts: 525,
       step: 1,
       methods: ['ward', 'single', 'complete', 'average', 'weighted', 'centroid', 'median'],
       metrics: ['euclidean', 'minkowski', 'cityblock', 'seuclidean', 'sqeuclidean',
@@ -108,9 +109,9 @@ export default {
     getProgressColor() {
       let colors = ['blue', 'yellow darken-2', 'red']
       let p = 0
-      if (this.cuts > 85)
+      if (this.cuts > this.maxCuts / 3)
         p = 1
-      if (this.cuts > 170)
+      if (this.cuts > this.maxCuts * 2 / 3)
         p = 2
       let color = colors[p]
       return color
