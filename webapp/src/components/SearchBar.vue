@@ -108,6 +108,17 @@
         </v-card-title>
 
       </v-card>
+
+
+      <v-fade-transition>
+        <v-row class="mt-5" v-if="isSuggesting">
+          <v-col cols="12">
+            <v-card elevation="5" class="hierarchy-chooser">
+              <HierarchyChooser @compute-hierarchy="retrieveHierarchy"></HierarchyChooser>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-fade-transition>
     </v-form>
 
   </v-container>
@@ -115,9 +126,11 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import HierarchyChooser from "./HierarchyChooser";
 
 export default {
   name: 'SearchBar',
+  components: {HierarchyChooser},
   props: {
     items: {
       default: null,
@@ -151,7 +164,7 @@ export default {
       if (this.isSuggesting)
         this.$toast.warning('Before getting suggestions, you have to generate a hierarchy based on the selectors below.', 'Search Info', {position: "topCenter"});
     },
-    ...mapActions(['computeRecommendation', 'retrieveAvailableTags'])
+    ...mapActions(['computeRecommendation', 'retrieveAvailableTags', 'retrieveHierarchy'])
   },
   computed: {
     ...mapGetters(['getRecommendedTags', 'getComputedHierarchy']),

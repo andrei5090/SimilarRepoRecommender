@@ -2,19 +2,8 @@
   <v-container>
 
     <v-row>
-      <SearchBar :items="getAvailableTags" @search="search" :loading="loading"
-                 @toggle-hierarchy-chooser="showHierarchyChooser = !showHierarchyChooser"></SearchBar>
+      <SearchBar :items="getAvailableTags" @search="search" :loading="loading"></SearchBar>
     </v-row>
-
-    <v-fade-transition>
-      <v-row class="mt-5" v-if="showHierarchyChooser">
-        <v-col cols="12">
-          <v-card elevation="5" class="hierarchy-chooser">
-            <HierarchyChooser @compute-hierarchy="retrieveHierarchy"></HierarchyChooser>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-fade-transition>
 
     <!--    <v-row class="ma-5" justify="center" v-if="getAvailableTags">-->
     <!--      <v-col cols="10">-->
@@ -43,16 +32,14 @@
 
 import {mapActions, mapGetters} from "vuex";
 import SearchBar from "../components/SearchBar";
-import HierarchyChooser from "../components/HierarchyChooser";
 import SearchResult from "../components/SearchResult";
 
 export default {
   name: 'Search',
-  components: {SearchResult, HierarchyChooser, SearchBar},
+  components: {SearchResult, SearchBar},
   data() {
     return {
-      loading: false,
-      showHierarchyChooser: false
+      loading: false
     }
   },
   methods: {

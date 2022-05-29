@@ -88,7 +88,8 @@ import {mapGetters} from "vuex";
 
 export default {
   name: 'HierarchyChooser',
-  props: {},
+  props: {
+  },
   data() {
     return {
       cuts: 0,
