@@ -33,39 +33,9 @@
     <!--                                                                       @click="testOctokit"> TEST </span></v-btn>-->
     <!--      </v-col>-->
     <!--    </v-row>-->
-    <v-card shaped class="search-card mt-7" elevation="5" v-if="getSearchData">
-      <v-card-title>Search Results</v-card-title>
-      <v-card-text v-if="searchData.length === 0">
-
-        <v-row align="center" justify="center">
-          <v-col cols="4" class="justify-center text-center">
-            <span class="subtitle-1">No items found based on your search.</span>
-          </v-col>
-        </v-row>
-      </v-card-text>
-      <v-card-text>
-        <v-list rounded>
-          <v-list-item-group>
-            <v-list-item v-for="(res,index) in searchData" :key="index" :href="res.html_url" target="_blank" dense>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ res.full_name }}
-                </v-list-item-title>
-                <v-list-item-subtitle>
-                  <span class="subtitle-2">{{ res.description }}</span>
-                </v-list-item-subtitle>
-                <v-list-item-subtitle>
-                  <v-chip v-for="(tag,index) in res.topics" small color="tag" :key="index" class="ma-1">
-                    {{ tag }}
-                  </v-chip>
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-
-      </v-card-text>
-    </v-card>
+    <v-fade-transition>
+      <SearchResult :search-data="searchData" v-if="getSearchData"/>
+    </v-fade-transition>
   </v-container>
 </template>
 
@@ -74,10 +44,11 @@
 import {mapActions, mapGetters} from "vuex";
 import SearchBar from "../components/SearchBar";
 import HierarchyChooser from "../components/HierarchyChooser";
+import SearchResult from "../components/SearchResult";
 
 export default {
   name: 'Search',
-  components: {HierarchyChooser, SearchBar},
+  components: {SearchResult, HierarchyChooser, SearchBar},
   data() {
     return {
       loading: false,
@@ -103,9 +74,6 @@ export default {
 
       }
     }
-  },
-  mounted() {
-    this.retrieveAvailableTags()
   },
   watch: {
     getSearchData(newValue) {

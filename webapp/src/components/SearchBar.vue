@@ -41,7 +41,7 @@
                       rounded
                       prepend-inner-icon="mdi-label"
                       :rules="chosenTags.length === 0 && queryText.length === 0 ? [() => false] : tagsRules"
-                      no-data-text="The available tags could not be loaded from the server."
+                      no-data-text="There is no match between your search and the available tags."
                   >
 
                     <template v-slot:selection="data">
@@ -151,18 +151,21 @@ export default {
       if (this.isSuggesting)
         this.$toast.warning('Before getting suggestions, you have to generate a hierarchy based on the selectors below.', 'Search Info', {position: "topCenter"});
     },
-    ...mapActions(['computeRecommendation'])
+    ...mapActions(['computeRecommendation', 'retrieveAvailableTags'])
   },
   computed: {
     ...mapGetters(['getRecommendedTags', 'getComputedHierarchy']),
     getItems() {
-      if (!this.isSuggesting)
+      if (!this.isSuggesting || this.chosenTags.length === 0)
         return this.items
       else if (this.getComputedHierarchy) {
         this.computeRecommendation(this.chosenTags)
         return this.getRecommendedTags
       } else return this.items
     }
+  },
+  mounted() {
+    this.retrieveAvailableTags()
   }
 
 }

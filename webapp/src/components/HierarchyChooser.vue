@@ -33,6 +33,7 @@
             label="Method"
             dense
             outlined
+            rounded
         >
         </v-select>
       </v-col>
@@ -47,6 +48,7 @@
             label="Metric"
             dense
             outlined
+            rounded
         ></v-select>
       </v-col>
 
