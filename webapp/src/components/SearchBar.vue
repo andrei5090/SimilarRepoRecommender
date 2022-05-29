@@ -72,15 +72,15 @@
                                  v-on="on"
                                  :key="`icon-${isSuggesting}`" @click="toggleHierarchy">
                               <v-icon
-                                  :color="isSuggesting ? 'success' : 'error'"
-                                  @click="isSuggesting = !isSuggesting"
+                                  :color="isSuggesting || evaluationMode ? 'success' : 'error'"
+                                  @click="!evaluationMode ? isSuggesting = !isSuggesting : ''"
                                   v-text="'mdi-graph'"
                               ></v-icon>
                             </div>
                           </v-slide-x-reverse-transition>
                         </template>
                         {{
-                          isSuggesting ? 'Do not suggest Tags based on the Hierarchy' : 'Suggest tags based on the Hierarchy'
+                          evaluationMode ? 'The Suggestions are turned on!' : isSuggesting ? 'Do not suggest Tags based on the Hierarchy' : 'Suggest tags based on the Hierarchy'
                         }}
                       </v-tooltip>
                     </template>
@@ -110,13 +110,14 @@
       </v-card>
 
 
-      <v-fade-transition>
-        <v-row class="mt-5" v-if="isSuggesting">
+      <v-fab-transition>
+        <v-row class="mt-5" v-show="isSuggesting || evaluationMode">
           <v-col cols="12">
-              <HierarchyChooser @compute-hierarchy="retrieveHierarchy"></HierarchyChooser>
+            <HierarchyChooser @compute-hierarchy="retrieveHierarchy"
+                              :evaluation-mode="evaluationMode"></HierarchyChooser>
           </v-col>
         </v-row>
-      </v-fade-transition>
+      </v-fab-transition>
     </v-form>
 
   </v-container>
@@ -133,6 +134,9 @@ export default {
     loading: {
       default: false,
       required: true
+    },
+    evaluationMode: {
+      default: false
     }
   },
   data() {
@@ -161,7 +165,7 @@ export default {
     ...mapActions(['computeRecommendation', 'retrieveAvailableTags', 'retrieveHierarchy'])
   },
   computed: {
-    ...mapGetters(['getRecommendedTags','getAvailableTags', 'getComputedHierarchy']),
+    ...mapGetters(['getRecommendedTags', 'getAvailableTags', 'getComputedHierarchy']),
     getItems() {
       if (!this.isSuggesting || this.chosenTags.length === 0)
         return this.getAvailableTags
@@ -173,6 +177,8 @@ export default {
   },
   mounted() {
     this.retrieveAvailableTags()
+    if (this.evaluationMode)
+      this.isSuggesting = true
   }
 
 }

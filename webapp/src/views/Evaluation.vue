@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <SearchBar />
+        <SearchBar :evaluation-mode="true" :loading="false"/>
       </v-col>
     </v-row>
   </div>

@@ -1,84 +1,84 @@
 <template>
   <div>
-    <v-card elevation="5" class="hierarchy-chooser">
-    <v-row justify="space-around">
-      <v-col cols="4">
-        <v-row>
-          <v-subheader>
-            The minimum number of clusters in the Hierarchy
-          </v-subheader>
-        </v-row>
-        <v-row class="mt-8">
-          <v-slider
-              class="ml-5"
-              thumb-label="always"
-              v-model="cuts"
-              :step="step"
-              :min="minCuts"
-              :max="maxCuts"
-              :color="getProgressColor"
+    <v-card elevation="5" class="hierarchy-chooser" :disabled="evaluationMode">
+      <v-row justify="space-around">
+        <v-col cols="4">
+          <v-row>
+            <v-subheader>
+              The minimum number of clusters in the Hierarchy
+            </v-subheader>
+          </v-row>
+          <v-row class="mt-8">
+            <v-slider
+                class="ml-5"
+                thumb-label="always"
+                v-model="cuts"
+                :step="step"
+                :min="minCuts"
+                :max="maxCuts"
+                :color="getProgressColor"
+            >
+              <template #prepend>
+                <v-icon :color="getProgressColor">mdi-chart-timeline-variant-shimmer</v-icon>
+              </template>
+            </v-slider>
+          </v-row>
+        </v-col>
+
+        <v-col cols="3">
+          <div class="mt-8"/>
+          <v-select
+              class="text-capitalize"
+              v-model="methodSelection"
+              :items="methods"
+              label="Method"
+              dense
+              outlined
+              rounded
           >
-            <template #prepend>
-              <v-icon :color="getProgressColor">mdi-chart-timeline-variant-shimmer</v-icon>
+          </v-select>
+        </v-col>
+
+
+        <v-col cols="3">
+          <div class="mt-8"/>
+          <v-select
+              class="text-capitalize"
+              v-model="metricsSelection"
+              :items="metrics"
+              label="Metric"
+              dense
+              outlined
+              rounded
+          ></v-select>
+        </v-col>
+
+        <v-col cols="1" align="right">
+          <div class="mt-4"/>
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn :color="getComputedHierarchy && !newData ? 'success' : 'primary'" x-large elevation="8" fab
+                     :loading="loading"
+                     align="right"
+                     v-on="on"
+                     v-bind="attrs"
+                     @click="startHierarchyGeneration()">
+
+                <v-fade-transition>
+                  <v-icon v-if="!getComputedHierarchy || newData">
+                    mdi-graph
+                  </v-icon>
+                  <v-icon v-else>
+                    mdi-check-outline
+                  </v-icon>
+                </v-fade-transition>
+              </v-btn>
             </template>
-          </v-slider>
-        </v-row>
-      </v-col>
+            Generate Hierarchy
+          </v-tooltip>
+        </v-col>
 
-      <v-col cols="3">
-        <div class="mt-8"/>
-        <v-select
-            class="text-capitalize"
-            v-model="methodSelection"
-            :items="methods"
-            label="Method"
-            dense
-            outlined
-            rounded
-        >
-        </v-select>
-      </v-col>
-
-
-      <v-col cols="3">
-        <div class="mt-8"/>
-        <v-select
-            class="text-capitalize"
-            v-model="metricsSelection"
-            :items="metrics"
-            label="Metric"
-            dense
-            outlined
-            rounded
-        ></v-select>
-      </v-col>
-
-      <v-col cols="1" align="right">
-        <div class="mt-4"/>
-        <v-tooltip top>
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn :color="getComputedHierarchy && !newData ? 'success' : 'primary'" x-large elevation="8" fab
-                   :loading="loading"
-                   align="right"
-                   v-on="on"
-                   v-bind="attrs"
-                   @click="$emit('compute-hierarchy',{cuts: cuts, method:methodSelection, metric:metricsSelection}); loading = true">
-
-              <v-fade-transition>
-                <v-icon v-if="!getComputedHierarchy || newData">
-                  mdi-graph
-                </v-icon>
-                <v-icon v-else>
-                  mdi-check-outline
-                </v-icon>
-              </v-fade-transition>
-            </v-btn>
-          </template>
-          Generate Hierarchy
-        </v-tooltip>
-      </v-col>
-
-    </v-row>
+      </v-row>
     </v-card>
   </div>
 </template>
@@ -91,6 +91,9 @@ import {mapGetters} from "vuex";
 export default {
   name: 'HierarchyChooser',
   props: {
+    evaluationMode: {
+      default: false
+    }
   },
   data() {
     return {
@@ -123,7 +126,12 @@ export default {
     },
     ...mapGetters(['getComputedHierarchy'])
   },
-  methods: {},
+  methods: {
+    startHierarchyGeneration() {
+      this.$emit('compute-hierarchy', {cuts: this.cuts, method: this.methodSelection, metric: this.metricsSelection})
+      this.loading = true
+    }
+  },
   watch: {
     getComputedHierarchy(newValue) {
 
@@ -144,6 +152,14 @@ export default {
     },
     metricsSelection() {
       this.newData = true
+    }
+  },
+  mounted() {
+    if (this.evaluationMode) {
+      this.$toast.warning('Wait for the hierarchy to be generated before getting tag suggestions!', 'Hierarchy Info', {position: "topCenter"});
+      this.cuts = this.maxCuts
+      this.loading = true
+      this.startHierarchyGeneration()
     }
   }
 }
