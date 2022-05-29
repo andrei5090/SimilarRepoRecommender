@@ -1,22 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 function dfsHierarchy(hierarchy, alreadyPresent, res) {
 
-    if (hierarchy.children){
+    if (hierarchy.children) {
         hierarchy.children.forEach(el => {
-            dfsHierarchy(el, alreadyPresent, res)})}
+            dfsHierarchy(el, alreadyPresent, res)
+        })
+    }
 
 
     alreadyPresent.forEach(el => {
-            if (Array.isArray(hierarchy.content) && hierarchy.content.includes(el)){
+            if (Array.isArray(hierarchy.content) && hierarchy.content.includes(el)) {
                 res.push(hierarchy.content)
             }
         }
     )
-
-
-
-
-
 }
 
 function getRecommendation(hierarchy, alreadyPresent) {
@@ -35,10 +32,9 @@ function getRecommendation(hierarchy, alreadyPresent) {
     const finalSet = new Set()
 
     for (let i = 0; i < result[alreadyPresent[0]].length; i++) {
-        for(let j = 0; j< Object.keys(result).length; j++)
-        finalSet.add(result[alreadyPresent[j]][i])
+        for (let j = 0; j < Object.keys(result).length; j++)
+            finalSet.add(result[alreadyPresent[j]][i])
     }
-
 
 
     return [...finalSet]

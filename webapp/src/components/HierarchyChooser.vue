@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-card elevation="5" class="hierarchy-chooser">
     <v-row justify="space-around">
       <v-col cols="4">
         <v-row>
@@ -78,6 +79,7 @@
       </v-col>
 
     </v-row>
+    </v-card>
   </div>
 </template>
 
@@ -148,4 +150,6 @@ export default {
 </script>
 
 <style scoped lang="sass">
+::v-deep .hierarchy-chooser
+  border-radius: 30px 70px 70px 30px !important
 </style>

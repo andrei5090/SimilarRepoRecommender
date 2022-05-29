@@ -113,9 +113,7 @@
       <v-fade-transition>
         <v-row class="mt-5" v-if="isSuggesting">
           <v-col cols="12">
-            <v-card elevation="5" class="hierarchy-chooser">
               <HierarchyChooser @compute-hierarchy="retrieveHierarchy"></HierarchyChooser>
-            </v-card>
           </v-col>
         </v-row>
       </v-fade-transition>
@@ -132,10 +130,6 @@ export default {
   name: 'SearchBar',
   components: {HierarchyChooser},
   props: {
-    items: {
-      default: null,
-      required: true,
-    },
     loading: {
       default: false,
       required: true
@@ -167,14 +161,14 @@ export default {
     ...mapActions(['computeRecommendation', 'retrieveAvailableTags', 'retrieveHierarchy'])
   },
   computed: {
-    ...mapGetters(['getRecommendedTags', 'getComputedHierarchy']),
+    ...mapGetters(['getRecommendedTags','getAvailableTags', 'getComputedHierarchy']),
     getItems() {
       if (!this.isSuggesting || this.chosenTags.length === 0)
-        return this.items
+        return this.getAvailableTags
       else if (this.getComputedHierarchy) {
         this.computeRecommendation(this.chosenTags)
         return this.getRecommendedTags
-      } else return this.items
+      } else return this.getAvailableTags
     }
   },
   mounted() {

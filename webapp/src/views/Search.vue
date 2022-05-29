@@ -2,7 +2,7 @@
   <v-container>
 
     <v-row>
-      <SearchBar :items="getAvailableTags" @search="search" :loading="loading"></SearchBar>
+      <SearchBar @search="search" :loading="loading"></SearchBar>
     </v-row>
 
     <!--    <v-row class="ma-5" justify="center" v-if="getAvailableTags">-->
@@ -22,9 +22,11 @@
     <!--                                                                       @click="testOctokit"> TEST </span></v-btn>-->
     <!--      </v-col>-->
     <!--    </v-row>-->
+    <v-row>
     <v-fade-transition>
       <SearchResult :search-data="searchData" v-if="getSearchData"/>
     </v-fade-transition>
+    </v-row>
   </v-container>
 </template>
 
@@ -43,14 +45,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['testOctokit', 'retrieveAvailableTags', 'searchTextAndTags', 'retrieveHierarchy', 'computeHierarchyLevels']),
+    ...mapActions(['testOctokit', 'searchTextAndTags', 'retrieveHierarchy', 'computeHierarchyLevels']),
     search(searchQuery) {
       this.loading = true
       this.searchTextAndTags(searchQuery)
     }
   },
   computed: {
-    ...mapGetters(['getSearchData', 'getAvailableTags', 'getSearchData']),
+    ...mapGetters(['getSearchData', 'getSearchData']),
     searchData() {
       try {
         return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items : [] : []
@@ -75,9 +77,6 @@ export default {
 </script>
 
 <style scoped lang="sass">
-::v-deep .hierarchy-chooser
-  border-radius: 30px 70px 70px 30px !important
-
 ::v-deep .search-card
   border-radius: 30px 30px 30px 30px !important
 </style>
