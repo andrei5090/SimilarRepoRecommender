@@ -144,6 +144,7 @@ export default {
     },
     cuts() {
       this.newData = true
+      this.$emit('cuts-changed', this.cuts)
     },
     methodSelection() {
       this.newData = true

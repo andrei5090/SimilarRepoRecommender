@@ -79,7 +79,7 @@
               </v-row>
             </div>
             <div v-else-if="choice === 2">
-              <HierarchyChooser @compute-hierarchy="retrieveHierarchy"/>
+              <HierarchyChooser @compute-hierarchy="retrieveHierarchy" @cuts-changed="updateCuts"/>
             </div>
           </v-menu-transition>
 
@@ -96,7 +96,7 @@
           <v-card-text class="justify-center text-center">
             <v-row justify="center">
               <v-col cols="12">
-                <vue-tree v-if="getCluster || getComputedHierarchy" :key="getCluster ? getCluster.uniqueId : 0"
+                <vue-tree v-if="getCluster || getComputedHierarchy" :key="cuts"
                           class="tree justify-center"
                           :dataset="sampleData"
                           :config="treeConfig"
@@ -184,6 +184,7 @@ export default {
       sampleData: null,
       treeConfig: {nodeWidth: 200, nodeHeight: 50, levelHeight: 150},
       colours: this.getColourPalette(),
+      cuts: 0,
       displayContentList: [],
       hoverData: {
         arr: [],
@@ -196,6 +197,10 @@ export default {
   methods: {
     getRandomColor() {
       return '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
+    },
+    updateCuts(cuts) {
+      this.cuts = cuts
+      this.sampleData = {}
     },
     getColourPalette() {
       let dict = {}
