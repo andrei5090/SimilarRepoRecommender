@@ -161,7 +161,7 @@ export default {
     },
     toggleHierarchy() {
       this.$emit('toggle-hierarchy-chooser')
-      if (this.isSuggesting)
+      if (this.isSuggesting && !this.evaluationMode)
         this.$toast.warning('Before getting suggestions, you have to generate a hierarchy based on the selectors below.', 'Search Info', {position: "topCenter"});
     },
     ...mapActions(['computeRecommendation', 'retrieveAvailableTags', 'retrieveHierarchy', 'resetSearch'])
