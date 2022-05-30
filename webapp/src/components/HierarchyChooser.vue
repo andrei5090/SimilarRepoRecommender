@@ -8,7 +8,7 @@
               The minimum number of clusters in the Hierarchy
             </v-subheader>
           </v-row>
-          <v-row class="mt-8">
+          <v-row class="mt-4">
             <v-slider
                 class="ml-5"
                 thumb-label="always"
