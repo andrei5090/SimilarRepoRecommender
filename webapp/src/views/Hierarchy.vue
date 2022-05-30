@@ -95,7 +95,7 @@
 
           <v-card-text class="justify-center text-center">
             <v-row justify="center">
-              <v-col cols="12">
+              <v-col cols="12" v-if="sampleData">
                 <vue-tree v-if="getCluster || getComputedHierarchy" :key="cuts"
                           class="tree justify-center"
                           :dataset="sampleData"
@@ -200,7 +200,7 @@ export default {
     },
     updateCuts(cuts) {
       this.cuts = cuts
-      this.sampleData = {}
+      this.sampleData = null
     },
     getColourPalette() {
       let dict = {}
