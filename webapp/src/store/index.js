@@ -106,9 +106,10 @@ export default new Vuex.Store({
         computeRecommendation ({commit, state}, data) {
             commit('storeRecommendedTags', getRecommendation(state.computedHierarchy, data))
 
+        },
+        resetSearch({commit}){
+            commit('storeSearchData', null)
         }
-
-
     },
     getters: {
         getCluster(state) {

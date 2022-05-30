@@ -8,11 +8,11 @@
 
     <v-row justify="space-around">
       <v-col cols="5" class="ma-2">
-        <SearchResult :search-data="searchData" v-if="searchData"/>
+        <SearchResult :search-data="searchData" v-if="searchData" search-title="Search Results 1"/>
       </v-col>
 
       <v-col cols="5" class="ma-2">
-        <SearchResult :search-data="searchData" v-if="searchData"/>
+        <SearchResult :search-data="searchData" v-if="searchData" search-title="Search Results 2"/>
       </v-col>
     </v-row>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card shaped class="search-card mt-7" elevation="5" v-if="searchData">
-      <v-card-title>Search Results</v-card-title>
+      <v-card-title>{{ searchTitle }}</v-card-title>
       <v-card-text v-if="searchData.length === 0">
 
         <v-row align="center" justify="center">
@@ -45,7 +45,12 @@ export default {
       required: true,
       default: () => {
         return []
-      }
+      },
+    },
+    searchTitle: {
+      type: String,
+      required: false,
+      default: "Search Results"
     }
   },
   data() {

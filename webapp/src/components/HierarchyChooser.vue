@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card elevation="5" class="hierarchy-chooser" :disabled="evaluationMode">
+
       <v-row justify="space-around">
         <v-col cols="4">
           <v-row>
@@ -77,9 +77,7 @@
             Generate Hierarchy
           </v-tooltip>
         </v-col>
-
       </v-row>
-    </v-card>
   </div>
 </template>
 
@@ -166,6 +164,4 @@ export default {
 </script>
 
 <style scoped lang="sass">
-::v-deep .hierarchy-chooser
-  border-radius: 30px 70px 70px 30px !important
 </style>

@@ -109,15 +109,17 @@
 
       </v-card>
 
+      <v-card elevation="5" class="hierarchy-chooser" :disabled="evaluationMode">
+        <v-fab-transition>
+          <v-row class="mt-5" v-show="isSuggesting || evaluationMode">
+            <v-col cols="12">
+              <HierarchyChooser @compute-hierarchy="retrieveHierarchy"
+                                :evaluation-mode="evaluationMode"></HierarchyChooser>
+            </v-col>
+          </v-row>
+        </v-fab-transition>
 
-      <v-fab-transition>
-        <v-row class="mt-5" v-show="isSuggesting || evaluationMode">
-          <v-col cols="12">
-            <HierarchyChooser @compute-hierarchy="retrieveHierarchy"
-                              :evaluation-mode="evaluationMode"></HierarchyChooser>
-          </v-col>
-        </v-row>
-      </v-fab-transition>
+      </v-card>
     </v-form>
 
   </v-container>
@@ -162,7 +164,7 @@ export default {
       if (this.isSuggesting)
         this.$toast.warning('Before getting suggestions, you have to generate a hierarchy based on the selectors below.', 'Search Info', {position: "topCenter"});
     },
-    ...mapActions(['computeRecommendation', 'retrieveAvailableTags', 'retrieveHierarchy'])
+    ...mapActions(['computeRecommendation', 'retrieveAvailableTags', 'retrieveHierarchy', 'resetSearch'])
   },
   computed: {
     ...mapGetters(['getRecommendedTags', 'getAvailableTags', 'getComputedHierarchy']),
@@ -176,6 +178,7 @@ export default {
     }
   },
   mounted() {
+    this.resetSearch()
     this.retrieveAvailableTags()
     if (this.evaluationMode)
       this.isSuggesting = true
@@ -187,5 +190,8 @@ export default {
 <style lang="sass" scoped>
 ::v-deep .search-bar
   border-radius: 20px 70px 70px 70px !important
+
+::v-deep .hierarchy-chooser
+  border-radius: 30px 70px 70px 30px !important
 
 </style>
