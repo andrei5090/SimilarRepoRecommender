@@ -96,7 +96,7 @@
           <v-card-text class="justify-center text-center">
             <v-row justify="center">
               <v-col cols="12">
-                <vue-tree v-if="getCluster || getComputedHierarchy"
+                <vue-tree v-if="getCluster || getComputedHierarchy" :key="getCluster ? getCluster.uniqueId : 0"
                           class="tree justify-center"
                           :dataset="sampleData"
                           :config="treeConfig"

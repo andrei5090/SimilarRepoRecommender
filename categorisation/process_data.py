@@ -126,7 +126,7 @@ while i < len(ivl):
 #    size = len(elements)
 #    print('\n Cluster {}: N = {}  {}'.format(i+1, size, elements))
 
-plt.figure(figsize=(120, 15), dpi=72)
+plt.figure(figsize=(40, 15), dpi=144)
 plt.title("Hierarchical Clustering Dendrogram")
 plot_dendrogram(clustering_fit_res, truncate_mode="level", show_contracted=True, p=DEND_LVL, count_sort=False,
                 get_leaves=True, labels=left_array_unique)

@@ -22,10 +22,12 @@
     <!--                                                                       @click="testOctokit"> TEST </span></v-btn>-->
     <!--      </v-col>-->
     <!--    </v-row>-->
-    <v-row>
-    <v-fade-transition>
-      <SearchResult :search-data="searchData" v-if="getSearchData"/>
-    </v-fade-transition>
+    <v-row justify="space-around">
+      <v-col cols="12">
+        <v-fade-transition>
+          <SearchResult :search-data="searchData" v-if="getSearchData"/>
+        </v-fade-transition>
+      </v-col>
     </v-row>
   </v-container>
 </template>
