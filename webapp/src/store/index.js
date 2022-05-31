@@ -6,9 +6,7 @@ import {getRecommendation} from "../hierarchy/hierarchy";
 
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 
-const octokit = new Octokit({
-    auth: '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'
-})
+const octokit = new Octokit({})
 
 
 Vue.use(Vuex)

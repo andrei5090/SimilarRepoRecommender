@@ -3,111 +3,115 @@
   <v-container>
     <v-form v-model="valid">
 
-      <v-card elevation="5" class="search-bar">
-        <v-card-title>
+      <v-row>
+        <v-col cols="12">
+          <v-card elevation="5" class="search-bar">
+            <v-card-title>
 
-          <v-row justify="space-between" align="center">
+              <v-row justify="space-between" align="center">
 
-            <v-col cols="7" class="text-center" align="center">
-              <div class="pt-7"></div>
-              <v-tooltip top>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field v-model="queryText" label="Search" prepend-icon="mdi-magnify" outlined
-                                v-bind="attrs"
-                                v-on="on" class="justify-center" single-line rounded clearable
-                                :rules="queryText.length === 0 ? [() => true] : queryRules" counter>
-                  </v-text-field>
-                </template>
-                Your Search Query
-              </v-tooltip>
-            </v-col>
-
-            <v-col cols="4" class="ma-0 pa-0">
-              <div class="pt-7"></div>
-              <v-tooltip top>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-autocomplete
-                      auto-select-first
-                      clearable
-                      deletable-chips
-                      multiple
-                      v-model="chosenTags"
-                      :items="getItems"
-                      outlined
-                      label="Input Tags"
-                      v-bind="attrs"
-                      v-on="on"
-                      single-line
-                      rounded
-                      prepend-inner-icon="mdi-label"
-                      :rules="chosenTags.length === 0 && queryText.length === 0 ? [() => false] : tagsRules"
-                      no-data-text="There is no match between your search and the available tags."
-                  >
-
-                    <template v-slot:selection="data">
-                      <v-chip color="tag" close
-                              @click:close="remove(data)">
-                        {{ data.item }}
-                      </v-chip>
+                <v-col cols="7" class="text-center" align="center">
+                  <div class="pt-7"></div>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field v-model="queryText" label="Search" prepend-icon="mdi-magnify" outlined
+                                    v-bind="attrs"
+                                    v-on="on" class="justify-center" single-line rounded clearable
+                                    :rules="queryText.length === 0 ? [() => true] : queryRules" counter>
+                      </v-text-field>
                     </template>
+                    Your Search Query
+                  </v-tooltip>
+                </v-col>
 
+                <v-col cols="4" class="ma-0 pa-0">
+                  <div class="pt-7"></div>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-autocomplete
+                          auto-select-first
+                          clearable
+                          deletable-chips
+                          multiple
+                          v-model="chosenTags"
+                          :items="getItems"
+                          outlined
+                          label="Input Tags"
+                          v-bind="attrs"
+                          v-on="on"
+                          single-line
+                          rounded
+                          prepend-inner-icon="mdi-label"
+                          :rules="chosenTags.length === 0 && queryText.length === 0 ? [() => false] : tagsRules"
+                          no-data-text="There is no match between your search and the available tags."
+                      >
 
-                    <template v-slot:item="data">
-                      <template v-if="typeof data.item !== 'object'">
-                        <v-chip color="tag">
-                          {{ data.item }}
-                        </v-chip>
-                      </template>
-                    </template>
-
-
-                    <!--  Suggest Button -->
-                    <template v-slot:append-outer>
-                      <v-tooltip top>
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-slide-x-reverse-transition
-                              mode="out-in"
-                          >
-                            <div v-bind="attrs"
-                                 v-on="on"
-                                 :key="`icon-${isSuggesting}`" @click="toggleHierarchy">
-                              <v-icon
-                                  :color="isSuggesting || evaluationMode ? 'success' : 'error'"
-                                  @click="!evaluationMode ? isSuggesting = !isSuggesting : ''"
-                                  v-text="'mdi-graph'"
-                              ></v-icon>
-                            </div>
-                          </v-slide-x-reverse-transition>
+                        <template v-slot:selection="data">
+                          <v-chip color="tag" close
+                                  @click:close="remove(data)">
+                            {{ data.item }}
+                          </v-chip>
                         </template>
-                        {{
-                          evaluationMode ? 'The Suggestions are turned on!' : isSuggesting ? 'Do not suggest Tags based on the Hierarchy' : 'Suggest tags based on the Hierarchy'
-                        }}
-                      </v-tooltip>
+
+
+                        <template v-slot:item="data">
+                          <template v-if="typeof data.item !== 'object'">
+                            <v-chip color="tag">
+                              {{ data.item }}
+                            </v-chip>
+                          </template>
+                        </template>
+
+
+                        <!--  Suggest Button -->
+                        <template v-slot:append-outer>
+                          <v-tooltip top>
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-slide-x-reverse-transition
+                                  mode="out-in"
+                              >
+                                <div v-bind="attrs"
+                                     v-on="on"
+                                     :key="`icon-${isSuggesting}`" @click="toggleHierarchy">
+                                  <v-icon
+                                      :color="isSuggesting || evaluationMode ? 'success' : 'error'"
+                                      @click="!evaluationMode ? isSuggesting = !isSuggesting : ''"
+                                      v-text="'mdi-graph'"
+                                  ></v-icon>
+                                </div>
+                              </v-slide-x-reverse-transition>
+                            </template>
+                            {{
+                              evaluationMode ? 'The Suggestions are turned on!' : isSuggesting ? 'Do not suggest Tags based on the Hierarchy' : 'Suggest tags based on the Hierarchy'
+                            }}
+                          </v-tooltip>
+                        </template>
+                      </v-autocomplete>
+
                     </template>
-                  </v-autocomplete>
+                    The tags/topics you are interested with
+                  </v-tooltip>
 
-                </template>
-                The tags/topics you are interested with
-              </v-tooltip>
+                </v-col>
 
-            </v-col>
+                <!--          Search Button    -->
+                <v-col cols="1" align="right">
+                  <v-btn color="primary" x-large elevation="8" fab
+                         @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid"
+                         :loading="loading">
+                    <v-icon>
+                      mdi-magnify
+                    </v-icon>
+                  </v-btn>
+                </v-col>
 
-            <!--          Search Button    -->
-            <v-col cols="1" align="right">
-              <v-btn color="primary" x-large elevation="8" fab
-                     @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid"
-                     :loading="loading">
-                <v-icon>
-                  mdi-magnify
-                </v-icon>
-              </v-btn>
-            </v-col>
+              </v-row>
 
-          </v-row>
+            </v-card-title>
 
-        </v-card-title>
-
-      </v-card>
+          </v-card>
+        </v-col>
+      </v-row>
 
       <v-card elevation="5" class="hierarchy-chooser" :disabled="evaluationMode">
         <v-fab-transition>
