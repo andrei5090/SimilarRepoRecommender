@@ -1,0 +1,588 @@
+
+ 
+ 
+LVL 130 MERGED IN 60
+Cluster (id: 1) ['nlp', 'ai'] with size 2 was merged in 
+Cluster (id :1) ['ai', 'nlp', 'opencv', 'image-processing', 'computer-vision'] with size 5
+
+Cluster (id: 3) ['algorithm'] with size 1 was merged in 
+Cluster (id :3) ['algorithm', 'neural-network', 'deep-learning', 'machine-learning', 'tensorflow'] with size 5
+
+Cluster (id: 5) ['angular', 'vue'] with size 2 was merged in 
+Cluster (id :5) ['angular', 'redux', 'vue', 'graphql', 'webpack'] with size 5
+
+Cluster (id: 6) ['vagrant', 'ansible'] with size 2 was merged in 
+Cluster (id :6) ['terraform', 'jenkins', 'ansible', 'ubuntu', 'vagrant'] with size 5
+
+Cluster (id: 7) ['javascript', 'framework', 'api'] with size 3 was merged in 
+Cluster (id :7) ['javascript', 'framework', 'api', 'docker', 'server'] with size 5
+
+Cluster (id: 8) ['archlinux', 'fish'] with size 2 was merged in 
+Cluster (id :8) ['neo', 'neovim', 'archlinux', 'package-manager', 'homebrew', 'zsh', 'fish'] with size 7
+
+Cluster (id: 9) ['arduino'] with size 1 was merged in 
+Cluster (id :9) ['arduino', 'raspberry-pi'] with size 2
+
+Cluster (id: 10) ['atom'] with size 1 was merged in 
+Cluster (id :10) ['terminal', 'atom', 'vim'] with size 3
+
+Cluster (id: 12) ['kubernetes', 'aws'] with size 2 was merged in 
+Cluster (id :12) ['kubernetes', 'aws', 'azure'] with size 3
+
+Cluster (id: 13) ['azure'] with size 1 was merged in 
+Cluster (id :12) ['kubernetes', 'aws', 'azure'] with size 3
+
+Cluster (id: 14) ['eslint', 'pwa', 'babel'] with size 3 was merged in 
+Cluster (id :13) ['sass', 'babel', 'gulp', 'eslint', 'pwa'] with size 5
+
+Cluster (id: 16) ['bioinformatics', 'molecule', 'scikit-learn'] with size 3 was merged in 
+Cluster (id :15) ['julia', 'jupyter-notebook', 'robotics', 'scikit-learn', 'bioinformatics', 'matlab', 'molecule'] with size 7
+
+Cluster (id: 17) ['bitcoin', 'cryptocurrency'] with size 2 was merged in 
+Cluster (id :16) ['bitcoin', 'blockchain', 'ethereum', 'cryptocurrency'] with size 4
+
+Cluster (id: 18) ['ethereum', 'blockchain'] with size 2 was merged in 
+Cluster (id :16) ['bitcoin', 'blockchain', 'ethereum', 'cryptocurrency'] with size 4
+
+Cluster (id: 19) ['bootstrap'] with size 1 was merged in 
+Cluster (id :17) ['jquery', 'bootstrap', 'cms'] with size 3
+
+Cluster (id: 20) ['bot'] with size 1 was merged in 
+Cluster (id :18) ['bot', 'security'] with size 2
+
+Cluster (id: 21) ['cpp', 'c'] with size 2 was merged in 
+Cluster (id :19) ['cpp', 'rust', 'c'] with size 3
+
+Cluster (id: 24) ['cli'] with size 1 was merged in 
+Cluster (id :22) ['git', 'cli', 'ruby', 'php'] with size 4
+
+Cluster (id: 25) ['clojure'] with size 1 was merged in 
+Cluster (id :23) ['r', 'scala', 'elixir', 'haskell', 'clojure'] with size 5
+
+Cluster (id: 27) ['cms'] with size 1 was merged in 
+Cluster (id :17) ['jquery', 'bootstrap', 'cms'] with size 3
+
+Cluster (id: 28) ['compiler'] with size 1 was merged in 
+Cluster (id :25) ['crystal', 'fsharp', 'data-structures', 'nim', 'ocaml', 'lisp', 'compiler'] with size 7
+
+Cluster (id: 29) ['symfony', 'composer'] with size 2 was merged in 
+Cluster (id :26) ['rails', 'nginx', 'laravel', 'wordpress', 'symfony', 'composer'] with size 6
+
+Cluster (id: 30) ['opencv', 'image-processing', 'computer-vision'] with size 3 was merged in 
+Cluster (id :1) ['ai', 'nlp', 'opencv', 'image-processing', 'computer-vision'] with size 5
+
+Cluster (id: 31) ['crystal', 'nim'] with size 2 was merged in 
+Cluster (id :25) ['crystal', 'fsharp', 'data-structures', 'nim', 'ocaml', 'lisp', 'compiler'] with size 7
+
+Cluster (id: 33) ['html', 'css'] with size 2 was merged in 
+Cluster (id :28) ['react', 'css', 'typescript', 'nodejs', 'html'] with size 5
+
+Cluster (id: 34) ['csv'] with size 1 was merged in 
+Cluster (id :29) ['xml', 'csv', 'sqlite'] with size 3
+
+Cluster (id: 36) ['data-structures'] with size 1 was merged in 
+Cluster (id :25) ['crystal', 'fsharp', 'data-structures', 'nim', 'ocaml', 'lisp', 'compiler'] with size 7
+
+Cluster (id: 37) ['data-visualization'] with size 1 was merged in 
+Cluster (id :31) ['data-visualization', 'threejs', 'virtual-reality'] with size 3
+
+Cluster (id: 38) ['database', 'sql'] with size 2 was merged in 
+Cluster (id :32) ['mysql', 'redis', 'database', 'sql', 'postgresql', 'http'] with size 6
+
+Cluster (id: 39) ['deep-learning', 'neural-network', 'tensorflow'] with size 3 was merged in 
+Cluster (id :3) ['algorithm', 'neural-network', 'deep-learning', 'machine-learning', 'tensorflow'] with size 5
+
+Cluster (id: 40) ['discord', 'telegram'] with size 2 was merged in 
+Cluster (id :33) ['discord', 'twitter', 'telegram'] with size 3
+
+Cluster (id: 42) ['server', 'docker'] with size 2 was merged in 
+Cluster (id :7) ['javascript', 'framework', 'api', 'docker', 'server'] with size 5
+
+Cluster (id: 43) ['documentation'] with size 1 was merged in 
+Cluster (id :35) ['testing', 'documentation'] with size 2
+
+Cluster (id: 44) ['electron'] with size 1 was merged in 
+Cluster (id :36) ['electron', 'npm', 'es6'] with size 3
+
+Cluster (id: 45) ['elixir', 'scala'] with size 2 was merged in 
+Cluster (id :23) ['r', 'scala', 'elixir', 'haskell', 'clojure'] with size 5
+
+Cluster (id: 46) ['emacs'] with size 1 was merged in 
+Cluster (id :37) ['sublime-text', 'emacs', 'latex', 'visual-studio-code'] with size 4
+
+Cluster (id: 47) ['jekyll', 'ember', 'less'] with size 3 was merged in 
+Cluster (id :38) ['jekyll', 'gatsby', 'less', 'nuxt', 'ember', 'styled-components'] with size 6
+
+Cluster (id: 48) ['github-api', 'twitch', 'emoji'] with size 3 was merged in 
+Cluster (id :39) ['twitch', 'github-api', 'google-cloud', 'hackathon', 'localization', 'emoji'] with size 6
+
+Cluster (id: 49) ['llvm', 'operating-system', 'emulator'] with size 3 was merged in 
+Cluster (id :40) ['game-engine', 'opengl', 'llvm', 'operating-system', 'emulator', 'minecraft'] with size 6
+
+Cluster (id: 50) ['es6'] with size 1 was merged in 
+Cluster (id :36) ['electron', 'npm', 'es6'] with size 3
+
+Cluster (id: 51) ['express'] with size 1 was merged in 
+Cluster (id :41) ['rest-api', 'express', 'mongodb', 'jwt'] with size 4
+
+Cluster (id: 52) ['firebase'] with size 1 was merged in 
+Cluster (id :42) ['firebase', 'frontend'] with size 2
+
+Cluster (id: 53) ['webextension', 'firefox-extension'] with size 2 was merged in 
+Cluster (id :43) ['nativescript', 'web-components', 'webextension', 'tailwind', 'phaser', 'storybook', 'svelte', 'firefox-extension'] with size 8
+
+Cluster (id: 54) ['font'] with size 1 was merged in 
+Cluster (id :44) ['font', 'material-design'] with size 2
+
+Cluster (id: 55) ['phpunit', 'racket', 'fortran', 'purescript'] with size 4 was merged in 
+Cluster (id :45) ['racket', 'fortran', 'unreal-engine', 'godot', 'haxe', 'home-assistant', 'homebridge', 'purescript', 'phpunit', 'javafx'] with size 10
+
+Cluster (id: 56) ['frontend'] with size 1 was merged in 
+Cluster (id :42) ['firebase', 'frontend'] with size 2
+
+Cluster (id: 57) ['lisp', 'fsharp', 'ocaml'] with size 3 was merged in 
+Cluster (id :25) ['crystal', 'fsharp', 'data-structures', 'nim', 'ocaml', 'lisp', 'compiler'] with size 7
+
+Cluster (id: 58) ['opengl', 'game-engine'] with size 2 was merged in 
+Cluster (id :40) ['game-engine', 'opengl', 'llvm', 'operating-system', 'emulator', 'minecraft'] with size 6
+
+Cluster (id: 59) ['styled-components', 'nuxt', 'gatsby'] with size 3 was merged in 
+Cluster (id :38) ['jekyll', 'gatsby', 'less', 'nuxt', 'ember', 'styled-components'] with size 6
+
+Cluster (id: 60) ['git'] with size 1 was merged in 
+Cluster (id :22) ['git', 'cli', 'ruby', 'php'] with size 4
+
+Cluster (id: 61) ['github'] with size 1 was merged in 
+Cluster (id :46) ['github', 'markdown'] with size 2
+
+Cluster (id: 62) ['go', 'java'] with size 2 was merged in 
+Cluster (id :47) ['python', 'library', 'go', 'java'] with size 4
+
+Cluster (id: 63) ['unreal-engine', 'godot', 'haxe', 'home-assistant', 'homebridge'] with size 5 was merged in 
+Cluster (id :45) ['racket', 'fortran', 'unreal-engine', 'godot', 'haxe', 'home-assistant', 'homebridge', 'purescript', 'phpunit', 'javafx'] with size 10
+
+Cluster (id: 64) ['google'] with size 1 was merged in 
+Cluster (id :48) ['json', 'google'] with size 2
+
+Cluster (id: 65) ['google-cloud'] with size 1 was merged in 
+Cluster (id :39) ['twitch', 'github-api', 'google-cloud', 'hackathon', 'localization', 'emoji'] with size 6
+
+Cluster (id: 67) ['graphql'] with size 1 was merged in 
+Cluster (id :5) ['angular', 'redux', 'vue', 'graphql', 'webpack'] with size 5
+
+Cluster (id: 68) ['gulp', 'sass'] with size 2 was merged in 
+Cluster (id :13) ['sass', 'babel', 'gulp', 'eslint', 'pwa'] with size 5
+
+Cluster (id: 69) ['hackathon'] with size 1 was merged in 
+Cluster (id :39) ['twitch', 'github-api', 'google-cloud', 'hackathon', 'localization', 'emoji'] with size 6
+
+Cluster (id: 70) ['hacktoberfest'] with size 1 was merged in 
+Cluster (id :50) ['serverless', 'hacktoberfest', 'monitoring'] with size 3
+
+Cluster (id: 71) ['haskell'] with size 1 was merged in 
+Cluster (id :23) ['r', 'scala', 'elixir', 'haskell', 'clojure'] with size 5
+
+Cluster (id: 72) ['neo', 'neovim', 'zsh', 'homebrew'] with size 4 was merged in 
+Cluster (id :8) ['neo', 'neovim', 'archlinux', 'package-manager', 'homebrew', 'zsh', 'fish'] with size 7
+
+Cluster (id: 73) ['http'] with size 1 was merged in 
+Cluster (id :32) ['mysql', 'redis', 'database', 'sql', 'postgresql', 'http'] with size 6
+
+Cluster (id: 75) ['javafx'] with size 1 was merged in 
+Cluster (id :45) ['racket', 'fortran', 'unreal-engine', 'godot', 'haxe', 'home-assistant', 'homebridge', 'purescript', 'phpunit', 'javafx'] with size 10
+
+Cluster (id: 76) ['terraform', 'jenkins'] with size 2 was merged in 
+Cluster (id :6) ['terraform', 'jenkins', 'ansible', 'ubuntu', 'vagrant'] with size 5
+
+Cluster (id: 77) ['jquery'] with size 1 was merged in 
+Cluster (id :17) ['jquery', 'bootstrap', 'cms'] with size 3
+
+Cluster (id: 78) ['json'] with size 1 was merged in 
+Cluster (id :48) ['json', 'google'] with size 2
+
+Cluster (id: 79) ['matlab', 'julia'] with size 2 was merged in 
+Cluster (id :15) ['julia', 'jupyter-notebook', 'robotics', 'scikit-learn', 'bioinformatics', 'matlab', 'molecule'] with size 7
+
+Cluster (id: 80) ['jupyter-notebook'] with size 1 was merged in 
+Cluster (id :15) ['julia', 'jupyter-notebook', 'robotics', 'scikit-learn', 'bioinformatics', 'matlab', 'molecule'] with size 7
+
+Cluster (id: 81) ['mongodb', 'jwt'] with size 2 was merged in 
+Cluster (id :41) ['rest-api', 'express', 'mongodb', 'jwt'] with size 4
+
+Cluster (id: 83) ['kotlin'] with size 1 was merged in 
+Cluster (id :53) ['kotlin', 'swift'] with size 2
+
+Cluster (id: 84) ['laravel', 'wordpress'] with size 2 was merged in 
+Cluster (id :26) ['rails', 'nginx', 'laravel', 'wordpress', 'symfony', 'composer'] with size 6
+
+Cluster (id: 85) ['latex'] with size 1 was merged in 
+Cluster (id :37) ['sublime-text', 'emacs', 'latex', 'visual-studio-code'] with size 4
+
+Cluster (id: 86) ['python', 'library'] with size 2 was merged in 
+Cluster (id :47) ['python', 'library', 'go', 'java'] with size 4
+
+Cluster (id: 88) ['localization'] with size 1 was merged in 
+Cluster (id :39) ['twitch', 'github-api', 'google-cloud', 'hackathon', 'localization', 'emoji'] with size 6
+
+Cluster (id: 89) ['lua'] with size 1 was merged in 
+Cluster (id :55) ['lua', 'objective-c', 'qt'] with size 3
+
+Cluster (id: 90) ['machine-learning'] with size 1 was merged in 
+Cluster (id :3) ['algorithm', 'neural-network', 'deep-learning', 'machine-learning', 'tensorflow'] with size 5
+
+Cluster (id: 91) ['markdown'] with size 1 was merged in 
+Cluster (id :46) ['github', 'markdown'] with size 2
+
+Cluster (id: 92) ['material-design'] with size 1 was merged in 
+Cluster (id :44) ['font', 'material-design'] with size 2
+
+Cluster (id: 93) ['minecraft'] with size 1 was merged in 
+Cluster (id :40) ['game-engine', 'opengl', 'llvm', 'operating-system', 'emulator', 'minecraft'] with size 6
+
+Cluster (id: 94) ['mobile'] with size 1 was merged in 
+Cluster (id :56) ['mobile', 'react-native'] with size 2
+
+Cluster (id: 95) ['monitoring'] with size 1 was merged in 
+Cluster (id :50) ['serverless', 'hacktoberfest', 'monitoring'] with size 3
+
+Cluster (id: 96) ['mysql', 'postgresql', 'redis'] with size 3 was merged in 
+Cluster (id :32) ['mysql', 'redis', 'database', 'sql', 'postgresql', 'http'] with size 6
+
+Cluster (id: 97) ['nativescript', 'web-components', 'phaser', 'storybook', 'svelte', 'tailwind'] with size 6 was merged in 
+Cluster (id :43) ['nativescript', 'web-components', 'webextension', 'tailwind', 'phaser', 'storybook', 'svelte', 'firefox-extension'] with size 8
+
+Cluster (id: 98) ['nginx'] with size 1 was merged in 
+Cluster (id :26) ['rails', 'nginx', 'laravel', 'wordpress', 'symfony', 'composer'] with size 6
+
+Cluster (id: 99) ['nodejs', 'react'] with size 2 was merged in 
+Cluster (id :28) ['react', 'css', 'typescript', 'nodejs', 'html'] with size 5
+
+Cluster (id: 100) ['npm'] with size 1 was merged in 
+Cluster (id :36) ['electron', 'npm', 'es6'] with size 3
+
+Cluster (id: 102) ['objective-c'] with size 1 was merged in 
+Cluster (id :55) ['lua', 'objective-c', 'qt'] with size 3
+
+Cluster (id: 103) ['package-manager'] with size 1 was merged in 
+Cluster (id :8) ['neo', 'neovim', 'archlinux', 'package-manager', 'homebrew', 'zsh', 'fish'] with size 7
+
+Cluster (id: 104) ['powershell', 'perl'] with size 2 was merged in 
+Cluster (id :58) ['yaml', 'powershell', 'perl'] with size 3
+
+Cluster (id: 105) ['ruby', 'php'] with size 2 was merged in 
+Cluster (id :22) ['git', 'cli', 'ruby', 'php'] with size 4
+
+Cluster (id: 106) ['qt'] with size 1 was merged in 
+Cluster (id :55) ['lua', 'objective-c', 'qt'] with size 3
+
+Cluster (id: 107) ['r'] with size 1 was merged in 
+Cluster (id :23) ['r', 'scala', 'elixir', 'haskell', 'clojure'] with size 5
+
+Cluster (id: 108) ['rails'] with size 1 was merged in 
+Cluster (id :26) ['rails', 'nginx', 'laravel', 'wordpress', 'symfony', 'composer'] with size 6
+
+Cluster (id: 109) ['raspberry-pi'] with size 1 was merged in 
+Cluster (id :9) ['arduino', 'raspberry-pi'] with size 2
+
+Cluster (id: 110) ['react-native'] with size 1 was merged in 
+Cluster (id :56) ['mobile', 'react-native'] with size 2
+
+Cluster (id: 111) ['webpack', 'redux'] with size 2 was merged in 
+Cluster (id :5) ['angular', 'redux', 'vue', 'graphql', 'webpack'] with size 5
+
+Cluster (id: 112) ['rest-api'] with size 1 was merged in 
+Cluster (id :41) ['rest-api', 'express', 'mongodb', 'jwt'] with size 4
+
+Cluster (id: 113) ['robotics'] with size 1 was merged in 
+Cluster (id :15) ['julia', 'jupyter-notebook', 'robotics', 'scikit-learn', 'bioinformatics', 'matlab', 'molecule'] with size 7
+
+Cluster (id: 114) ['rust'] with size 1 was merged in 
+Cluster (id :19) ['cpp', 'rust', 'c'] with size 3
+
+Cluster (id: 115) ['security'] with size 1 was merged in 
+Cluster (id :18) ['bot', 'security'] with size 2
+
+Cluster (id: 116) ['serverless'] with size 1 was merged in 
+Cluster (id :50) ['serverless', 'hacktoberfest', 'monitoring'] with size 3
+
+Cluster (id: 118) ['sqlite'] with size 1 was merged in 
+Cluster (id :29) ['xml', 'csv', 'sqlite'] with size 3
+
+Cluster (id: 119) ['sublime-text', 'visual-studio-code'] with size 2 was merged in 
+Cluster (id :37) ['sublime-text', 'emacs', 'latex', 'visual-studio-code'] with size 4
+
+Cluster (id: 120) ['swift'] with size 1 was merged in 
+Cluster (id :53) ['kotlin', 'swift'] with size 2
+
+Cluster (id: 121) ['terminal'] with size 1 was merged in 
+Cluster (id :10) ['terminal', 'atom', 'vim'] with size 3
+
+Cluster (id: 122) ['testing'] with size 1 was merged in 
+Cluster (id :35) ['testing', 'documentation'] with size 2
+
+Cluster (id: 123) ['threejs', 'virtual-reality'] with size 2 was merged in 
+Cluster (id :31) ['data-visualization', 'threejs', 'virtual-reality'] with size 3
+
+Cluster (id: 124) ['twitter'] with size 1 was merged in 
+Cluster (id :33) ['discord', 'twitter', 'telegram'] with size 3
+
+Cluster (id: 125) ['typescript'] with size 1 was merged in 
+Cluster (id :28) ['react', 'css', 'typescript', 'nodejs', 'html'] with size 5
+
+Cluster (id: 126) ['ubuntu'] with size 1 was merged in 
+Cluster (id :6) ['terraform', 'jenkins', 'ansible', 'ubuntu', 'vagrant'] with size 5
+
+Cluster (id: 127) ['vim'] with size 1 was merged in 
+Cluster (id :10) ['terminal', 'atom', 'vim'] with size 3
+
+Cluster (id: 128) ['xml'] with size 1 was merged in 
+Cluster (id :29) ['xml', 'csv', 'sqlite'] with size 3
+
+Cluster (id: 129) ['yaml'] with size 1 was merged in 
+Cluster (id :58) ['yaml', 'powershell', 'perl'] with size 3
+
+
+ 
+ 
+
+ 
+ 
+LVL 60 MERGED IN 20
+Cluster (id: 0) ['3d', 'unity'] with size 2 was merged in 
+Cluster (id :0) ['3d', 'ai', 'qt', 'raspberry-pi', 'nlp', 'arduino', 'unity', 'objective-c', 'opencv', 'lua', 'image-processing', 'computer-vision'] with size 12
+
+Cluster (id: 1) ['ai', 'nlp', 'opencv', 'image-processing', 'computer-vision'] with size 5 was merged in 
+Cluster (id :0) ['3d', 'ai', 'qt', 'raspberry-pi', 'nlp', 'arduino', 'unity', 'objective-c', 'opencv', 'lua', 'image-processing', 'computer-vision'] with size 12
+
+Cluster (id: 2) ['yii', 'ajax'] with size 2 was merged in 
+Cluster (id :1) ['nativescript', 'ajax', 'nestjs', 'nuxt', 'phaser', 'ember', 'storybook', 'styled-components', 'svelte', 'tailwind', 'firefox-extension', 'gatsby', 'web-components', 'webextension', 'yii', 'jekyll', 'koa', 'less', 'mongoose'] with size 19
+
+Cluster (id: 4) ['android', 'ios'] with size 2 was merged in 
+Cluster (id :3) ['android', 'react-native', 'awesome', 'mobile', 'ios'] with size 5
+
+Cluster (id: 5) ['angular', 'redux', 'vue', 'graphql', 'webpack'] with size 5 was merged in 
+Cluster (id :4) ['jquery', 'frontend', 'angular', 'jwt', 'redux', 'rest-api', 'npm', 'vue', 'electron', 'graphql', 'webpack', 'bootstrap', 'es6', 'express', 'firebase', 'cms', 'mongodb'] with size 17
+
+Cluster (id: 7) ['javascript', 'framework', 'api', 'docker', 'server'] with size 5 was merged in 
+Cluster (id :6) ['api', 'nodejs', 'bot', 'php', 'cli', 'python', 'css', 'react', 'ruby', 'docker', 'security', 'server', 'framework', 'typescript', 'git', 'go', 'google', 'html', 'java', 'javascript', 'json', 'library'] with size 22
+
+Cluster (id: 8) ['neo', 'neovim', 'archlinux', 'package-manager', 'homebrew', 'zsh', 'fish'] with size 7 was merged in 
+Cluster (id :7) ['neo', 'neovim', 'archlinux', 'latex', 'visual-studio-code', 'emacs', 'package-manager', 'homebrew', 'sublime-text', 'zsh', 'fish'] with size 11
+
+Cluster (id: 9) ['arduino', 'raspberry-pi'] with size 2 was merged in 
+Cluster (id :0) ['3d', 'ai', 'qt', 'raspberry-pi', 'nlp', 'arduino', 'unity', 'objective-c', 'opencv', 'lua', 'image-processing', 'computer-vision'] with size 12
+
+Cluster (id: 10) ['terminal', 'atom', 'vim'] with size 3 was merged in 
+Cluster (id :8) ['terminal', 'testing', 'github', 'atom', 'vim', 'documentation', 'bash', 'shell', 'markdown'] with size 9
+
+Cluster (id: 11) ['awesome'] with size 1 was merged in 
+Cluster (id :3) ['android', 'react-native', 'awesome', 'mobile', 'ios'] with size 5
+
+Cluster (id: 12) ['kubernetes', 'aws', 'azure'] with size 3 was merged in 
+Cluster (id :9) ['kubernetes', 'aws', 'azure', 'django', 'serverless', 'hacktoberfest', 'monitoring', 'flask'] with size 8
+
+Cluster (id: 13) ['sass', 'babel', 'gulp', 'eslint', 'pwa'] with size 5 was merged in 
+Cluster (id :10) ['font', 'sass', 'babel', 'gulp', 'material-design', 'eslint', 'pwa'] with size 7
+
+Cluster (id: 14) ['shell', 'bash'] with size 2 was merged in 
+Cluster (id :8) ['terminal', 'testing', 'github', 'atom', 'vim', 'documentation', 'bash', 'shell', 'markdown'] with size 9
+
+Cluster (id: 15) ['julia', 'jupyter-notebook', 'robotics', 'scikit-learn', 'bioinformatics', 'matlab', 'molecule'] with size 7 was merged in 
+Cluster (id :11) ['racket', 'fortran', 'julia', 'jupyter-notebook', 'robotics', 'unreal-engine', 'godot', 'scikit-learn', 'bioinformatics', 'molecule', 'purescript', 'haxe', 'home-assistant', 'homebridge', 'matlab', 'phpunit', 'javafx'] with size 17
+
+Cluster (id: 16) ['bitcoin', 'blockchain', 'ethereum', 'cryptocurrency'] with size 4 was merged in 
+Cluster (id :12) ['r', 'cryptocurrency', 'twitter', 'discord', 'scala', 'bitcoin', 'blockchain', 'elixir', 'haskell', 'ethereum', 'clojure', 'telegram'] with size 12
+
+Cluster (id: 17) ['jquery', 'bootstrap', 'cms'] with size 3 was merged in 
+Cluster (id :4) ['jquery', 'frontend', 'angular', 'jwt', 'redux', 'rest-api', 'npm', 'vue', 'electron', 'graphql', 'webpack', 'bootstrap', 'es6', 'express', 'firebase', 'cms', 'mongodb'] with size 17
+
+Cluster (id: 18) ['bot', 'security'] with size 2 was merged in 
+Cluster (id :6) ['api', 'nodejs', 'bot', 'php', 'cli', 'python', 'css', 'react', 'ruby', 'docker', 'security', 'server', 'framework', 'typescript', 'git', 'go', 'google', 'html', 'java', 'javascript', 'json', 'library'] with size 22
+
+Cluster (id: 19) ['cpp', 'rust', 'c'] with size 3 was merged in 
+Cluster (id :13) ['cpp', 'csharp', 'kotlin', 'rust', 'dotnet', 'linux', 'windows', 'c', 'macos', 'swift'] with size 10
+
+Cluster (id: 20) ['nosql', 'cassandra'] with size 2 was merged in 
+Cluster (id :14) ['flutter', 'csv', 'dart', 'nosql', 'perl', 'cassandra', 'sqlite', 'xml', 'yaml', 'powershell'] with size 10
+
+Cluster (id: 21) ['chrome-extension', 'firefox', 'chrome'] with size 3 was merged in 
+Cluster (id :15) ['p2p', 'chrome', 'chrome-extension', 'privacy', 'clojurescript', 'data-visualization', 'elm', 'sketch', 'emoji', 'firefox', 'threejs', 'twitch', 'github-api', 'virtual-reality', 'google-cloud', 'hackathon', 'xcode', 'ipfs', 'localization'] with size 19
+
+Cluster (id: 22) ['git', 'cli', 'ruby', 'php'] with size 4 was merged in 
+Cluster (id :6) ['api', 'nodejs', 'bot', 'php', 'cli', 'python', 'css', 'react', 'ruby', 'docker', 'security', 'server', 'framework', 'typescript', 'git', 'go', 'google', 'html', 'java', 'javascript', 'json', 'library'] with size 22
+
+Cluster (id: 23) ['r', 'scala', 'elixir', 'haskell', 'clojure'] with size 5 was merged in 
+Cluster (id :12) ['r', 'cryptocurrency', 'twitter', 'discord', 'scala', 'bitcoin', 'blockchain', 'elixir', 'haskell', 'ethereum', 'clojure', 'telegram'] with size 12
+
+Cluster (id: 24) ['elm', 'clojurescript'] with size 2 was merged in 
+Cluster (id :15) ['p2p', 'chrome', 'chrome-extension', 'privacy', 'clojurescript', 'data-visualization', 'elm', 'sketch', 'emoji', 'firefox', 'threejs', 'twitch', 'github-api', 'virtual-reality', 'google-cloud', 'hackathon', 'xcode', 'ipfs', 'localization'] with size 19
+
+Cluster (id: 25) ['crystal', 'fsharp', 'data-structures', 'nim', 'ocaml', 'lisp', 'compiler'] with size 7 was merged in 
+Cluster (id :16) ['crystal', 'fsharp', 'game-engine', 'data-structures', 'nim', 'ocaml', 'lisp', 'llvm', 'opengl', 'operating-system', 'emulator', 'minecraft', 'compiler'] with size 13
+
+Cluster (id: 26) ['rails', 'nginx', 'laravel', 'wordpress', 'symfony', 'composer'] with size 6 was merged in 
+Cluster (id :17) ['rails', 'nginx', 'laravel', 'gradle', 'spring-boot', 'wordpress', 'maven', 'symfony', 'composer'] with size 9
+
+Cluster (id: 27) ['csharp', 'dotnet'] with size 2 was merged in 
+Cluster (id :13) ['cpp', 'csharp', 'kotlin', 'rust', 'dotnet', 'linux', 'windows', 'c', 'macos', 'swift'] with size 10
+
+Cluster (id: 28) ['react', 'css', 'typescript', 'nodejs', 'html'] with size 5 was merged in 
+Cluster (id :6) ['api', 'nodejs', 'bot', 'php', 'cli', 'python', 'css', 'react', 'ruby', 'docker', 'security', 'server', 'framework', 'typescript', 'git', 'go', 'google', 'html', 'java', 'javascript', 'json', 'library'] with size 22
+
+Cluster (id: 29) ['xml', 'csv', 'sqlite'] with size 3 was merged in 
+Cluster (id :14) ['flutter', 'csv', 'dart', 'nosql', 'perl', 'cassandra', 'sqlite', 'xml', 'yaml', 'powershell'] with size 10
+
+Cluster (id: 30) ['flutter', 'dart'] with size 2 was merged in 
+Cluster (id :14) ['flutter', 'csv', 'dart', 'nosql', 'perl', 'cassandra', 'sqlite', 'xml', 'yaml', 'powershell'] with size 10
+
+Cluster (id: 31) ['data-visualization', 'threejs', 'virtual-reality'] with size 3 was merged in 
+Cluster (id :15) ['p2p', 'chrome', 'chrome-extension', 'privacy', 'clojurescript', 'data-visualization', 'elm', 'sketch', 'emoji', 'firefox', 'threejs', 'twitch', 'github-api', 'virtual-reality', 'google-cloud', 'hackathon', 'xcode', 'ipfs', 'localization'] with size 19
+
+Cluster (id: 33) ['discord', 'twitter', 'telegram'] with size 3 was merged in 
+Cluster (id :12) ['r', 'cryptocurrency', 'twitter', 'discord', 'scala', 'bitcoin', 'blockchain', 'elixir', 'haskell', 'ethereum', 'clojure', 'telegram'] with size 12
+
+Cluster (id: 34) ['django', 'flask'] with size 2 was merged in 
+Cluster (id :9) ['kubernetes', 'aws', 'azure', 'django', 'serverless', 'hacktoberfest', 'monitoring', 'flask'] with size 8
+
+Cluster (id: 35) ['testing', 'documentation'] with size 2 was merged in 
+Cluster (id :8) ['terminal', 'testing', 'github', 'atom', 'vim', 'documentation', 'bash', 'shell', 'markdown'] with size 9
+
+Cluster (id: 36) ['electron', 'npm', 'es6'] with size 3 was merged in 
+Cluster (id :4) ['jquery', 'frontend', 'angular', 'jwt', 'redux', 'rest-api', 'npm', 'vue', 'electron', 'graphql', 'webpack', 'bootstrap', 'es6', 'express', 'firebase', 'cms', 'mongodb'] with size 17
+
+Cluster (id: 37) ['sublime-text', 'emacs', 'latex', 'visual-studio-code'] with size 4 was merged in 
+Cluster (id :7) ['neo', 'neovim', 'archlinux', 'latex', 'visual-studio-code', 'emacs', 'package-manager', 'homebrew', 'sublime-text', 'zsh', 'fish'] with size 11
+
+Cluster (id: 38) ['jekyll', 'gatsby', 'less', 'nuxt', 'ember', 'styled-components'] with size 6 was merged in 
+Cluster (id :1) ['nativescript', 'ajax', 'nestjs', 'nuxt', 'phaser', 'ember', 'storybook', 'styled-components', 'svelte', 'tailwind', 'firefox-extension', 'gatsby', 'web-components', 'webextension', 'yii', 'jekyll', 'koa', 'less', 'mongoose'] with size 19
+
+Cluster (id: 39) ['twitch', 'github-api', 'google-cloud', 'hackathon', 'localization', 'emoji'] with size 6 was merged in 
+Cluster (id :15) ['p2p', 'chrome', 'chrome-extension', 'privacy', 'clojurescript', 'data-visualization', 'elm', 'sketch', 'emoji', 'firefox', 'threejs', 'twitch', 'github-api', 'virtual-reality', 'google-cloud', 'hackathon', 'xcode', 'ipfs', 'localization'] with size 19
+
+Cluster (id: 40) ['game-engine', 'opengl', 'llvm', 'operating-system', 'emulator', 'minecraft'] with size 6 was merged in 
+Cluster (id :16) ['crystal', 'fsharp', 'game-engine', 'data-structures', 'nim', 'ocaml', 'lisp', 'llvm', 'opengl', 'operating-system', 'emulator', 'minecraft', 'compiler'] with size 13
+
+Cluster (id: 41) ['rest-api', 'express', 'mongodb', 'jwt'] with size 4 was merged in 
+Cluster (id :4) ['jquery', 'frontend', 'angular', 'jwt', 'redux', 'rest-api', 'npm', 'vue', 'electron', 'graphql', 'webpack', 'bootstrap', 'es6', 'express', 'firebase', 'cms', 'mongodb'] with size 17
+
+Cluster (id: 42) ['firebase', 'frontend'] with size 2 was merged in 
+Cluster (id :4) ['jquery', 'frontend', 'angular', 'jwt', 'redux', 'rest-api', 'npm', 'vue', 'electron', 'graphql', 'webpack', 'bootstrap', 'es6', 'express', 'firebase', 'cms', 'mongodb'] with size 17
+
+Cluster (id: 43) ['nativescript', 'web-components', 'webextension', 'tailwind', 'phaser', 'storybook', 'svelte', 'firefox-extension'] with size 8 was merged in 
+Cluster (id :1) ['nativescript', 'ajax', 'nestjs', 'nuxt', 'phaser', 'ember', 'storybook', 'styled-components', 'svelte', 'tailwind', 'firefox-extension', 'gatsby', 'web-components', 'webextension', 'yii', 'jekyll', 'koa', 'less', 'mongoose'] with size 19
+
+Cluster (id: 44) ['font', 'material-design'] with size 2 was merged in 
+Cluster (id :10) ['font', 'sass', 'babel', 'gulp', 'material-design', 'eslint', 'pwa'] with size 7
+
+Cluster (id: 45) ['racket', 'fortran', 'unreal-engine', 'godot', 'haxe', 'home-assistant', 'homebridge', 'purescript', 'phpunit', 'javafx'] with size 10 was merged in 
+Cluster (id :11) ['racket', 'fortran', 'julia', 'jupyter-notebook', 'robotics', 'unreal-engine', 'godot', 'scikit-learn', 'bioinformatics', 'molecule', 'purescript', 'haxe', 'home-assistant', 'homebridge', 'matlab', 'phpunit', 'javafx'] with size 17
+
+Cluster (id: 46) ['github', 'markdown'] with size 2 was merged in 
+Cluster (id :8) ['terminal', 'testing', 'github', 'atom', 'vim', 'documentation', 'bash', 'shell', 'markdown'] with size 9
+
+Cluster (id: 47) ['python', 'library', 'go', 'java'] with size 4 was merged in 
+Cluster (id :6) ['api', 'nodejs', 'bot', 'php', 'cli', 'python', 'css', 'react', 'ruby', 'docker', 'security', 'server', 'framework', 'typescript', 'git', 'go', 'google', 'html', 'java', 'javascript', 'json', 'library'] with size 22
+
+Cluster (id: 48) ['json', 'google'] with size 2 was merged in 
+Cluster (id :6) ['api', 'nodejs', 'bot', 'php', 'cli', 'python', 'css', 'react', 'ruby', 'docker', 'security', 'server', 'framework', 'typescript', 'git', 'go', 'google', 'html', 'java', 'javascript', 'json', 'library'] with size 22
+
+Cluster (id: 49) ['maven', 'spring-boot', 'gradle'] with size 3 was merged in 
+Cluster (id :17) ['rails', 'nginx', 'laravel', 'gradle', 'spring-boot', 'wordpress', 'maven', 'symfony', 'composer'] with size 9
+
+Cluster (id: 50) ['serverless', 'hacktoberfest', 'monitoring'] with size 3 was merged in 
+Cluster (id :9) ['kubernetes', 'aws', 'azure', 'django', 'serverless', 'hacktoberfest', 'monitoring', 'flask'] with size 8
+
+Cluster (id: 51) ['p2p', 'privacy', 'ipfs'] with size 3 was merged in 
+Cluster (id :15) ['p2p', 'chrome', 'chrome-extension', 'privacy', 'clojurescript', 'data-visualization', 'elm', 'sketch', 'emoji', 'firefox', 'threejs', 'twitch', 'github-api', 'virtual-reality', 'google-cloud', 'hackathon', 'xcode', 'ipfs', 'localization'] with size 19
+
+Cluster (id: 52) ['koa', 'nestjs', 'mongoose'] with size 3 was merged in 
+Cluster (id :1) ['nativescript', 'ajax', 'nestjs', 'nuxt', 'phaser', 'ember', 'storybook', 'styled-components', 'svelte', 'tailwind', 'firefox-extension', 'gatsby', 'web-components', 'webextension', 'yii', 'jekyll', 'koa', 'less', 'mongoose'] with size 19
+
+Cluster (id: 53) ['kotlin', 'swift'] with size 2 was merged in 
+Cluster (id :13) ['cpp', 'csharp', 'kotlin', 'rust', 'dotnet', 'linux', 'windows', 'c', 'macos', 'swift'] with size 10
+
+Cluster (id: 54) ['windows', 'macos', 'linux'] with size 3 was merged in 
+Cluster (id :13) ['cpp', 'csharp', 'kotlin', 'rust', 'dotnet', 'linux', 'windows', 'c', 'macos', 'swift'] with size 10
+
+Cluster (id: 55) ['lua', 'objective-c', 'qt'] with size 3 was merged in 
+Cluster (id :0) ['3d', 'ai', 'qt', 'raspberry-pi', 'nlp', 'arduino', 'unity', 'objective-c', 'opencv', 'lua', 'image-processing', 'computer-vision'] with size 12
+
+Cluster (id: 56) ['mobile', 'react-native'] with size 2 was merged in 
+Cluster (id :3) ['android', 'react-native', 'awesome', 'mobile', 'ios'] with size 5
+
+Cluster (id: 58) ['yaml', 'powershell', 'perl'] with size 3 was merged in 
+Cluster (id :14) ['flutter', 'csv', 'dart', 'nosql', 'perl', 'cassandra', 'sqlite', 'xml', 'yaml', 'powershell'] with size 10
+
+Cluster (id: 59) ['sketch', 'xcode'] with size 2 was merged in 
+Cluster (id :15) ['p2p', 'chrome', 'chrome-extension', 'privacy', 'clojurescript', 'data-visualization', 'elm', 'sketch', 'emoji', 'firefox', 'threejs', 'twitch', 'github-api', 'virtual-reality', 'google-cloud', 'hackathon', 'xcode', 'ipfs', 'localization'] with size 19
+
+
+ 
+ 
+
+ 
+ 
+LVL 20 MERGED IN 1
+Cluster (id: 0) ['3d', 'ai', 'qt', 'raspberry-pi', 'nlp', 'arduino', 'unity', 'objective-c', 'opencv', 'lua', 'image-processing', 'computer-vision'] with size 12 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 1) ['nativescript', 'ajax', 'nestjs', 'nuxt', 'phaser', 'ember', 'storybook', 'styled-components', 'svelte', 'tailwind', 'firefox-extension', 'gatsby', 'web-components', 'webextension', 'yii', 'jekyll', 'koa', 'less', 'mongoose'] with size 19 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 2) ['algorithm', 'neural-network', 'deep-learning', 'machine-learning', 'tensorflow'] with size 5 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 3) ['android', 'react-native', 'awesome', 'mobile', 'ios'] with size 5 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 4) ['jquery', 'frontend', 'angular', 'jwt', 'redux', 'rest-api', 'npm', 'vue', 'electron', 'graphql', 'webpack', 'bootstrap', 'es6', 'express', 'firebase', 'cms', 'mongodb'] with size 17 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 5) ['terraform', 'jenkins', 'ansible', 'ubuntu', 'vagrant'] with size 5 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 6) ['api', 'nodejs', 'bot', 'php', 'cli', 'python', 'css', 'react', 'ruby', 'docker', 'security', 'server', 'framework', 'typescript', 'git', 'go', 'google', 'html', 'java', 'javascript', 'json', 'library'] with size 22 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 7) ['neo', 'neovim', 'archlinux', 'latex', 'visual-studio-code', 'emacs', 'package-manager', 'homebrew', 'sublime-text', 'zsh', 'fish'] with size 11 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 8) ['terminal', 'testing', 'github', 'atom', 'vim', 'documentation', 'bash', 'shell', 'markdown'] with size 9 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 9) ['kubernetes', 'aws', 'azure', 'django', 'serverless', 'hacktoberfest', 'monitoring', 'flask'] with size 8 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 10) ['font', 'sass', 'babel', 'gulp', 'material-design', 'eslint', 'pwa'] with size 7 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 11) ['racket', 'fortran', 'julia', 'jupyter-notebook', 'robotics', 'unreal-engine', 'godot', 'scikit-learn', 'bioinformatics', 'molecule', 'purescript', 'haxe', 'home-assistant', 'homebridge', 'matlab', 'phpunit', 'javafx'] with size 17 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 12) ['r', 'cryptocurrency', 'twitter', 'discord', 'scala', 'bitcoin', 'blockchain', 'elixir', 'haskell', 'ethereum', 'clojure', 'telegram'] with size 12 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 13) ['cpp', 'csharp', 'kotlin', 'rust', 'dotnet', 'linux', 'windows', 'c', 'macos', 'swift'] with size 10 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 14) ['flutter', 'csv', 'dart', 'nosql', 'perl', 'cassandra', 'sqlite', 'xml', 'yaml', 'powershell'] with size 10 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 15) ['p2p', 'chrome', 'chrome-extension', 'privacy', 'clojurescript', 'data-visualization', 'elm', 'sketch', 'emoji', 'firefox', 'threejs', 'twitch', 'github-api', 'virtual-reality', 'google-cloud', 'hackathon', 'xcode', 'ipfs', 'localization'] with size 19 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 16) ['crystal', 'fsharp', 'game-engine', 'data-structures', 'nim', 'ocaml', 'lisp', 'llvm', 'opengl', 'operating-system', 'emulator', 'minecraft', 'compiler'] with size 13 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 17) ['rails', 'nginx', 'laravel', 'gradle', 'spring-boot', 'wordpress', 'maven', 'symfony', 'composer'] with size 9 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 18) ['mysql', 'redis', 'database', 'sql', 'postgresql', 'http'] with size 6 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+Cluster (id: 19) ['uwp', 'nuget', 'wpf', 'xamarin'] with size 4 was merged in 
+Cluster (id :0) ['3d', 'ai', 'ajax', 'algorithm', 'android', 'angular', 'ansible', 'api', 'archlinux', 'arduino', 'atom', 'awesome', 'aws', 'azure', 'babel', 'bash', 'bioinformatics', 'bitcoin', 'blockchain', 'bootstrap', 'bot', 'c', 'cassandra', 'chrome', 'chrome-extension', 'cli', 'clojure', 'clojurescript', 'cms', 'compiler', 'composer', 'computer-vision', 'cpp', 'cryptocurrency', 'crystal', 'csharp', 'css', 'csv', 'dart', 'data-structures', 'data-visualization', 'database', 'deep-learning', 'discord', 'django', 'docker', 'documentation', 'dotnet', 'electron', 'elixir', 'elm', 'emacs', 'ember', 'emoji', 'emulator', 'es6', 'eslint', 'ethereum', 'express', 'firebase', 'firefox', 'firefox-extension', 'fish', 'flask', 'flutter', 'font', 'fortran', 'framework', 'frontend', 'fsharp', 'game-engine', 'gatsby', 'git', 'github', 'github-api', 'go', 'godot', 'google', 'google-cloud', 'gradle', 'graphql', 'gulp', 'hackathon', 'hacktoberfest', 'haskell', 'haxe', 'home-assistant', 'homebrew', 'homebridge', 'html', 'http', 'image-processing', 'ios', 'ipfs', 'java', 'javafx', 'javascript', 'jekyll', 'jenkins', 'jquery', 'json', 'julia', 'jupyter-notebook', 'jwt', 'koa', 'kotlin', 'kubernetes', 'laravel', 'latex', 'less', 'library', 'linux', 'lisp', 'llvm', 'localization', 'lua', 'machine-learning', 'macos', 'markdown', 'material-design', 'matlab', 'maven', 'minecraft', 'mobile', 'molecule', 'mongodb', 'mongoose', 'monitoring', 'mysql', 'nativescript', 'neo', 'neovim', 'nestjs', 'neural-network', 'nginx', 'nim', 'nlp', 'nodejs', 'nosql', 'npm', 'nuget', 'nuxt', 'objective-c', 'ocaml', 'opencv', 'opengl', 'operating-system', 'p2p', 'package-manager', 'perl', 'phaser', 'php', 'phpunit', 'postgresql', 'powershell', 'privacy', 'purescript', 'pwa', 'python', 'qt', 'r', 'racket', 'rails', 'raspberry-pi', 'react', 'react-native', 'redis', 'redux', 'rest-api', 'robotics', 'ruby', 'rust', 'sass', 'scala', 'scikit-learn', 'security', 'server', 'serverless', 'shell', 'sketch', 'spring-boot', 'sql', 'sqlite', 'storybook', 'styled-components', 'sublime-text', 'svelte', 'swift', 'symfony', 'tailwind', 'telegram', 'tensorflow', 'terminal', 'terraform', 'testing', 'threejs', 'twitch', 'twitter', 'typescript', 'ubuntu', 'unity', 'unreal-engine', 'uwp', 'vagrant', 'vim', 'virtual-reality', 'visual-studio-code', 'vue', 'web-components', 'webextension', 'webpack', 'windows', 'wordpress', 'wpf', 'xamarin', 'xcode', 'xml', 'yaml', 'yii', 'zsh'] with size 220
+
+
+ 
+ 

@@ -9,9 +9,9 @@ import re
 
 from sklearn.cluster import AgglomerativeClustering, KMeans
 
-df = pd.read_csv('data.csv')
+# df = pd.read_csv('categorisation/data.csv')
 
-print(df)
+# print(df)
 # left_array_unique = df['lhs'].drop_duplicates().to_numpy()
 # right_array_unique = df['rhs'].drop_duplicates().to_numpy()
 # relationship_array_unique = df['relationship'].drop_duplicates().to_numpy()
@@ -41,27 +41,39 @@ print(df)
 #         pickle.dump(X, outfile)
 
 import json
-
-json_file = json.load(open("json_simatrix.json"))
-
-headers = json_file['headers']
-
-del json_file['headers']
+simatrix = True
 
 X = []
+if simatrix:
+    json_file = json.load(open("co-occurence-distance.json"))
 
+    headers = json_file['headers'][:-2]
 
-for val in json_file:
-    X.append(json_file[val])
+    del json_file['headers']
 
+    for header in headers:
+        X.append([1 if val == 0 else 1/val for val in json_file[header]])
 
+    for i in range(len(X)):
+        X[i][i] = 0
+else:
+    json_file = json.load(open("sedkgraph_distance.json"))
+
+    headers = json_file['headers']
+
+    del json_file['headers']
+
+    for header in headers:
+        X.append(json_file[header])
 
 # VARIABLES
 NO_CLUSTERS = 50
 DEND_LVL = 10
 
 clustering = AgglomerativeClustering(n_clusters=NO_CLUSTERS,
-                                     compute_distances=True)  # , affinity='cosine', linkage='complete')
+                                     compute_distances=True,
+                                     affinity='precomputed',
+                                     linkage='average')  # , affinity='cosine', linkage='complete')
 
 clustering_fit_res = clustering.fit(X)
 
@@ -224,7 +236,10 @@ df_clst['label'] = [x for x in json_file]
 # dendogram_lvls = [len(left_array_unique), 500, 400, 300, 200, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
 #                   5, 4, 3, 2, 1]
 
-dendogram_lvls = [200, 180, 160, 140, 120, 100, 80, 60, 40, 20]
+# dendogram_lvls = [200, 180, 160, 140, 120, 100, 80, 60, 40, 20]
+# dendogram_lvls = [120, 110, 100, 90, 80, 70, 60, 50, 45, 40, 35, 7, 1]
+# dendogram_lvls = [180, 100, 65, 25, 1]
+dendogram_lvls = [130, 60, 20, 1]
 # dendogram_lvls = [200, 180, 160, 140, 100, 80, 70, 65, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10,
 #                   5, 4, 3, 2, 1]
 #dendogram_lvls = [60, 50, 40, 30, 20, 10, 5, 4, 3, 2, 1]
@@ -260,19 +275,19 @@ for lvl in dendogram_lvls:
         distance_sort=True,
         no_plot=not WRITE
     )
-    if WRITE:
-        plt.savefig('results/' + currPath + '/cuts_at_level_' + str(lvl) + '_dendrogram.png')
-        plt.figure().clear()
-        plt.close()
-        plt.cla()
-        plt.clf()
+    # if WRITE:
+    #     plt.savefig('results/' + currPath + '/cuts_at_level_' + str(lvl) + '_dendrogram.png')
+    #     plt.figure().clear()
+    #     plt.close()
+    #     plt.cla()
+    #     plt.clf()
 
     for i in range(NO_CLUSTERS):
         elements = df_clst[df_clst['label'] == i + 1]['index'].tolist()
         size = len(elements)
-        print('\n Cluster {}: N = {}  {}'.format(i + 1, size, elements))
+        # print('\n Cluster {}: N = {}  {}'.format(i + 1, size, elements))
 
-    print("NO Of Clusters in dendogram ", len(dend_res['leaves']))
+    # print("NO Of Clusters in dendogram ", len(dend_res['leaves']))
 
     N_CLUSTERS_CUT = [DEND_LVL]
     clusters = cut_tree(Z, n_clusters=N_CLUSTERS_CUT)
@@ -294,7 +309,7 @@ for lvl in dendogram_lvls:
         df_final['lvl' + str(DEND_LVL)] = list(groups.values())
         id += 1
 
-    print(df_final)
+    # print(df_final)
 
     df_final_res = dict()
 
