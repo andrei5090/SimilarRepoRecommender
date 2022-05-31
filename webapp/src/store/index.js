@@ -114,7 +114,10 @@ export default new Vuex.Store({
         },
         async sendFeedback({commit}, data) {
             try {
-                await axios.post('/feedback', data)
+                await axios.post('/feedback', data, {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                        "Access-Control-Allow-Origin": "*",
+                })
                 commit('storeFeedbackStatus', {
                     error: null,
                     message: 'Your feedback for this scenario has been recorded.',
@@ -126,8 +129,9 @@ export default new Vuex.Store({
                 commit('storeFeedbackStatus', {
                     error: e.response.status,
                     message: 'The feedback for this scenario was not recorder. Please contact the developer.',
-                    title: 'Feedback Error ' + e.response.message
+                    title: 'Feedback Error (' + e.response.status +')'
                 })
+                console.log("error ", e)
             }
         },
     },

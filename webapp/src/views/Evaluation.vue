@@ -71,6 +71,12 @@
                   When you are done, press the submit button.
                 </v-card-text>
 
+                <v-card-actions class="text-center justify-center">
+                  <v-btn x-large rounded color="primary" @click="sendData" :loading="submitLoading">
+                    Submit
+                  </v-btn>
+                </v-card-actions>
+
 
               </div>
               <div v-else>
@@ -126,6 +132,7 @@ export default {
     return {
       loading: false,
       started: false,
+      submitLoading: false,
       searchCompleted: false,
       progressIndex: 0,
       scenarios: ['', '', '', '', ''],
@@ -139,6 +146,19 @@ export default {
     search(searchQuery) {
       this.loading = true
       this.searchTextAndTags(searchQuery)
+    },
+    sendData() {
+      this.submitLoading = true
+
+      let links = this.searchData.map(el => el.html_url)
+      let checked = this.searchData.filter(el => el.checked).map(el => el.html_url)
+      this.sendFeedback({
+        "githubLinks": {"links": links},
+        "ownLinks": {},
+        "githubPreferences": {"checked": checked},
+        "ownPreferences": {},
+        "extraInfo": {}
+      })
     }
   },
   computed: {
@@ -166,8 +186,15 @@ export default {
     getFeedbackStatus(newValue) {
       if (newValue.error)
         this.$toast.error(newValue.message, newValue.title, {position: "topCenter"});
-      else
+      else {
         this.$toast.success(newValue.message, newValue.title, {position: "topCenter"});
+        this.progressIndex++
+        this.resetSearch()
+        this.evalStatus = false
+        this.searchCompleted = false
+      }
+
+      this.submitLoading = false
 
 
     }

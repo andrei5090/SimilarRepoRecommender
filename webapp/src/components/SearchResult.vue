@@ -63,7 +63,11 @@ export default {
   data() {
     return {}
   },
-  methods: {},
+  methods: {
+    collectData(){
+      return this.searchData
+    }
+  },
   computed: {},
   watch: {}
 }
