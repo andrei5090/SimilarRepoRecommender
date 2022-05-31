@@ -14,6 +14,9 @@
         <v-list rounded>
           <v-list-item-group>
             <v-list-item v-for="(res,index) in searchData" :key="index" :href="res.html_url" target="_blank" dense>
+              <v-list-item-action v-if="evaluationMode">
+                <v-checkbox @click.prevent v-model="res.checked"></v-checkbox>
+              </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>
                   {{ res.full_name }}
@@ -51,6 +54,10 @@ export default {
       type: String,
       required: false,
       default: "Search Results"
+    },
+    evaluationMode: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

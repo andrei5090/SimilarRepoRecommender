@@ -19,7 +19,8 @@ export default new Vuex.Store({
         availableTags: null,
         computedHierarchy: null,
         hierarchyLevels: null,
-        recommendedTags: null
+        recommendedTags: null,
+        feedbackStatus: null
     },
     mutations: {
         addClusters(state, data) {
@@ -49,6 +50,9 @@ export default new Vuex.Store({
         },
         storeRecommendedTags(state, data) {
             state.recommendedTags = data
+        },
+        storeFeedbackStatus(state, data) {
+            state.feedbackStatus = data
         }
     },
     actions: {
@@ -101,13 +105,31 @@ export default new Vuex.Store({
             commit('resetHierarchyMutation')
         },
         // eslint-disable-next-line no-unused-vars
-        computeRecommendation ({commit, state}, data) {
+        computeRecommendation({commit, state}, data) {
             commit('storeRecommendedTags', getRecommendation(state.computedHierarchy, data))
 
         },
-        resetSearch({commit}){
+        resetSearch({commit}) {
             commit('storeSearchData', null)
-        }
+        },
+        async sendFeedback({commit}, data) {
+            try {
+                await axios.post('/feedback', data)
+                commit('storeFeedbackStatus', {
+                    error: null,
+                    message: 'Your feedback for this scenario has been recorded.',
+                    title: 'Feedback Success'
+                })
+
+                this.$toast.error('Your feedback for this scenario has been recorded.', 'Feedback Success', {position: "topCenter"});
+            } catch (e) {
+                commit('storeFeedbackStatus', {
+                    error: e.response.status,
+                    message: 'The feedback for this scenario was not recorder. Please contact the developer.',
+                    title: 'Feedback Error ' + e.response.message
+                })
+            }
+        },
     },
     getters: {
         getCluster(state) {
@@ -129,6 +151,9 @@ export default new Vuex.Store({
         },
         getRecommendedTags(state) {
             return state.recommendedTags
+        },
+        getFeedbackStatus(state) {
+            return state.feedbackStatus
         }
     }
     ,
