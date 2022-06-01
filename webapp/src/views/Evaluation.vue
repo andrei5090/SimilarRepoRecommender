@@ -135,9 +135,8 @@ export default {
       submitLoading: false,
       searchCompleted: false,
       progressIndex: 0,
-      scenarios: ['', '', '', '', ''],
+      scenarios: ['Scenario 1 ', 'Scenario 2 ', 'Scenario 3 ', 'Scenario 4 ', 'Scenario 5 '],
       evalStatus: false,
-      scenario: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis purus non ipsum accumsan iaculis. Aliquam convallis ante quam, sed rhoncus turpis cursus ac. Maecenas at pretium enim, a facilisis ipsum. Etiam eleifend lacus sit amet odio pellentesque consectetur. Quisque id dui tincidunt, laoreet massa dignissim, fermentum odio. Sed efficitur arcu pharetra quam imperdiet, quis imperdiet eros scelerisque. Proin eu posuere dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ex diam, euismod sed felis quis, tempus tempor nunc. Sed dapibus quam eget dolor fermentum, a placerat ligula fringilla. Quisque semper magna et justo blandit accumsan. Phasellus in porta dolor, a accumsan felis. In vitae elit auctor, tempor purus eget, sollicitudin risus.',
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis purus non ipsum accumsan iaculis. Aliquam convallis ante quam, sed rhoncus turpis cursus ac. Maecenas at pretium enim, a facilisis ipsum. Etiam eleifend lacus sit amet odio pellentesque consectetur. Quisque id dui tincidunt, laoreet massa dignissim, fermentum odio. Sed efficitur arcu pharetra quam imperdiet, quis imperdiet eros scelerisque. Proin eu posuere dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ex diam, euismod sed felis quis, tempus tempor nunc. Sed dapibus quam eget dolor fermentum, a placerat ligula fringilla. Quisque semper magna et justo blandit accumsan. Phasellus in porta dolor, a accumsan felis. In vitae elit auctor, tempor purus eget, sollicitudin risus.'
     }
   },
@@ -149,7 +148,6 @@ export default {
     },
     sendData() {
       this.submitLoading = true
-
       let links = this.searchData.map(el => el.html_url)
       let checked = this.searchData.filter(el => el.checked).map(el => el.html_url)
       this.sendFeedback({
@@ -157,12 +155,15 @@ export default {
         "ownLinks": {},
         "githubPreferences": {"checked": checked},
         "ownPreferences": {},
-        "extraInfo": {}
+        "extraInfo": {scenario: this.scenario}
       })
     }
   },
   computed: {
     ...mapGetters(['getSearchData', 'getFeedbackStatus']),
+    scenario() {
+      return this.scenarios[this.progressIndex]
+    },
     searchData() {
       try {
         return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items : [] : []
@@ -179,8 +180,10 @@ export default {
     this.searchCompleted = false
   },
   watch: {
-    getSearchData() {
-      this.searchCompleted = true
+    getSearchData(newValue) {
+      if (newValue != null) {
+        this.searchCompleted = true
+      }
       this.loading = false
     },
     getFeedbackStatus(newValue) {
@@ -188,8 +191,8 @@ export default {
         this.$toast.error(newValue.message, newValue.title, {position: "topCenter"});
       else {
         this.$toast.success(newValue.message, newValue.title, {position: "topCenter"});
-        this.progressIndex++
         this.resetSearch()
+        this.progressIndex++
         this.evalStatus = false
         this.searchCompleted = false
       }

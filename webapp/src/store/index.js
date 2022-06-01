@@ -120,7 +120,7 @@ export default new Vuex.Store({
                 })
                 commit('storeFeedbackStatus', {
                     error: null,
-                    message: 'Your feedback for this scenario has been recorded.',
+                    message: 'Your feedback for this scenario has been recorded. Please evaluate continue with next scenario if not finished.',
                     title: 'Feedback Success'
                 })
 
