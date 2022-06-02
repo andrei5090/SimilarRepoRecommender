@@ -158,7 +158,11 @@ export default new Vuex.Store({
         },
         // eslint-disable-next-line no-unused-vars
         async getRepositoryDataFromGoogle({commit}, link) {
-            const res = await octokit.rest.repos.get({owner: 'vuejs', repo: 'vue'})
+            let splitStr = link.split('/')
+            let owner =  splitStr[3]
+            let repo = splitStr[4]
+
+            const res = await octokit.rest.repos.get({owner: owner, repo: repo})
             console.log(res)
         }
     },

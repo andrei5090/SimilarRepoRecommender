@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn @click="getRepositoryDataFromGoogle">test</v-btn>
+    <v-btn @click="getRepositoryDataFromGoogle('https://github.com/vuejs/vue')">test</v-btn>
     <!--   Start Button   -->
     <div v-if="!started" class="center-align">
       <v-row align="center" justify="center">
