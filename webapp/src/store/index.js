@@ -6,7 +6,7 @@ import {getRecommendation} from "../hierarchy/hierarchy";
 
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 
-const octokit = new Octokit({})
+const octokit = new Octokit({auth: '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'})
 
 
 Vue.use(Vuex)
@@ -74,8 +74,6 @@ export default new Vuex.Store({
             commit('addLabel', data)
         },
         async testOctokit({commit}) {
-
-
             const res = await octokit.request('GET /search/topics', {q: 'ruby+is:featured'})
 
             commit('storeSearchData', res)
@@ -109,6 +107,8 @@ export default new Vuex.Store({
 
             try {
                 const res = await octokit.request('GET /search/repositories', {q: query})
+
+                console.log("res github", res)
                 commit('storeGithubSearchData', res)
             } catch (e) {
                 commit('storeGithubSearchData', {items: [], status: 422, error: e.message})
@@ -153,17 +153,39 @@ export default new Vuex.Store({
                     message: 'The feedback for this scenario was not recorder. Please contact the developer.',
                     title: 'Feedback Error (' + e.response.status + ')'
                 })
-                console.log("error ", e)
             }
         },
         // eslint-disable-next-line no-unused-vars
-        async getRepositoryDataFromGoogle({commit}, link) {
-            let splitStr = link.split('/')
-            let owner =  splitStr[3]
-            let repo = splitStr[4]
+        async searchRepositoryDataFromGoogle({commit}, data) {
+            console.log("search google started")
+            let result = []
+            try {
 
-            const res = await octokit.rest.repos.get({owner: owner, repo: repo})
-            console.log(res)
+                const response = await axios.get('/search?query=' + data.text)
+                const length = response.data.links.length
+
+                for (let i = 0; i < length; i++) {
+                    try {
+                        let splitStr = response.data.links[i].split('/')
+                        let owner = splitStr[3]
+                        let repo = splitStr[4]
+                        const res = await octokit.rest.repos.get({owner: owner, repo: repo})
+
+                        result.push(res.data)
+                    } // eslint-disable-next-line no-empty
+                    catch (e) {
+
+                    }
+                }
+
+                console.log("google result", result)
+                //this.getGoogleSearchData.data.items
+
+                commit('storeGoogleSearchData', {data: {items : result}, status: 200})
+
+            } catch (e) {
+                commit('storeGoogleSearchData', {items: [], status: 422, error: e.message})
+            }
         }
     },
     getters: {

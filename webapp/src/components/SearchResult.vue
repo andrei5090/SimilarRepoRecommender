@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card shaped class="search-card mt-7" elevation="5" v-if="searchData">
+    <v-card shaped class="search-card mt-7" elevation="5" v-if="searchData" :loading="loading">
       <v-card-title>{{ searchTitle }}</v-card-title>
       <v-card-text v-if="searchData.length === 0">
 
@@ -56,6 +56,10 @@ export default {
       default: "Search Results"
     },
     evaluationMode: {
+      type: Boolean,
+      default: false
+    },
+    loading:{
       type: Boolean,
       default: false
     }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-btn @click="getRepositoryDataFromGoogle('https://github.com/vuejs/vue')">test</v-btn>
     <!--   Start Button   -->
     <div v-if="!started" class="center-align">
       <v-row align="center" justify="center">
@@ -54,7 +53,7 @@
       <v-fab-transition>
         <v-row justify="center" align="center" v-show="searchCompleted">
           <v-col cols="12" class="text-center">
-            <v-btn rounded color="primary" @click="searchCompleted = false; evalStatus=false">
+            <v-btn rounded color="primary" @click="searchCompleted = false; evalStatus=false; resetSearch()">
               Search Again
               <v-icon right>mdi-magnify</v-icon>
             </v-btn>
@@ -101,16 +100,19 @@
       <v-row justify="space-around" v-if="searchCompleted">
         <v-col cols="11" md="4" class="">
           <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
+                        :loading="githubLoading"
                         search-title="Search Results 1"/>
         </v-col>
 
         <v-col cols="11" md="4" class="">
           <SearchResult :evaluation-mode="evalStatus" :search-data="githubSearchData" v-if="githubSearchData"
+                        :loading="githubClassicLoading"
                         search-title="Search Results 2"/>
         </v-col>
 
         <v-col cols="11" md="4" class="">
-          <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
+          <SearchResult :evaluation-mode="evalStatus" :search-data="googleSearchData" v-if="googleSearchData"
+                        :loading="googleClassicLoading"
                         search-title="Search Results 3"/>
         </v-col>
 
@@ -135,6 +137,9 @@ export default {
       started: false,
       submitLoading: false,
       searchCompleted: false,
+      githubLoading: false,
+      githubClassicLoading: false,
+      googleClassicLoading: false,
       progressIndex: 0,
       scenarios: ['Scenario 1 ', 'Scenario 2 ', 'Scenario 3 ', 'Scenario 4 ', 'Scenario 5 '],
       evalStatus: false,
@@ -142,11 +147,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['searchTextAndTags', 'resetSearch', 'sendFeedback', 'searchTextGithub','getRepositoryDataFromGoogle']),
+    ...mapActions(['searchTextAndTags', 'resetSearch', 'sendFeedback', 'searchTextGithub', 'searchRepositoryDataFromGoogle']),
     search(searchQuery) {
+      this.githubLoading = true
+      this.githubClassicLoading = true
+      this.googleClassicLoading = true
       this.loading = true
       this.searchTextAndTags(searchQuery)
       this.searchTextGithub(searchQuery)
+      this.searchRepositoryDataFromGoogle(searchQuery)
     },
     sendData() {
       this.submitLoading = true
@@ -156,31 +165,40 @@ export default {
       let simpleGithubLinks = this.githubSearchData.map(el => el.html_url)
       let simpleGithubChecked = this.githubSearchData.filter(el => el.checked).map(el => el.html_url)
 
+      let simpleGoogleLinks = this.googleSearchData.map(el => el.html_url)
+      let simpleGoogleChecked = this.googleSearchData.filter(el => el.checked).map(el => el.html_url)
+
       this.sendFeedback({
-        "githubLinks": {
-          "github": {
-            "links": simpleGithubLinks
+        githubLinks: {
+          github: {
+            links: simpleGithubLinks
+          },
+          google: {
+            links: simpleGoogleLinks
           }
         },
-        "ownLinks": {"links": ownLinks},
-        "githubPreferences": {
-          "github": {
-            "checked": simpleGithubChecked
+        ownLinks: {links: ownLinks},
+        githubPreferences: {
+          github: {
+            checked: simpleGithubChecked
+          },
+          google: {
+            checked: simpleGoogleChecked
           }
         },
-        "ownPreferences": {"checked": ownChecked},
-        "extraInfo": {scenario: this.scenario}
+        ownPreferences: {checked: ownChecked},
+        extraInfo: {scenario: this.scenario}
       })
     }
   },
   computed: {
-    ...mapGetters(['getSearchData', 'getFeedbackStatus', 'getGithubSearchData']),
+    ...mapGetters(['getSearchData', 'getFeedbackStatus', 'getGithubSearchData', 'getGoogleSearchData']),
     scenario() {
       return this.scenarios[this.progressIndex]
     },
     searchData() {
       try {
-        return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items : [] : []
+        return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items.slice(0, 30) : [] : []
       } catch (e) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.loading = false
@@ -189,7 +207,16 @@ export default {
     },
     githubSearchData() {
       try {
-        return this.getGithubSearchData ? this.getGithubSearchData.data.items ? this.getGithubSearchData.data.items : [] : []
+        return this.getGithubSearchData ? this.getGithubSearchData.data.items ? this.getGithubSearchData.data.items.slice(0, 30) : [] : []
+      } catch (e) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.loading = false
+        return []
+      }
+    },
+    googleSearchData() {
+      try {
+        return this.getGoogleSearchData ? this.getGoogleSearchData.data.items ? this.getGoogleSearchData.data.items.slice(0, 30) : [] : []
       } catch (e) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.loading = false
@@ -213,7 +240,15 @@ export default {
         }
 
       }
+      this.githubLoading = false
       this.loading = false
+    },
+    getGoogleSearchData() {
+      this.googleClassicLoading = false
+
+    },
+    getGithubSearchData() {
+      this.githubClassicLoading = false
     },
     getFeedbackStatus(newValue) {
       if (newValue.error)
