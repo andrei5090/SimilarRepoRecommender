@@ -151,7 +151,7 @@ export default {
       queryText: '',
       valid: false,
       isSuggesting: false,
-      queryRules: [(text) => text.length < 100 || 'The maximum textual search should have at most 100 characters',
+      queryRules: [(text) => text.length < 300 || 'The maximum textual search should have at most 100 characters',
         (text) => text.length > 0 || 'The minimum textual information should have at least 1 characters'],
       tagsRules: [(tags) => tags.length < 5 || 'The maximum query can have up to 5 tags',
         (tags) => tags.length > -1 || 'The minimum query can have at least 1 tag']
@@ -171,7 +171,7 @@ export default {
     ...mapActions(['computeRecommendation', 'retrieveAvailableTags', 'retrieveHierarchy', 'resetSearch'])
   },
   computed: {
-    ...mapGetters(['getRecommendedTags', 'getAvailableTags', 'getComputedHierarchy']),
+    ...mapGetters(['getRecommendedTags', 'getAvailableTags', 'getComputedHierarchy', 'getSearchData']),
     getItems() {
       if (!this.isSuggesting || this.chosenTags.length === 0)
         return this.getAvailableTags
@@ -186,6 +186,15 @@ export default {
     this.retrieveAvailableTags()
     if (this.evaluationMode)
       this.isSuggesting = true
+  },
+  watch: {
+    getSearchData(newValue) {
+      if (newValue != null) {
+        if (newValue.error) {
+          this.$toast.error("GithubAPI " + newValue.error, "Search Error", {position: "topCenter"});
+        }
+      }
+    }
   }
 
 }

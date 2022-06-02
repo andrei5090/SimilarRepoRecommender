@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-btn @click="getRepositoryDataFromGoogle">test</v-btn>
     <!--   Start Button   -->
     <div v-if="!started" class="center-align">
       <v-row align="center" justify="center">
@@ -97,14 +98,14 @@
       </v-fab-transition>
 
 
-      <v-row justify="space-around" v-if="searchData.length > 0">
+      <v-row justify="space-around" v-if="searchCompleted">
         <v-col cols="11" md="4" class="">
           <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
                         search-title="Search Results 1"/>
         </v-col>
 
         <v-col cols="11" md="4" class="">
-          <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
+          <SearchResult :evaluation-mode="evalStatus" :search-data="githubSearchData" v-if="githubSearchData"
                         search-title="Search Results 2"/>
         </v-col>
 
@@ -141,32 +142,54 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['searchTextAndTags', 'resetSearch', 'sendFeedback']),
+    ...mapActions(['searchTextAndTags', 'resetSearch', 'sendFeedback', 'searchTextGithub','getRepositoryDataFromGoogle']),
     search(searchQuery) {
       this.loading = true
       this.searchTextAndTags(searchQuery)
+      this.searchTextGithub(searchQuery)
     },
     sendData() {
       this.submitLoading = true
-      let links = this.searchData.map(el => el.html_url)
-      let checked = this.searchData.filter(el => el.checked).map(el => el.html_url)
+      let ownLinks = this.searchData.map(el => el.html_url)
+      let ownChecked = this.searchData.filter(el => el.checked).map(el => el.html_url)
+
+      let simpleGithubLinks = this.githubSearchData.map(el => el.html_url)
+      let simpleGithubChecked = this.githubSearchData.filter(el => el.checked).map(el => el.html_url)
+
       this.sendFeedback({
-        "githubLinks": {"links": links},
-        "ownLinks": {},
-        "githubPreferences": {"checked": checked},
-        "ownPreferences": {},
+        "githubLinks": {
+          "github": {
+            "links": simpleGithubLinks
+          }
+        },
+        "ownLinks": {"links": ownLinks},
+        "githubPreferences": {
+          "github": {
+            "checked": simpleGithubChecked
+          }
+        },
+        "ownPreferences": {"checked": ownChecked},
         "extraInfo": {scenario: this.scenario}
       })
     }
   },
   computed: {
-    ...mapGetters(['getSearchData', 'getFeedbackStatus']),
+    ...mapGetters(['getSearchData', 'getFeedbackStatus', 'getGithubSearchData']),
     scenario() {
       return this.scenarios[this.progressIndex]
     },
     searchData() {
       try {
         return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items : [] : []
+      } catch (e) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.loading = false
+        return []
+      }
+    },
+    githubSearchData() {
+      try {
+        return this.getGithubSearchData ? this.getGithubSearchData.data.items ? this.getGithubSearchData.data.items : [] : []
       } catch (e) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.loading = false
@@ -183,6 +206,12 @@ export default {
     getSearchData(newValue) {
       if (newValue != null) {
         this.searchCompleted = true
+
+        if (newValue.error) {
+          this.searchCompleted = false
+          this.evalStatus = false
+        }
+
       }
       this.loading = false
     },
@@ -198,8 +227,6 @@ export default {
       }
 
       this.submitLoading = false
-
-
     }
   }
 }

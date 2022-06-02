@@ -16,6 +16,8 @@ export default new Vuex.Store({
         clusters: null,
         labels: {},
         searchData: null,
+        githubSearchData: null,
+        googleSearchData: null,
         availableTags: null,
         computedHierarchy: null,
         hierarchyLevels: null,
@@ -53,6 +55,12 @@ export default new Vuex.Store({
         },
         storeFeedbackStatus(state, data) {
             state.feedbackStatus = data
+        },
+        storeGithubSearchData(state, data) {
+            state.githubSearchData = data
+        },
+        storeGoogleSearchData(state, data) {
+            state.googleSearchData = data
         }
     },
     actions: {
@@ -80,7 +88,7 @@ export default new Vuex.Store({
             const method = 'is:featured'
             let query = ''
 
-            if (data.text && data.text.length > 5)
+            if (data.text && data.text.length > 1)
                 query += data.text
 
             if (data.tags && data.tags.length > 0)
@@ -90,7 +98,20 @@ export default new Vuex.Store({
                 const res = await octokit.request('GET /search/repositories', {q: query})
                 commit('storeSearchData', res)
             } catch (e) {
-                commit('storeSearchData', {items: [], status: 422})
+                commit('storeSearchData', {items: [], status: 422, error: e.message})
+            }
+        },
+        async searchTextGithub({commit}, data) {
+            let query = ''
+
+            if (data.text && data.text.length > 1)
+                query += data.text
+
+            try {
+                const res = await octokit.request('GET /search/repositories', {q: query})
+                commit('storeGithubSearchData', res)
+            } catch (e) {
+                commit('storeGithubSearchData', {items: [], status: 422, error: e.message})
             }
         },
         async retrieveHierarchy({commit}, data) {
@@ -111,29 +132,35 @@ export default new Vuex.Store({
         },
         resetSearch({commit}) {
             commit('storeSearchData', null)
+            commit('storeGithubSearchData', null)
+            commit('storeGoogleSearchData', null)
         },
         async sendFeedback({commit}, data) {
             try {
                 await axios.post('/feedback', data, {
                     'Content-Type': 'application/json;charset=UTF-8',
-                        "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "*",
                 })
                 commit('storeFeedbackStatus', {
                     error: null,
-                    message: 'Your feedback for this scenario has been recorded. Please evaluate continue with next scenario if not finished.',
+                    message: 'Your feedback for this scenario has been recorded. Please continue with next scenario.',
                     title: 'Feedback Success'
                 })
 
-                this.$toast.error('Your feedback for this scenario has been recorded.', 'Feedback Success', {position: "topCenter"});
             } catch (e) {
                 commit('storeFeedbackStatus', {
                     error: e.response.status,
                     message: 'The feedback for this scenario was not recorder. Please contact the developer.',
-                    title: 'Feedback Error (' + e.response.status +')'
+                    title: 'Feedback Error (' + e.response.status + ')'
                 })
                 console.log("error ", e)
             }
         },
+        // eslint-disable-next-line no-unused-vars
+        async getRepositoryDataFromGoogle({commit}, link) {
+            const res = await octokit.rest.repos.get({owner: 'vuejs', repo: 'vue'})
+            console.log(res)
+        }
     },
     getters: {
         getCluster(state) {
@@ -158,8 +185,13 @@ export default new Vuex.Store({
         },
         getFeedbackStatus(state) {
             return state.feedbackStatus
+        },
+        getGithubSearchData(state) {
+            return state.githubSearchData
+        },
+        getGoogleSearchData(state) {
+            return state.googleSearchData
         }
-    }
-    ,
+    },
     modules: {}
 })
