@@ -86,7 +86,7 @@ export default new Vuex.Store({
             const method = 'is:featured'
             let query = ''
 
-            if (data.text && data.text.length > 1)
+            if (data.text && data.text.length >= 1)
                 query += data.text
 
             if (data.tags && data.tags.length > 0)
@@ -102,7 +102,7 @@ export default new Vuex.Store({
         async searchTextGithub({commit}, data) {
             let query = ''
 
-            if (data.text && data.text.length > 1)
+            if (data.text && data.text.length >= 1)
                 query += data.text
 
             try {
@@ -157,11 +157,19 @@ export default new Vuex.Store({
         },
         // eslint-disable-next-line no-unused-vars
         async searchRepositoryDataFromGoogle({commit}, data) {
-            console.log("search google started")
             let result = []
+            let query = ''
             try {
 
-                const response = await axios.get('/search?query=' + data.text)
+                if (data.text && data.text.length >= 1)
+                    query += data.text
+
+                if (data.tags && data.tags.length > 0)
+                    data.tags.forEach((tag) => query += ' ' + ' ' + tag)
+
+                const response = await axios.get('/search?query=' + query)
+
+
                 const length = response.data.links.length
 
                 for (let i = 0; i < length; i++) {
@@ -177,11 +185,9 @@ export default new Vuex.Store({
 
                     }
                 }
-
-                console.log("google result", result)
                 //this.getGoogleSearchData.data.items
 
-                commit('storeGoogleSearchData', {data: {items : result}, status: 200})
+                commit('storeGoogleSearchData', {data: {items: result}, status: 200})
 
             } catch (e) {
                 commit('storeGoogleSearchData', {items: [], status: 422, error: e.message})
