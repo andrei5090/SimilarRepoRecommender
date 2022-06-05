@@ -60,7 +60,7 @@
 
 
             <v-card-actions class="justify-end">
-              <v-btn rounded color="primary" large :disabled="!isValid"> Continue
+              <v-btn rounded color="primary" large :disabled="!isValid" @click="continuePressed"> Continue
                 <v-icon large right>mdi-chevron-right</v-icon>
               </v-btn>
             </v-card-actions>
@@ -85,7 +85,6 @@ export default {
       valid: false,
       experienceTopics: null,
       experience: null,
-      topics: null,
       areaOfExpertise: null,
       age: null,
       gender: null,
@@ -104,8 +103,19 @@ export default {
   },
   methods: {
     remove(item) {
-      const index = this.topics.indexOf(item.item)
-      if (index >= 0) this.topics.splice(index, 1)
+      const index = this.experienceTopics.indexOf(item.item)
+      if (index >= 0) this.experienceTopics.splice(index, 1)
+    },
+    continuePressed() {
+      let userData = {}
+      userData.experienceTopics = this.experienceTopics
+
+      userData.experience = this.experience
+      userData.areaOfExpertise = this.areaOfExpertise
+      userData.age = this.age
+      userData.gender = this.gender
+
+      this.$emit('continue', userData)
     }
   },
   watch: {}

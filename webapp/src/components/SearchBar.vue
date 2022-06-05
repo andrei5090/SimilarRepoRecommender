@@ -7,7 +7,6 @@
         <v-col cols="12">
           <v-card elevation="5" class="search-bar">
             <v-card-title>
-
               <v-row justify="space-between" align="center">
 
                 <v-col cols="7" class="text-center" align="center">

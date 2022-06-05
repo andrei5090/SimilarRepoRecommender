@@ -6,7 +6,7 @@ import {getRecommendation} from "../hierarchy/hierarchy";
 
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 
-const octokit = new Octokit({auth: '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'})
+const octokit = new Octokit({auth: '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'})
 
 
 Vue.use(Vuex)
@@ -22,7 +22,8 @@ export default new Vuex.Store({
         computedHierarchy: null,
         hierarchyLevels: null,
         recommendedTags: null,
-        feedbackStatus: null
+        feedbackStatus: null,
+        userFeedbackData:null
     },
     mutations: {
         addClusters(state, data) {
@@ -61,6 +62,9 @@ export default new Vuex.Store({
         },
         storeGoogleSearchData(state, data) {
             state.googleSearchData = data
+        },
+        storeUserFeedbackData(state, data){
+            state.userFeedbackData = data
         }
     },
     actions: {
@@ -108,7 +112,6 @@ export default new Vuex.Store({
             try {
                 const res = await octokit.request('GET /search/repositories', {q: query})
 
-                console.log("res github", res)
                 commit('storeGithubSearchData', res)
             } catch (e) {
                 commit('storeGithubSearchData', {items: [], status: 422, error: e.message})
@@ -149,8 +152,8 @@ export default new Vuex.Store({
 
             } catch (e) {
                 commit('storeFeedbackStatus', {
-                    error: e.response.status,
-                    message: 'The feedback for this scenario was not recorder. Please contact the developer.',
+                    error: e,
+                    message: 'The feedback for this scenario was not recorder. Please contact the developer or try submitting again.',
                     title: 'Feedback Error (' + e.response.status + ')'
                 })
             }
@@ -192,6 +195,9 @@ export default new Vuex.Store({
             } catch (e) {
                 commit('storeGoogleSearchData', {items: [], status: 422, error: e.message})
             }
+        },
+        addUserFeedbackData({commit}, data){
+            commit('storeUserFeedbackData', data)
         }
     },
     getters: {
@@ -223,6 +229,9 @@ export default new Vuex.Store({
         },
         getGoogleSearchData(state) {
             return state.googleSearchData
+        },
+        getUserFeedbackData(state){
+            return state.userFeedbackData
         }
     },
     modules: {}
