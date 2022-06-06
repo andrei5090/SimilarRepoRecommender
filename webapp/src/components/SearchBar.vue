@@ -158,6 +158,16 @@ export default {
     }
   },
   methods: {
+    reset() {
+      this.queryText = ''
+      this.chosenTags = []
+    },
+    getQuery() {
+      return {
+        tags: this.chosenTags,
+        queryText: this.queryText
+      }
+    },
     remove(item) {
       const index = this.chosenTags.indexOf(item.item)
       if (index >= 0) this.chosenTags.splice(index, 1)

@@ -64,7 +64,7 @@
           <v-fab-transition>
             <v-row v-show="!searchCompleted">
               <v-col cols="12">
-                <SearchBar :evaluation-mode="true" :loading="loading" @search="search" :key="progressIndex"/>
+                <SearchBar :evaluation-mode="true" :loading="loading" @search="search" ref="searchBar"/>
               </v-col>
             </v-row>
           </v-fab-transition>
@@ -201,7 +201,18 @@ export default {
       helpDialog: false,
       userId: null,
       progressIndex: 0,
-      scenarios: ['Scenario 1 ', 'Scenario 2 '],
+      scenarios: [
+        'A car competition organizer wants to promote their business. They want to build a website about their available competitions. The website is just an informational one; the users will not be able to reserve/buy any tickets for the competitions. The website will follow a parallax scrolling style (1-page website) with information about the competitions, such as location and entry fee. The information on the website needs to be updated just once every few years when the organizers adjust the prices with the inflation. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'A small chair manufacturing business wants to minimize its "bookkeeping" costs. Every month, all the bills regarding materials or energy are centralized in their bookkeeping system by the business owner. The business owner thinks that he has more important things to do but doesn\'t afford to hire another person to centralize the bills. All the bills are received at the address: accounting@nicechairs.com. The business owner wants to automate this bookkeeping process. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'An NGO from Guatemala wants to promote their country worldwide. They plan to build a mobile application that allows users to plan their journey in Guatemala. The application should allow the users to choose their interest points and plan a trip, including transport, tickets, and accommodation. The app aims to plan the trip so that it optimizes the route to the touristic objectives and optimizes the waiting time at the interest points (e.g. a museum). Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'Jerry just won the lottery and decided to open a bar in his hometown. \n' +
+        'Last year, he went on a trip to the USA and saw live augmented reality Pool tables that can track your actions and recommend the best shots projecting a live animation on the table. Even though Jerry won the big jackpot, he doesn\'t want to invest much money in such a table; the starting price on the market is 15000 euros. He already bought the Pool table but needs somebody to build this augmentation system. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'The mighty food vlogger "ImiPlaceSaMananc" travels worldwide to find the best shawarma on the planet. He keeps a digital journal about the characteristics of each shawarma he tasted, the ingredients, and the restaurant\'s location that prepared the food. At the end of each tasting, he writes down the "food grade" (e.g. Above Average, Average...etc.). He wants to share his Shawarma tasting skills with the world. This is why he wants to build a recommender system that recommends the best shawarma in the user\'s area (based on his journal). Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'The Eindhoven airport wants to create an embedded system that is able to track the RIFD chip in your passport at the self-check-in gate, so you don\'t have to take it out on your passport and scan it. They want each self-check-in gate to work independently. When you come close to the gate, it will automatically recognize your passport and start scanning your biometrics (the system will provide a video stream of the user\'s face or fingerprints). The biometric validation is not a concern at the moment since another service provider will handle this. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'The TU Delft Discord server admin wants to automate the filtering system. He wants to filter all the messages that contain swear words or graphic pictures that violate the TU Delft standards. This is why he wants to create a filtering system that can emit "warnings" or server "bans" according to specific criteria. The filter will act as a discord bot that scans all the messages and take action when required. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'A big tech company wants to provide bikes to their visitors and employees. Each bike has a card scanner attached to it. A visitor or employee card needs to be scanned to unlock a bike. The bikes can be unlocked with a card, but the administrators have no information on how many bikes are used at certain timestamps or the location of each bike. This is why they need a system to centralize the data of each bike and display information such as free bike locations in a GUI. They have no preference for how the system is implemented. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+        'WorkAholic INC. wants to implement a task prioritization system in their workflow. At the moment, the task difficulty and time needed to finish the Team Managers establish it. The CTO observed that the managers sometimes give shorter task times to please their superiors. This is why the WorkAholic INC. wants to implement an automated task "assessor" that suggests the work time needed for a task to be solved and the assignment\'s difficulty. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
+      ],
       evalStatus: false,
       task: 'To evaluate how good a recommender repository system is, we decided to assess the relevance of the recommendations in a scenario-based system. First, we will require some information about you, such as your experience in Computer Science. Afterwards, you will be given several "Software Scenarios" for which you have to create a search query using textual information and Github Tags. Each query will be used in three different recommender systems, two using the Github search engine and one using the Google search engine. After you analyze the results, you have to press the "Start Evaluation" button and tick the most relevant results from all three "Search Results" (you can tick 0 or more options for each approach. If you think that one method isn\'t giving good results, you can tick 0 options).'
     }
@@ -252,9 +263,10 @@ export default {
         },
         ownPreferences: {checked: ownChecked},
         extraInfo: {
-          scenario: this.scenario,
+          scenarioId: this.progressIndex,
           userInfo: this.getUserFeedbackData,
-          userId: this.userId
+          userId: this.userId,
+          queryData: this.$refs.searchBar.getQuery()
         }
       })
     }
@@ -298,6 +310,7 @@ export default {
     this.evalStatus = false
     this.searchCompleted = false
     this.retrieveAvailableTags()
+    this.$refs.searchBar.reset()
   },
   watch: {
     getSearchData(newValue) {
@@ -326,6 +339,7 @@ export default {
       else {
         this.$toast.success(newValue.message, newValue.title, {position: "topCenter"});
         this.resetSearch()
+        this.$refs.searchBar.reset()
         this.progressIndex++
         this.evalStatus = false
         this.searchCompleted = false
