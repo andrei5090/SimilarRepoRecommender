@@ -115,27 +115,101 @@
 
           </v-fab-transition>
 
+          <div :key="progressIndex">
+            <v-row justify="space-around" v-if="searchCompleted && this.randomOrderId === 0">
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
+                              :loading="githubLoading"
+                              search-title="Search Results 1"/>
+              </v-col>
 
-          <v-row justify="space-around" v-if="searchCompleted">
-            <v-col cols="11" md="4" class="">
-              <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
-                            :loading="githubLoading"
-                            search-title="Search Results 1"/>
-            </v-col>
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="githubSearchData" v-if="githubSearchData"
+                              :loading="githubClassicLoading"
+                              search-title="Search Results 2"/>
+              </v-col>
 
-            <v-col cols="11" md="4" class="">
-              <SearchResult :evaluation-mode="evalStatus" :search-data="githubSearchData" v-if="githubSearchData"
-                            :loading="githubClassicLoading"
-                            search-title="Search Results 2"/>
-            </v-col>
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="googleSearchData" v-if="googleSearchData"
+                              :loading="googleClassicLoading"
+                              search-title="Search Results 3"/>
+              </v-col>
 
-            <v-col cols="11" md="4" class="">
-              <SearchResult :evaluation-mode="evalStatus" :search-data="googleSearchData" v-if="googleSearchData"
-                            :loading="googleClassicLoading"
-                            search-title="Search Results 3"/>
-            </v-col>
+            </v-row>
 
-          </v-row>
+
+            <v-row justify="space-around" v-if="searchCompleted && this.randomOrderId === 1">
+
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="githubSearchData" v-if="githubSearchData"
+                              :loading="githubClassicLoading"
+                              search-title="Search Results 1"/>
+              </v-col>
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
+                              :loading="githubLoading"
+                              search-title="Search Results 2"/>
+              </v-col>
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="googleSearchData" v-if="googleSearchData"
+                              :loading="googleClassicLoading"
+                              search-title="Search Results 3"/>
+              </v-col>
+
+            </v-row>
+
+
+            <v-row justify="space-around" v-if="searchCompleted && this.randomOrderId === 2">
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="googleSearchData" v-if="googleSearchData"
+                              :loading="googleClassicLoading"
+                              search-title="Search Results 1"/>
+              </v-col>
+
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="githubSearchData" v-if="githubSearchData"
+                              :loading="githubClassicLoading"
+                              search-title="Search Results 2"/>
+              </v-col>
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
+                              :loading="githubLoading"
+                              search-title="Search Results 3"/>
+              </v-col>
+
+            </v-row>
+
+
+            <v-row justify="space-around" v-if="searchCompleted && this.randomOrderId === 3">
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="githubSearchData" v-if="githubSearchData"
+                              :loading="githubClassicLoading"
+                              search-title="Search Results 1"/>
+              </v-col>
+
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="googleSearchData" v-if="googleSearchData"
+                              :loading="googleClassicLoading"
+                              search-title="Search Results 2"/>
+              </v-col>
+
+              <v-col cols="11" md="4" class="">
+                <SearchResult :evaluation-mode="evalStatus" :search-data="searchData" v-if="searchData"
+                              :loading="githubLoading"
+                              search-title="Search Results 3"/>
+              </v-col>
+
+            </v-row>
+          </div>
+
         </div>
       </div>
       <div v-else>
@@ -201,6 +275,7 @@ export default {
       helpDialog: false,
       userId: null,
       progressIndex: 0,
+      randomOrderId: 0,
       scenarios: [
         'A car competition organizer wants to promote their business. They want to build a website about their available competitions. The website is just an informational one; the users will not be able to reserve/buy any tickets for the competitions. The website will follow a parallax scrolling style (1-page website) with information about the competitions, such as location and entry fee. The information on the website needs to be updated just once every few years when the organizers adjust the prices with the inflation. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
         'A small chair manufacturing business wants to minimize its "bookkeeping" costs. Every month, all the bills regarding materials or energy are centralized in their bookkeeping system by the business owner. The business owner thinks that he has more important things to do but doesn\'t afford to hire another person to centralize the bills. All the bills are received at the address: accounting@nicechairs.com. The business owner wants to automate this bookkeeping process. Please provide a query that may lead to an already built solution for this type of application or a stack of technologies that may help solve this task. Please focus more on the tags than on the textual search. Please keep in mind that the order of the tags is changing and provides you with recommendations when you input at least one tag.',
@@ -227,6 +302,9 @@ export default {
       this.searchTextAndTags(searchQuery)
       this.searchTextGithub(searchQuery)
       this.searchRepositoryDataFromGoogle(searchQuery)
+    },
+    getRandomInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     },
     saveUserData(data) {
       this.userDataCollect = false
@@ -305,12 +383,12 @@ export default {
     }
   },
   mounted() {
+    this.randomOrderId = this.getRandomInteger(0, 3)
     this.userId = uuid.v4()
     this.resetSearch()
     this.evalStatus = false
     this.searchCompleted = false
     this.retrieveAvailableTags()
-    this.$refs.searchBar.reset()
   },
   watch: {
     getSearchData(newValue) {
@@ -338,6 +416,7 @@ export default {
         this.$toast.error(newValue.message, newValue.title, {position: "topCenter"});
       else {
         this.$toast.success(newValue.message, newValue.title, {position: "topCenter"});
+        this.randomOrderId = this.getRandomInteger(0, 3)
         this.resetSearch()
         this.$refs.searchBar.reset()
         this.progressIndex++
