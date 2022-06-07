@@ -274,6 +274,7 @@ export default {
       googleClassicLoading: false,
       helpDialog: false,
       userId: null,
+      startTimeTask: null,
       progressIndex: 0,
       randomOrderId: 0,
       scenarios: [
@@ -321,6 +322,9 @@ export default {
       let simpleGoogleLinks = this.googleSearchData.map(el => el.html_url)
       let simpleGoogleChecked = this.googleSearchData.filter(el => el.checked).map(el => el.html_url)
 
+      const currentDate = new Date();
+      const endTime = currentDate.getTime();
+
       this.sendFeedback({
         githubLinks: {
           github: {
@@ -344,7 +348,9 @@ export default {
           scenarioId: this.progressIndex,
           userInfo: this.getUserFeedbackData,
           userId: this.userId,
-          queryData: this.$refs.searchBar.getQuery()
+          queryData: this.$refs.searchBar.getQuery(),
+          startTimeTask: this.startTimeTask,
+          endTime: endTime
         }
       })
     }
@@ -389,6 +395,8 @@ export default {
     this.evalStatus = false
     this.searchCompleted = false
     this.retrieveAvailableTags()
+    const currentDate = new Date();
+    this.startTimeTask = currentDate.getTime();
   },
   watch: {
     getSearchData(newValue) {
