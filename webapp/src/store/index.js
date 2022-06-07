@@ -146,7 +146,7 @@ export default new Vuex.Store({
                 })
                 commit('storeFeedbackStatus', {
                     error: null,
-                    message: 'Your feedback for this scenario has been recorded. Please continue with next scenario.',
+                    message: 'Your feedback for this scenario has been recorded. Please continue with the next scenario.',
                     title: 'Feedback Success'
                 })
 
