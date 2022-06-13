@@ -2,13 +2,14 @@
   <div>
 
       <v-row justify="space-around">
-        <v-col cols="4">
+        <v-col cols="11" md="4">
           <v-row>
             <v-subheader>
               The minimum number of clusters in the Hierarchy
             </v-subheader>
           </v-row>
           <v-row class="mt-4">
+            <v-col cols="12" md="4">
             <v-slider
                 class="ml-5"
                 thumb-label="always"
@@ -22,10 +23,11 @@
                 <v-icon :color="getProgressColor">mdi-chart-timeline-variant-shimmer</v-icon>
               </template>
             </v-slider>
+            </v-col>
           </v-row>
         </v-col>
 
-        <v-col cols="3">
+        <v-col cols="12" md="3">
           <div class="mt-8"/>
           <v-select
               class="text-capitalize"
@@ -40,7 +42,7 @@
         </v-col>
 
 
-        <v-col cols="3">
+        <v-col cols="12" md="3">
           <div class="mt-8"/>
           <v-select
               class="text-capitalize"

@@ -7,9 +7,9 @@
         <v-col cols="12">
           <v-card elevation="5" class="search-bar">
             <v-card-title>
-              <v-row justify="space-between" align="center">
+              <v-row justify="center" align="center">
 
-                <v-col cols="7" class="text-center" align="center">
+                <v-col cols="12" md="7" class="text-center" align="center">
                   <div class="pt-7"></div>
                   <v-tooltip top>
                     <template v-slot:activator="{ on, attrs }">
@@ -23,7 +23,7 @@
                   </v-tooltip>
                 </v-col>
 
-                <v-col cols="4" class="ma-0 pa-0">
+                <v-col cols="12" md="4" class="ma-0 pa-0">
                   <div class="pt-7"></div>
                   <v-tooltip top>
                     <template v-slot:activator="{ on, attrs }">

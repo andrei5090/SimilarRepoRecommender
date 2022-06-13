@@ -94,7 +94,7 @@ export default new Vuex.Store({
                 query += data.text
 
             if (data.tags && data.tags.length > 0)
-                data.tags.forEach((tag) => query += ' ' + method + ' ' + tag)
+                data.tags.forEach((tag) => query += ' ' + tag + ' ' + method)
 
             try {
                 const res = await octokit.request('GET /search/repositories', {q: query})

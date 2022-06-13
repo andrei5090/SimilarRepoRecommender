@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-card>
-        <v-card-text>
+        <v-card-text class="subtitle-1">
           <v-card-title>
             Some Information About You
           </v-card-title>

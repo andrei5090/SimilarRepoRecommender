@@ -1,12 +1,12 @@
 <template>
   <div>
     <!--   Start Button   -->
-    <div v-if="!started" class="center-align">
+    <div v-if="!started" style="max-height: 100vh; height: 100%">
       <v-row align="center" justify="center">
-        <v-col cols="12" md="10" class="text-center">
+        <v-col cols="11" md="5" class="text-center">
           <v-card>
             <v-card-title>Your task</v-card-title>
-            <v-card-text>{{ task }}</v-card-text>
+            <v-card-text class="subtitle-1">{{ task }}</v-card-text>
             <v-card-actions class="justify-center">
               <v-btn @click="started = true" color="primary" x-large>
                 Start
@@ -20,9 +20,9 @@
     </div>
     <div v-else>
       <div v-if="progressIndex < scenarios.length">
-        <div v-if="userDataCollect" class="center-align">
+        <div v-if="userDataCollect">
           <v-row justify="center" align="center">
-            <v-col cols="11">
+            <v-col cols="11" md="5">
               <UserInfo @continue="saveUserData"/>
             </v-col>
           </v-row>
@@ -363,7 +363,7 @@ export default {
     },
     searchData() {
       try {
-        return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items.slice(0, 30) : [] : []
+        return this.getSearchData ? this.getSearchData.data.items ? this.getSearchData.data.items.slice(0, 10) : [] : []
       } catch (e) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.loading = false
@@ -372,7 +372,7 @@ export default {
     },
     githubSearchData() {
       try {
-        return this.getGithubSearchData ? this.getGithubSearchData.data.items ? this.getGithubSearchData.data.items.slice(0, 30) : [] : []
+        return this.getGithubSearchData ? this.getGithubSearchData.data.items ? this.getGithubSearchData.data.items.slice(0, 10) : [] : []
       } catch (e) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.loading = false
@@ -381,7 +381,7 @@ export default {
     },
     googleSearchData() {
       try {
-        return this.getGoogleSearchData ? this.getGoogleSearchData.data.items ? this.getGoogleSearchData.data.items.slice(0, 30) : [] : []
+        return this.getGoogleSearchData ? this.getGoogleSearchData.data.items ? this.getGoogleSearchData.data.items.slice(0, 10) : [] : []
       } catch (e) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.loading = false
@@ -440,11 +440,5 @@ export default {
 </script>
 
 <style scoped lang="sass">
-
-.center-align
-  position: fixed
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
 
 </style>
