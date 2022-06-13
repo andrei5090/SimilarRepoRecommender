@@ -1,7 +1,7 @@
 <template>
   <div>
 
-      <v-row justify="space-around">
+      <v-row justify="space-around" align="center">
         <v-col cols="11" md="4">
           <v-row>
             <v-subheader>
@@ -9,7 +9,7 @@
             </v-subheader>
           </v-row>
           <v-row class="mt-4">
-            <v-col cols="12" md="4">
+            <v-col cols="12">
             <v-slider
                 class="ml-5"
                 thumb-label="always"
@@ -55,7 +55,7 @@
           ></v-select>
         </v-col>
 
-        <v-col cols="1" align="right">
+        <v-col cols="5" md="1" :align="$vuetify.breakpoint.mdAndUp ? 'right' : 'center'">
           <div class="mt-4"/>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">

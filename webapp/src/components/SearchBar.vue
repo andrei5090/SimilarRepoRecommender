@@ -94,7 +94,7 @@
                 </v-col>
 
                 <!--          Search Button    -->
-                <v-col cols="1" align="right">
+                <v-col cols="5" md="1" :align="$vuetify.breakpoint.mdAndUp ? 'right' : 'center'">
                   <v-btn color="primary" x-large elevation="8" fab
                          @click="$emit('search', {text : queryText, tags: chosenTags})" :disabled="!valid"
                          :loading="loading">

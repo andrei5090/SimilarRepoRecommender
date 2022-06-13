@@ -48,7 +48,7 @@
               <v-card rounded>
                 <v-card-title>
                   <v-row>
-                    <v-col cols="11"> Your current search scenario</v-col>
+                    <v-col cols="10"> Your current search scenario</v-col>
                     <v-col cols="1">
                       <v-btn icon x-large @click="helpDialog = true">
                         <v-icon class="justify-end text-right" color="primary" large> mdi-account-question</v-icon>
