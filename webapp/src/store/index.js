@@ -23,7 +23,7 @@ export default new Vuex.Store({
         hierarchyLevels: null,
         recommendedTags: null,
         feedbackStatus: null,
-        userFeedbackData:null
+        userFeedbackData: null
     },
     mutations: {
         addClusters(state, data) {
@@ -63,7 +63,7 @@ export default new Vuex.Store({
         storeGoogleSearchData(state, data) {
             state.googleSearchData = data
         },
-        storeUserFeedbackData(state, data){
+        storeUserFeedbackData(state, data) {
             state.userFeedbackData = data
         }
     },
@@ -87,14 +87,14 @@ export default new Vuex.Store({
             commit('storeAvailableTopics', response.data)
         },
         async searchTextAndTags({commit}, data) {
-            const method = 'is:featured'
+            const method = 'topic:'
             let query = ''
 
             if (data.text && data.text.length >= 1)
                 query += data.text
 
             if (data.tags && data.tags.length > 0)
-                data.tags.forEach((tag) => query += ' ' + tag + ' ' + method)
+                data.tags.forEach((tag) => query += ' ' + method + tag)
 
             try {
                 const res = await octokit.request('GET /search/repositories', {q: query})
@@ -196,7 +196,7 @@ export default new Vuex.Store({
                 commit('storeGoogleSearchData', {items: [], status: 422, error: e.message})
             }
         },
-        addUserFeedbackData({commit}, data){
+        addUserFeedbackData({commit}, data) {
             commit('storeUserFeedbackData', data)
         }
     },
@@ -230,7 +230,7 @@ export default new Vuex.Store({
         getGoogleSearchData(state) {
             return state.googleSearchData
         },
-        getUserFeedbackData(state){
+        getUserFeedbackData(state) {
             return state.userFeedbackData
         }
     },
