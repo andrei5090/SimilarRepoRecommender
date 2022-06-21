@@ -1,5 +1,5 @@
 # Hierarchy Visualiser
-This repository represents the frontend for the application Hierarchy Visualiser: [Deployed app](https://hierarchy-visualiser.herokuapp.com/) developed by Andrei Ionescu during his Research Project CSE3000 (Bachelor Thesis) at the Delft University of Technology.
+This repository represents the frontend for the application Hierarchy Visualiser: [Deployed app](https://hierarchy-visualiser.herokuapp.com/) developed by Andrei Ionescu during his Research Project CSE3000 (Bachelor Thesis) at the Delft University of Technology. The Backend can be found at: [Link](https://github.com/andrei5090/SimilarRepoBackend).
 
 ## Background
 Developers do not want to reinvent the wheel when establishing a new software system. Open-source software
